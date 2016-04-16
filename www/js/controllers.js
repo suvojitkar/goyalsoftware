@@ -8,59 +8,24 @@ angular.module('starter.controllers', [])
 			$scope.noMoreItemsAvailable = false;
 			$scope.len=0, $rootScope.x=0;
             $scope.submit=function(user){
-                 if(user.username=='' || user.password=='')
+            
+                 if(user.phonenumber=='')
 				 {
 					 $scope.showAlert("Field Empty!","Error");
-					 user.username="";
-					 user.password="";
+					 user.phonenumber="";
 				 }
 				 else {
 					$ionicLoading.show();
 
                   $http({
                         method: 'POST',
-                        url: ApiEndpoint.url+ 'signin/',
-                        data:{username:user.username, password:user.password}
+                        url: ApiEndpoint.url+ 'login.php/',
+                        data:{phonenumber:user.phonenumber}
                       }).then(function successCallback(response) {
-                          if(response.data == "True")
-                          {
-                              $http({
-                                method: 'POST',
-                                url: ApiEndpoint.url+ 'product/',
-                                data:{username:user.username, password:user.password}
-                                }).then(function successCallback(response) {
-
-                                        // for(var r in response.data) {
-                                        //   alert("inside");
-                                        //   //($scope.len)++;
-                                        //   $scope.smugler = response.data[r];
-                                        //   $scope.items.push($scope.smugler);
-                                        //  console.log($scope.items[r]);
-                                        //    }
-
-                                            $scope.showAlert("Logged in successfully!","Logged in");
-                                             $location.url('/Side/dash');
-                                              user.password='';
-                                              $ionicLoading.hide();
-                                              console.log(response.data.hello);
-                          }, function errorCallback(response)
-                                  { 
-                                    alert("you ass ur not sending the data to me properly");
-                                  });
-                                }
-                                              else if(response.data == "verify")
-                                                  {
-                                               $location.url('/otp');
-                                                  }
-                                             else if(response.data == "False")
-                                             {
-                                               $scope.showAlert("Username/Password does not exist!","Error");
-                                             }
-                                 
-            
-                      
+                         alert(response.data);
+                               $ionicLoading.hide(); 
                               }, function errorCallback(response) {
-
+                                $ionicLoading.hide(); 
                           alert("flag only is not set properly then?")
                         }  ) ;
                
@@ -90,44 +55,44 @@ angular.module('starter.controllers', [])
                       });
 			}
 			
-			$scope.signup = function(user)
-			{
-				if(user.email=='' || user.add == '' || user.pin=='' || user.phone == '' || user.pass == '')
-					$scope.showAlert("Some field is empty!","Error");
-				else{
-					$ionicLoading.show();
-				$http({
-                        method: 'POST',
-                        url: ApiEndpoint.url+ 'signup/',
-                        data:{email:user.email, address:user.add, pincode:user.pin, phone:user.phone,password:user.pass}
-                      }).then(function successCallback(response) {
+			// $scope.signup = function(user)
+			// {
+			// 	if(user.email=='' || user.add == '' || user.pin=='' || user.phone == '' || user.pass == '')
+			// 		$scope.showAlert("Some field is empty!","Error");
+			// 	else{
+			// 		$ionicLoading.show();
+			// 	$http({
+   //                      method: 'POST',
+   //                      url: ApiEndpoint.url+ 'signup/',
+   //                      data:{email:user.email, address:user.add, pincode:user.pin, phone:user.phone,password:user.pass}
+   //                    }).then(function successCallback(response) {
                           
-						  if(response.data == "True")
-						  {
-						  $ionicLoading.hide();
-						  $scope.showAlert("Signed up successfully!","Signed Up");
-						  $location.url('/Page1');
-						  }
-						  else
-						  {
-							  $ionicLoading.hide();
-							$scope.showAlert("User already exists!","Alert");  
-						  }
+			// 			  if(response.data == "True")
+			// 			  {
+			// 			  $ionicLoading.hide();
+			// 			  $scope.showAlert("Signed up successfully!","Signed Up");
+			// 			  $location.url('/Page1');
+			// 			  }
+			// 			  else
+			// 			  {
+			// 				  $ionicLoading.hide();
+			// 				$scope.showAlert("User already exists!","Alert");  
+			// 			  }
 						  
-                      }, function errorCallback(response) {
-                          console.log("ERROR");
-						  $ionicLoading.hide();
-						  $scope.showAlert("Some field is empty!","Error");
+   //                    }, function errorCallback(response) {
+   //                        console.log("ERROR");
+			// 			  $ionicLoading.hide();
+			// 			  $scope.showAlert("Some field is empty!","Error");
 						  
-                      });
+   //                    });
 
-				}
-                      user.email=='';
-                      user.add == '';
-                      user.pin=='';
-                      user.phone == '';
-                      user.pass == '';
-			}
+			// 	}
+   //                    user.email=='';
+   //                    user.add == '';
+   //                    user.pin=='';
+   //                    user.phone == '';
+   //                    user.pass == '';
+			// }
 			$scope.verify = function(n,user) {
 				if(n==0)
 					$scope.showAlert("Another OTP will be sent shortly to your registered email id","Resend");

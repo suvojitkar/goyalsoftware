@@ -30,83 +30,31 @@
   
   
   <ion-content style="">
-  <div style="text-align:center;background-color:#fff"><br><img src="img/logo.png" height="100px" width="100px" alt=""><br><br></div>
+  <br><br><br>
+  <div style="text-align:center;"><br><img src="img/heritage.png" alt=""><br><br></div>
 
-
-          <div class="list" >
+  <br><br><br>
+          <div class="list padding" >
             <label class="item item-input">
-             <input  type="text" ng-model="user.username" placeholder="Email">
-            </label>
-            <label class="item item-input">
-              
-              <input type="password" ng-model="user.password" placeholder="Password">
+             <input  type="number" ng-model="user.phonenumber" placeholder="Enter 10 digit mobile number">
             </label>
           </div>
+            <br>
           <div class="padding">
-            <button style="background-color:#055496;color:white" class="button button-block" ng-click="submit(user)">
+            <button style="background-color:#3e2202;color:white" class="button button-block" ng-click="submit(user)">
               Login
             </button>
       </div>
-             <div class="padding">
-            <button style="background-color:#055496;color:white" class="button button-block" ng-click="signup_redirect()">
-              Signup
-            </button>
-      </div>          
 </ion-content>
 </script>
 
- <script id="Signup.html" type="text/ng-template">
 
- <ion-header style="background-color:#055496">
-
-  <div style="background-color:#055496;color:white" class="bar bar-header bar-positive">
-  <h1 class="title">Sign Up</h1>
-</div>
-</ion-header>
-
-  
-  <ion-content>
-  <br><br><br>
-<div style="text-align:center;background-color:#fff"><br><img src="img/logo.png" height="100px" width="100px" alt=""><br><br></div>
-  <div class="list list-inset">
-
-  <label class="item item-input">
-    <input type="email" maxlength = "100" placeholder="Email id" ng-model = "user.email" required />
-  </label>
-  <label class="item item-input">
-    <input type="text" maxlength = "100" placeholder="Address" ng-model = "user.add">
-  </label>
-  <label class="item item-input">
-    <input type="text" maxlength = "6" placeholder="Pincode (6 digit number)" ng-model = "user.pin">
-  </label>
-  <label class="item item-input">
-    <input type="text" maxlength = "10" placeholder="Phone (10 digit number)" ng-model = "user.phone">
-  </label>
-  <label class="item item-input">
-    <input type="password" maxlength = "100" placeholder="Password" ng-model = "user.pass">
-  </label>
-  <label class="item item-input">
-    <input type="password" maxlength = "100" placeholder="Confirm Password" ng-model = "cpass">
-  </label>
-</div>
-       
-       <br>
-       <p ng-show="cpass!=user.pass"> Passwords dont match! </p>   
-
-
-<div class="row">
-  <div class="col col-10 col-offset-33"><a style="text-decoration:none;color:white;" href="#/Page1"><button style="background-color:#055496;color:white" class="button button-positive pull-right" >Back</button></a></div>
-  <div class="col col-offset-10 col-25"><button style="background-color:#055496;color:white" class = "button button-positive pull-left" ng-click = "signup(user)" ng-show = "cpass==user.pass">Sign Up</button></div>
-</div>
-</ion-content>
-
-</script>
 
 <script id="Side.html" type="text/ng-template">
  <ion-side-menus>
         
         <ion-side-menu-content>
-          <ion-nav-bar style="background-color:#055496" class="bar-positive">
+          <ion-nav-bar style="background-color:#3e2202" class="bar-positive">
             <ion-nav-back-button class="button-icon ion-arrow-left-c">
             </ion-nav-back-button>
           </ion-nav-bar>
@@ -117,27 +65,31 @@
           <ion-nav-view name="appContent"></ion-nav-view>
         </ion-side-menu-content> 
         
-        <ion-side-menu side="left"style="background-color:#055496">
-          <ion-header-bar class="bar-positive"style="background-color:#055496">
-           <div style="margin-left:5px" class="item-image">
+        <ion-side-menu side="left"style="background-color:#3e2202">
+          <ion-header-bar class="bar-positive"style="background-color:#3e2202">
+       <!--    <div style="margin-left:5px" class="item-image">
               <img src="img/logo_small.png">
-            </div>
+            </div> -->
             <h1 style="margin-left:50px" class="title">Simran Kaur Deol</h1>
           </ion-header-bar>
           <ion-content>
+            <br><br><br>
             <ul class="list">
-              <a href="#/Side/profile" class="item item-icon-left" menu-close> <i class="icon ion-person"></i>My Profile</a>
-              <a href="#/Side/dash" class="item item-icon-left" menu-close> <i class="icon ion-android-checkbox"></i>Place an Order</a>
+              <a href="#/Side/profile" class="item item-icon-left" menu-close> <i class="icon ion-person"></i>Home</a>
+              <a href="#/Side/dash" class="item item-icon-left" menu-close> <i class="icon ion-android-checkbox"></i>Events</a>
 
 
 
-              <a href="#/Side/vieworders" class="item item-icon-left" menu-close>  <i class="icon ion-levels"></i>View Cart</a>
+              <a href="#/Side/vieworders" class="item item-icon-left" menu-close>  <i class="icon ion-levels"></i>Youthopia 16</a>
 
              
 
-              <a href="#/Side/promotion" class="item item-icon-left" menu-close>  <i class="icon ion-cash"></i>Promotional Offers</a>
+              <a href="#/Side/promotion" class="item item-icon-left" menu-close>  <i class="icon ion-cash"></i>Heritage School</a>
 
-              <a href="#/Side/delivery" class="item item-icon-left" menu-close><i class="icon ion-model-s"></i>Delivery Information</a>
+              <a href="#/Side/delivery" class="item item-icon-left" menu-close><i class="icon ion-model-s"></i>Talks</a>
+              <a href="#/Side/delivery" class="item item-icon-left" menu-close><i class="icon ion-model-s"></i>Guest Performers</a>
+              <a href="#/Side/delivery" class="item item-icon-left" menu-close><i class="icon ion-model-s"></i>Contact Us</a>
+              <a href="#/Side/delivery" class="item item-icon-left" menu-close><i class="icon ion-model-s"></i>Credits</a>
               <a href="#/Page1" class="item item-icon-left" menu-close><i class="icon ion-log-out" ng-click="logout()"></i>Logout</a>
 			  
 
@@ -151,18 +103,18 @@
 	<script id = "otp.html" type="text/ng-template">
         <ion-view hide-nav-bar="true">
 
-              <div style="background-color:#055496" class="bar bar-header bar-positive">
-                  <h1 class="title">E-mail Verification</h1>
+              <div style="background-color:#3e2202" class="bar bar-header bar-positive">
+                  <h1 class="title">OTP Verification</h1>
                 </div>
 
                <ion-content padding="true"> 
-               <br><br>
+               <br><br>   <br><br>
 
                         <div class="row">
-                            <div class="col col-20">
-                            </div>
-                            <div class="col col-80">
-                              Enter the code sent to your E-mail
+
+                            <div class="col col-100" style="text-align:center">
+                             
+                             <b> Enter the OTP </b>
                             </div>
                         </div>
                             <div class="col col-offset-30 col-100">
@@ -176,12 +128,12 @@
                         <br><br>
                        <div class="row">
                           <div class="col col-offset-10 col-50">
-                              <button class="button button-positive"style="background-color:#055496" ng-click="verify(0,user)">
+                              <button class="button button-positive"style="background-color:#3e2202" ng-click="verify(0,user)">
                               Resend
                               </button>
                           </div>
-                          <div class="col col-offset-5 col-80">
-                           <button class="button button-positive"style="background-color:#055496" ng-click="verify(1,user)">
+                          <div class="col col-offset-5 col-50">
+                           <button class="button button-positive"style="background-color:#3e2202" href="verify(1,user)">
                              Verify
                             </button>
                           </div>
@@ -191,45 +143,15 @@
          </ion-view>   
 	</script>
 	
-  <script id="modeofpayment.html" type="text/ng-template">
-          <ion-view hide-nav-bar="true">
-          <div style="background-color:#055496" class="bar bar-header bar-positive">
-		  <button class="button button-icon icon ion-navicon" style="text-align:left;padding-right:20px" menu-toggle = "left"></button>
-          <h1 class="title">Mode Of Payment</h1>
-          </div>
-          <ion-content >
-          <br><br>
-            <ul class="list">
-             <ion-radio ng-model="choice" ng-value="'A'">
-              <a class="item item-icon-left" menu-close style="background-color:#055496;color:white"> <i class="icon ion-cash" style="font-size:20px"></i>Cash on Delivery</a></ion-radio>
-             
-             <ion-radio ng-model="choice" ng-value="'A'">
-              <a class="item item-icon-left" menu-close style="background-color:#055496;color:white"> <i class="icon ion-card" style="font-size:20px"></i>Credit/Debit Card</a></ion-radio>
-                
-                
-             <ion-radio ng-model="choice" ng-value="'A'">
-              <a class="item item-icon-left" menu-close style="background-color:#055496;color:white"> <i class="icon ion-ios-home" style="font-size:20px"></i>Net Banking</a></ion-radio>
-                
-                
-            </ul>
-<br><br>
-			<p ng-show="choice=='A'"> ORDER SUCCESSFUL! </p>
-          </ion-content>
-          </ion-view>
-
-      </script>
+ 
 <script id="dash.html" type="text/ng-template">
 <ion-view hide-nav-bar="true">
 
-<div style="background-color:#055496" class="bar bar-header bar-positive">
+<div style="background-color:#3e2202" class="bar bar-header bar-positive">
       <button class="button button-icon icon ion-navicon" style="text-align:left;padding-right:20px" menu-toggle = "left"></button> 
 
 
-	   <h1 class="title">Dashboard</h1>
-     <button class="button button-light">
-      Cart:2 Items
-      </button> 
-	   
+	   <h1 class="title">Home</h1>
 	  </div>
 
  <ion-content padding="true">
@@ -252,7 +174,7 @@
   <div class="col col-40">Kissan Jam</div>
   <div class="col col-20">Rs 100</div>
   <div class="col col-20"></div>
-  <div class="col col-10"><a href="#"><i style="color:#055496;font-size:40px" class="icon ion-plus-circled"></i></a></div>
+  <div class="col col-10"><a href="#"><i style="color:#3e2202;font-size:40px" class="icon ion-plus-circled"></i></a></div>
 </div>
 
 <div   class="row card">
@@ -260,42 +182,42 @@
   <div class="col col-40">Kissan Jam</div>
   <div class="col col-20">Rs 100</div>
   <div class="col col-20"></div>
-  <div class="col col-10"><a href="#"><i style="color:#055496;font-size:40px" class="icon ion-plus-circled"></i></a></div>
+  <div class="col col-10"><a href="#"><i style="color:#3e2202;font-size:40px" class="icon ion-plus-circled"></i></a></div>
 </div>
 <div   class="row card">
   <div class="col col-10"><img width="100%" src="img/kissan_jam.png"> </div>
   <div class="col col-40">Kissan Jam</div>
   <div class="col col-20">Rs 100</div>
   <div class="col col-20"></div>
-  <div class="col col-10"><a href="#"><i style="color:#055496;font-size:40px" class="icon ion-plus-circled"></i></a></div>
+  <div class="col col-10"><a href="#"><i style="color:#3e2202;font-size:40px" class="icon ion-plus-circled"></i></a></div>
 </div>
 <div   class="row card">
   <div class="col col-10"><img width="100%" src="img/kissan_jam.png"> </div>
   <div class="col col-40">Kissan Jam</div>
   <div class="col col-20">Rs 100</div>
   <div class="col col-20"></div>
-  <div class="col col-10"><a href="#"><i style="color:#055496;font-size:40px" class="icon ion-plus-circled"></i></a></div>
+  <div class="col col-10"><a href="#"><i style="color:#3e2202;font-size:40px" class="icon ion-plus-circled"></i></a></div>
 </div>
 <div   class="row card">
   <div class="col col-10"><img width="100%" src="img/kissan_jam.png"> </div>
   <div class="col col-40">Kissan Jam</div>
   <div class="col col-20">Rs 100</div>
   <div class="col col-20"></div>
-  <div class="col col-10"><a href="#"><i style="color:#055496;font-size:40px" class="icon ion-plus-circled"></i></a></div>
+  <div class="col col-10"><a href="#"><i style="color:#3e2202;font-size:40px" class="icon ion-plus-circled"></i></a></div>
 </div>
 <div   class="row card">
   <div class="col col-10"><img width="100%" src="img/kissan_jam.png"> </div>
   <div class="col col-40">Kissan Jam</div>
   <div class="col col-20">Rs 100</div>
   <div class="col col-20"></div>
-  <div class="col col-10"><a href="#"><i style="color:#055496;font-size:40px" class="icon ion-plus-circled"></i></a></div>
+  <div class="col col-10"><a href="#"><i style="color:#3e2202;font-size:40px" class="icon ion-plus-circled"></i></a></div>
 </div>
 <div   class="row card">
   <div class="col col-10"><img width="100%" src="img/kissan_jam.png"> </div>
   <div class="col col-40">Kissan Jam</div>
   <div class="col col-20">Rs 100</div>
   <div class="col col-20"></div>
-  <div class="col col-10"><a href="#"><i style="color:#055496;font-size:40px" class="icon ion-plus-circled"></i></a></div>
+  <div class="col col-10"><a href="#"><i style="color:#3e2202;font-size:40px" class="icon ion-plus-circled"></i></a></div>
 </div> -->
 
 <div class="row card" ng-repeat = "x in filteredItems = (show |  filter: query)">
@@ -303,7 +225,7 @@
   <div class="col col-40">{{x.name}}</div>
   <div class="col col-20">{{x.price}}</div>
   <div class="col col-20"></div>
-  <div class="col col-10"><a href="#"><i style="color:#055496;font-size:40px" class="icon ion-plus-circled"></i></a></div>
+  <div class="col col-10"><a href="#"><i style="color:#3e2202;font-size:40px" class="icon ion-plus-circled"></i></a></div>
 </div>
 <p ng-hide = "filteredItems.length" style = "text-align:center;font-family: Times New Roman"> No search results!</p>
 <ion-infinite-scroll ng-if="!noMoreItemsAvailable" on-infinite="loadMore()" distance="10%" has-bouncing="true"></ion-infinite-scroll>
@@ -313,552 +235,7 @@
 </ion-view>
 </script>
 
-<script id="profile.html" type="text/ng-template">
 
-<ion-view hide-nav-bar="true">
-
-<div style="background-color:#055496" class="bar bar-header bar-positive">
-      <button class="button button-icon icon ion-navicon" style="text-align:left;padding-right:20px" menu-toggle = "left"></button> 
-	   <h1 class="title">My Profile</h1>
-	   
-	  </div>
-	  <ion-content padding="true">
-    <br>
-    <ion-scroll>
-      	 
-      <div class="row card">
-        <div class="col col-100">
-           <label class="item item-input">
-          <span class="input-label">Name</span>
-          <input type="text" placeholder="Name">
-          </label>
-          
-        </div>
-        </div>
-
-       <div class="row card">
-       <div class="col col-100">
-       <label class="item item-input">
-      <span class="input-label">E-mail ID</span>
-      <input type="text" placeholder="mail@hul.com">
-       </label>
-      </div>
-      </div>
-
-     
-      <div class="row card">
-     <div class="col col-100">
-        <label class="item item-input">
-        <span class="input-label">Address</span>
-      <textarea placeholder="Comments"></textarea>
-      </div>
-      </div>
-     
-
-    <div class="row card">
-    <div class="col col-100">
-      <label class="item item-input">
-      <span class="input-label">Contact Details</span>
-      <input type="text" placeholder="999999999">
-       </label>
-      </div>
-      </div>
-      
-      <div class="row">
-      <div class="col col-100">
-      <button class="button button-block button-positive" style="background-color:#055496">
-      Save Profile
-      </button>
-      </div>
-      </div>
-      
-	  </ion-content>
-
-</ion-view>
-</script>
-<script id="delivery.html" type="text/ng-template">
-<ion-view hide-nav-bar="true">
-  <div style="background-color:#055496" class="bar bar-header bar-positive">
-      <button class="button button-icon icon ion-navicon" style="text-align:left;padding-right:20px" menu-toggle = "left"></button> 
-     <h1 class="title">Delivery Information</h1>
-     
-    </div>
-    <ion-content padding="true">
-    <ion-scroll zooming="false" direction="y" style="" has-bouncing = "true" scrollbar-y="true" ng-init="name=''">
-    <br>
-          <div   class="row card">
-            <div class="col col-100">
-              <div class="row">
-                <div class="col col-25">
-                  Delivery ID:1234567
-                </div>
-                <div class="col col-60 col-offset-20">
-                  Dispatch Date: 01-04-2016
-                </div>
-
-              </div>
-              <div class="row">
-                <div class="col col-33">
-                  Product Name:<br> Kissan Jam
-                </div>
-                <div class="col col-60 col-offset-10 ">
-                  Delivery Date: 01-04-2016
-                </div>
-              </div>
-          </div>
-        </div>
-
-        <div   class="row card">
-            <div class="col col-100">
-              <div class="row">
-                <div class="col col-25">
-                  Delivery ID:1234567
-                </div>
-                <div class="col col-60 col-offset-20">
-                  Dispatch Date: 01-04-2016
-                </div>
-
-              </div>
-              <div class="row">
-                <div class="col col-33">
-                  Product Name:<br> Kissan Jam
-                </div>
-                <div class="col col-60 col-offset-10 ">
-                  Delivery Date: 01-04-2016
-                </div>
-              </div>
-          </div>
-        </div>
-
-        <div   class="row card">
-            <div class="col col-100">
-              <div class="row">
-                <div class="col col-25">
-                  Delivery ID:1234567
-                </div>
-                <div class="col col-60 col-offset-20">
-                  Dispatch Date: 01-04-2016
-                </div>
-
-              </div>
-              <div class="row">
-                <div class="col col-33">
-                  Product Name:<br> Kissan Jam
-                </div>
-                <div class="col col-60 col-offset-10 ">
-                  Delivery Date: 01-04-2016
-                </div>
-              </div>
-          </div>
-        </div>
-
-        <div   class="row card">
-            <div class="col col-100">
-              <div class="row">
-                <div class="col col-25">
-                  Delivery ID:1234567
-                </div>
-                <div class="col col-60 col-offset-20">
-                  Dispatch Date: 01-04-2016
-                </div>
-
-              </div>
-              <div class="row">
-                <div class="col col-33">
-                  Product Name:<br> Kissan Jam
-                </div>
-                <div class="col col-60 col-offset-10 ">
-                  Delivery Date: 01-04-2016
-                </div>
-              </div>
-          </div>
-        </div>
-
-        <div   class="row card">
-            <div class="col col-100">
-              <div class="row">
-                <div class="col col-25">
-                  Delivery ID:1234567
-                </div>
-                <div class="col col-60 col-offset-20">
-                  Dispatch Date: 01-04-2016
-                </div>
-
-              </div>
-              <div class="row">
-                <div class="col col-33">
-                  Product Name:<br> Kissan Jam
-                </div>
-                <div class="col col-60 col-offset-10 ">
-                  Delivery Date: 01-04-2016
-                </div>
-              </div>
-          </div>
-        </div>
-
-
-
-       
-
-
-        </ion-scroll>
-
-    </ion-content>
-
-    </ion-view>
-
-</script> 
-<script id="promotion.html" type="text/ng-template">
-      <ion-view hide-nav-bar="true">
-
-<div style="background-color:#055496" class="bar bar-header bar-positive">
-      <button class="button button-icon icon ion-navicon" style="text-align:left;padding-right:20px" menu-toggle = "left"></button> 
-     <h1 class="title">Promotional Offers</h1>
-     
-    </div>
-    <ion-content padding="true">
-    <br>
-     
-          <div class="row card">
-            <div class="col col-100">
-                <div class="row">
-                  <div class="col col-50">
-                        <div class="row">
-                          <div class="col col-100">
-                           <b> Promotion ID: </b>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col col-100">
-                            999999999
-                          </div>
-                        </div>
-                  </div>
-                  <div class="col col-50">
-                         <div class="row">
-                          <div class="col col-100">
-                            <b>Promotion detail:</b>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col col-100">
-                            The kissan ketchup is always good, please buy it. kissan will be gratefull, will 1% discount
-                          </div>
-                        </div>
-                  </div>
-
-                </div>
-                <div class="row">
-                  <div class="col col-100">
-                      <div class="row">
-                        <div class="col col-100">
-                   <b> Product Name:</b> Kissan Jam Pineapple Flavour 
-                        </div>
-                      </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col col-100">
-                      <div class="row">
-                          <div class="col col-50">
-                              <div class="row">
-                                <div class="col col-100">
-                                  <b>Starting Date:</b>
-                                </div>
-                              </div>
-
-                              <div class="row">
-                                   <div class="col col-100">
-                                      26-03-2016
-                                </div>
-                              </div>
-
-
-                          </div>
-                           <div class="col col-50">
-                              <div class="row">
-                                <div class="col col-100">
-                                  <b>Ending  Date:</b>
-                                </div>
-                              </div>
-
-                              <div class="row">
-                                   <div class="col col-100">
-                                      26-03-2016
-                                </div>
-                              </div>
-                         </div>
-                      </div>
-                  </div>
-                </div>
-            </div>
-          </div>
-
-
-           <div class="row card">
-            <div class="col col-100">
-                <div class="row">
-                  <div class="col col-50">
-                        <div class="row">
-                          <div class="col col-100">
-                           <b> Promotion ID: </b>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col col-100">
-                            999999999
-                          </div>
-                        </div>
-                  </div>
-                  <div class="col col-50">
-                         <div class="row">
-                          <div class="col col-100">
-                            <b>Promotion detail:</b>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col col-100">
-                            The kissan ketchup is always good, please buy it. kissan will be gratefull, will 1% discount
-                          </div>
-                        </div>
-                  </div>
-
-                </div>
-                <div class="row">
-                  <div class="col col-100">
-                      <div class="row">
-                        <div class="col col-100">
-                   <b> Product Name:</b> Kissan Jam Pineapple Flavour 
-                        </div>
-                      </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col col-100">
-                      <div class="row">
-                          <div class="col col-50">
-                              <div class="row">
-                                <div class="col col-100">
-                                  <b>Starting Date:</b>
-                                </div>
-                              </div>
-
-                              <div class="row">
-                                   <div class="col col-100">
-                                      26-03-2016
-                                </div>
-                              </div>
-
-
-                          </div>
-                           <div class="col col-50">
-                              <div class="row">
-                                <div class="col col-100">
-                                  <b>Ending  Date:</b>
-                                </div>
-                              </div>
-
-                              <div class="row">
-                                   <div class="col col-100">
-                                      26-03-2016
-                                </div>
-                              </div>
-                         </div>
-                      </div>
-                  </div>
-                </div>
-            </div>
-          </div>
-    </ion-content>
-
-</script>
-      <script id="vieworders.html" type="text/ng-template">
-           <ion-view hide-nav-bar="true">
-          <div style="background-color:#055496" class="bar bar-header bar-positive">
-                <button class="button button-icon icon ion-navicon" style="text-align:left;padding-right:20px" menu-toggle = "left"></button> 
-               <h1 class="title">My Cart</h1>
-          </div>
-          <ion-content padding="true">
-          
-          <br><br><br>
-          
-            <div class="row card">
-                <div class="col col-10"><img width="100%" src="img/kissan_jam.png"> </div>
-                    <div class="col col-30" style="padding:15px">Kissan Jam</div>
-                      <div class="col col-30">
-                             <div class="row">
-                                <div class="col col-70">Quantity</div>
-                                <div class="col col-20"></div>
-                              </div>
-                              <div class="row">
-                                    <div class="col col-100">
-                                              <i style="color:#055496;font-size:20px" class="icon ion-minus-circled"></i>
-                                              <span style="padding-left:5px;padding-right:5px">1</span>
-                                              <i style="color:#055496;font-size:20px" class="icon ion-plus-circled"></i>
-                                    </div>          
-                              </div> 
-                       </div>                      
-                    <div class="col col-30"style="padding:15px">Rs.123</div>
-            </div>     
-            <div class="row card">
-                <div class="col col-10"><img width="100%" src="img/kissan_jam.png"> </div>
-                    <div class="col col-30" style="padding:15px">Kissan Jam</div>
-                      <div class="col col-30">
-                             <div class="row">
-                                <div class="col col-70">Quantity</div>
-                                <div class="col col-20"></div>
-                              </div>
-                              <div class="row">
-                                    <div class="col col-100">
-                                              <i style="color:#055496;font-size:20px" class="icon ion-minus-circled"></i>
-                                              <span style="padding-left:5px;padding-right:5px">1</span>
-                                              <i style="color:#055496;font-size:20px" class="icon ion-plus-circled"></i>
-                                    </div>          
-                              </div> 
-                       </div>                      
-                    <div class="col col-30"style="padding:15px">Rs.123</div>
-            </div>     
-            <div class="row card">
-                <div class="col col-10"><img width="100%" src="img/kissan_jam.png"> </div>
-                    <div class="col col-30" style="padding:15px">Kissan Jam</div>
-                      <div class="col col-30">
-                             <div class="row">
-                                <div class="col col-70">Quantity</div>
-                                <div class="col col-20"></div>
-                              </div>
-                              <div class="row">
-                                    <div class="col col-100">
-                                              <i style="color:#055496;font-size:20px" class="icon ion-minus-circled"></i>
-                                              <span style="padding-left:5px;padding-right:5px">1</span>
-                                              <i style="color:#055496;font-size:20px" class="icon ion-plus-circled"></i>
-                                    </div>          
-                              </div> 
-                       </div>                      
-                    <div class="col col-30"style="padding:15px">Rs.123</div>
-            </div>
-            <div class="row card">
-                <div class="col col-10"><img width="100%" src="img/kissan_jam.png"> </div>
-                    <div class="col col-30" style="padding:15px">Kissan Jam</div>
-                      <div class="col col-30">
-                             <div class="row">
-                                <div class="col col-70">Quantity</div>
-                                <div class="col col-20"></div>
-                              </div>
-                              <div class="row">
-                                    <div class="col col-100">
-                                              <i style="color:#055496;font-size:20px" class="icon ion-minus-circled"></i>
-                                              <span style="padding-left:5px;padding-right:5px">1</span>
-                                              <i style="color:#055496;font-size:20px" class="icon ion-plus-circled"></i>
-                                    </div>          
-                              </div> 
-                       </div>                      
-                    <div class="col col-30"style="padding:15px">Rs.123</div>
-            </div>
-            <br>     
-          <div class="row card">
-           <div class="col col-80">
-             Total Amount:
-           </div>
-           <div class="col col-20">
-             Rs.2233
-           </div>
-          </div>
-     <br>     
-         <div class="row">
-           
-            <div class="col col-offset-75 col-25">
-            <a class="button icon-right ion-chevron-right button-calm" style="background-color:#055496" href="#/address_details">Next</a>
-            </div>
-         </div> 
-          
-       </ion-content>
-      </ion-view> 
-               
-
-
-      </script>
-
-      <script id="address_details.html" type="text/ng-template">
-            <ion-view hide-nav-bar="true">
-               <div style="background-color:#055496" class="bar bar-header bar-positive">
-                    <button class="button button-icon icon ion-navicon" style="text-align:left;padding-right:20px" menu-toggle = "left">
-                    </button> 
-               <h1 class="title">Address</h1>
-               </div>
-                <ion-content padding="true">
-                <br><br><br>
-
-                <div class="row">
-                    
-                      <div class="col col-100">
-                        <h4> Shipment Details</h4>
-                          <div class="row">
-                              <div class="col col-100">
-                                 <textarea placeholder=" Address"style="border:2px solid #055496;width:100%;height:150px"></textarea>
-                              </div>
-                           </div>   
-                      </div>
-                </div>
-
-                <div class="row">
-                      <div class="col col-offset-20 col-30">
-                      <a href="#/vieworders"><button class="button button-small button-positive"style="background-color:#055496">
-                        < Back
-                      </button></a>
-                      </div>
-                      <div class="col col-30">
-                      
-                      <a href = "#/Side/modeofpayment"><button class="button button-small button-positive"style="background-color:#055496">
-                        Submit >
-                      </button></a>
-                      </div>
-                      
-                </div>
-
-
-                </ion-content>
-                
-            </ion-view>
-
-      </script>
-
-      <script id="modeofpayment.html" type="text/ng-template">
-          <ion-view hide-nav-bar="true">
-          <div style="background-color:#055496" class="bar bar-header bar-positive">
-          <h1 class="title">Mode Of Payment</h1>
-          </div>
-          <ion-content >
-          <br><br>
-            <ul class="list">
-             <ion-radio ng-model="choice" ng-value="'A'">
-              <a class="item item-icon-left" menu-close> <i class="icon ion-cash" style="font-size:25px"></i>Cash on Delivery</a></ion-radio>
-             
-             <ion-radio ng-model="choice" ng-value="'A'">
-              <a class="item item-icon-left" menu-close > <i class="icon ion-card" style="font-size:20px"></i>Credit/Debit Card</a></ion-radio>
-                
-                
-             <ion-radio ng-model="choice" ng-value="'A'">
-              <a class="item item-icon-left" menu-close> <i class="icon ion-ios-home" style="font-size:20px"></i>Net Banking</a></ion-radio>
-               </ul>
-<br><br>
-			<p ng-show="choice=='A'"> ORDER SUCCESSFUL! </p>
-          
-          <div class="row">
-            <div class="col col-offset-10 col-50">
-              <button class="button button-positive" style="background-color:#055496" href="#/address_details">
-               Back
-              </button>
-            </div>
-            <div class="col col-50">
-              <button class="button button-positive"style="background-color:#055496" href="#/checkout">
-              CheckOut
-              </button>
-            </div>
-          </div>
-          </ion-content>
-          </ion-view>
-
-      </script>
     <ion-nav-view></ion-nav-view>
   </body>
 </html>
