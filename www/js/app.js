@@ -18,6 +18,19 @@ angular.module('starter', ['ionic','starter.controllers','ngCordova'])
   });
 })
 
+
+.run(function($ionicPlatform,$state,$location) {
+    $ionicPlatform.ready(function(){
+        // Do sweet stuff!
+        alert(window.localStorage.getItem("phonenumber"));
+        if(window.localStorage.getItem("phonenumber") != null)
+        {
+          alert('inside local storage');
+          $location.url('/Side/dash');
+        }
+    });
+})
+
 .run(function($ionicPlatform, $ionicPopup) {
   // Disable BACK button on home
   $ionicPlatform.registerBackButtonAction(function(event) {

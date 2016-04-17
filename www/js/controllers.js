@@ -1,72 +1,81 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['starter.services'])
 
-.controller('Ctrl',function($scope,$rootScope,$http,$state,$location,$ionicLoading,$timeout,$ionicSideMenuDelegate,ApiEndpoint,$ionicPopup){
+.controller('Ctrl',function($scope,$rootScope,$http,$state,$location,$ionicLoading,$timeout,$ionicHistory,$ionicSideMenuDelegate,ApiEndpoint,$ionicPopup,LoginService){
             
             $scope.len=0;
 			$rootScope.show = [];
 			$scope.items = [];
 			$scope.noMoreItemsAvailable = false;
 			$scope.len=0, $rootScope.x=0;
+      $rootScope.phonenumber = window.localStorage.getItem("phonenumber");
+      $rootScope.username = window.localStorage.getItem("username");
+      // $scope.session = function() {
+      //   if($rootScope.phonenumber != undefined)
+      //   {
+      //     alert($rootScope.phonenumber);
+      //     $state.go('/Side/dash');
+      //     return 'true';        }
 
-      $scope.session = function() {
-        if($rootScope.phonenumber != undefined)
-        {
-          alert($rootScope.phonenumber);
-          $state.go('/Side/dash');
-          return 'true';        }
+      //     else {
+      //       return 'false';
+      //     }
 
-          else {
-            return 'false';
-          }
+      // }
 
-      }
-
-      $scope.session();
-
-
-
-
+      // $scope.session();
             $scope.submit=function(user){
 
+
                  if(user.phonenumber=='')
-				 {
-					 $scope.showAlert("Field Empty!","Error");
-					 user.phonenumber="";
-				 }
-				 else {
-					$ionicLoading.show();
+              				 {
+              					 $scope.showAlert("Field Empty!","Error");
+              					 user.phonenumber="";
+              				 }
+                				 else {
+                					$ionicLoading.show();
 
-                  $http({
-                        method: 'POST',
-                        url: ApiEndpoint.url+ 'login.php',
-                        data:{'phone':user.phonenumber},
-                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-                      }).then(function successCallback(response) {
-                        // alert(response.data.result[0].name);
-                        $ionicLoading.hide(); 
-                        if (response.data == '0')
-                        {
-                         $scope.showAlert("Your Phone Number Does not Exist","Authentication Failed");
-                        }
-                        else 
-                        {
-                          // $rootScope.session = response.data;
-                          $rootScope.phonenumber = response.data.result[0].phonenumber;
-                          $rootScope.username = response.data.result[0].name;
+                                  $http({
+                                        method: 'POST',
+                                        url: ApiEndpoint.url+ 'login.php',
+                                        data:{'phone':user.phonenumber},
+                                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+                                      }).then(function successCallback(response) {
+                                        // alert(response.data.result[0].name);
+                                        $ionicLoading.hide(); 
+                                        if (response.data == '0')
+                                        {
+                                         $scope.showAlert("Your Phone Number Does not Exist","Authentication Failed");
+                                        }
+                                        else 
+                                        {
 
-                          $scope.showAlert("<center>Welcome to Youthpophia</center>","Welcome");
-                          $location.url('/otp');
-                        }
+                                          // LoginService.loginUser(response.data.result[0].phonenumber).success(function(data) {
+                                          //     $state.go('Side.dash');
+
+                                          // }).error(function(data) {
+                                          //     var alertPopup = $ionicPopup.alert({
+                                          //         title: 'Login failed!',
+                                          //         template: 'Please check your credentials!'
+                                          //     });
+                                          // });
+                                          // $rootScope.session = response.data;
+                                          window.localStorage.setItem("phonenumber", response.data.result[0].phonenumber);
+                                          window.localStorage.setItem("username", response.data.result[0].name);
+                                          $rootScope.phonenumber = window.localStorage.getItem("phonenumber");
+                                          $rootScope.username = window.localStorage.getItem("username");
+                                          $scope.showAlert("<center>Welcome to Youthpophia</center>","Welcome");
+                                          $location.url('/otp');
+                                        }
+                                               
+                                              }, function errorCallback(response) {
+                                                $ionicLoading.hide(); 
+                                          $scope.showAlert("No Internet Connection","Network Error");
+                                        }  ) ;
                                
-                              }, function errorCallback(response) {
-                                $ionicLoading.hide(); 
-                          $scope.showAlert("No Internet Connection","Network Error");
-                        }  ) ;
-               
-						 
-				
-                      }
-                    }
+                						 
+                				
+                                      }
+                                    }
 
                       /*, function errorCallback(response) {
 						  $scope.showAlert("Error during login!","Internal Error");
@@ -83,7 +92,11 @@ angular.module('starter.controllers', [])
                         url: ApiEndpoint.url+ 'loggedout/',
                         data:{loggedout:1}
                       }).then(function successCallback(response) {
-                         						  
+                         					window.localStorage.getItem("phonenumber") = null;
+                                  window.localStorage.getItem("Username") = null;
+                                  $ionicHistory.clearCache();
+                                  $ionicHistory.clearHistory();	
+                                  $location.url('/Page1');  
                       }, function errorCallback(response) {
                          
                       });
