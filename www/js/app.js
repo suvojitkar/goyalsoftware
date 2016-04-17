@@ -18,6 +18,23 @@ angular.module('starter', ['ionic','starter.controllers','ngCordova'])
   });
 })
 
+.run(function($ionicPlatform, $ionicPopup) {
+  // Disable BACK button on home
+  $ionicPlatform.registerBackButtonAction(function(event) {
+    if (true) { // your check here
+      $ionicPopup.confirm({
+        title: 'System warning',
+        template: 'are you sure you want to exit?'
+      }).then(function(res) {
+        if (res) {
+          ionic.Platform.exitApp();
+        }
+      })
+    }
+  }, 100);
+})
+
+
 .run(function($cordovaSplashscreen) {
   setTimeout(function() {
     $cordovaSplashscreen.hide()
@@ -31,7 +48,7 @@ angular.module('starter', ['ionic','starter.controllers','ngCordova'])
             .state('Page1',{
                      url: '/Page1',
                      templateUrl:'Page1.html',
-                     controller:'Ctrl'
+                     controller:'Ctrl',
                      })
            
            .state('otp',{

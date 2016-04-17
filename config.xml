@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget id="com.ionicframework.myapp476012" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>HUL Pocket Distributor</name>
+  <name>Yuthopia 16</name>
   <description>
-        An app meant to make easy the lives of distributors of HUL products.
+       Fest 
     </description>
   <author email="hi@ionicframework" href="http://ionicframework.com/">
-      TechSeekers
+      Goyal Softwares
     </author>
   <content src="index.html"/>
   <access origin="*"/>

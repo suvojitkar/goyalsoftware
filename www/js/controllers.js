@@ -7,6 +7,25 @@ angular.module('starter.controllers', [])
 			$scope.items = [];
 			$scope.noMoreItemsAvailable = false;
 			$scope.len=0, $rootScope.x=0;
+
+      $scope.session = function() {
+        if($rootScope.phonenumber != undefined)
+        {
+          alert($rootScope.phonenumber);
+          $state.go('/Side/dash');
+          return 'true';        }
+
+          else {
+            return 'false';
+          }
+
+      }
+
+      $scope.session();
+
+
+
+
             $scope.submit=function(user){
 
                  if(user.phonenumber=='')
