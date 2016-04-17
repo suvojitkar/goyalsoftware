@@ -30,6 +30,7 @@ angular.module('starter.controllers', [])
                         }
                         else 
                         {
+                          $rootScope.session = response.data
                           $scope.showAlert("<center>Welcome to Youthpophia</center>","Welcome");
                           $location.url('/otp');
                         }
@@ -105,28 +106,51 @@ angular.module('starter.controllers', [])
 			// }
 			$scope.verify = function(n,user) {
 				if(n==0)
+        {
 					$scope.showAlert("Another OTP will be sent shortly to your registered email id","Resend");
 				$http({
                         method: 'POST',
-                        url: ApiEndpoint.url+ 'verify_code/',
-                        data:{otp:user.otp, verify:n}
+                        url: ApiEndpoint.url+ 'checkotp.php',
+                        data:{verify:n, session:$rootScope.session},
+                         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
                       }).then(function successCallback(response) {
 						  if(response.data == "true")
 						  {
-							  $scope.showAlert("Verified successfully!","Success");
 							  $location.url("/Page1");
 						  }
-              else if(response.data == "False")
-						  {
-							  $scope.showAlert("Invalid verification code!","Error");
-							  user.otp = "";
-						  }
-					
                       }, function errorCallback(response) {
                           console.log("ERROR");
-						  $scope.showAlert("Internal error during verification!","Internal error");
+						  $scope.showAlert("<center>No Internet Connection</center>","ERROR");
 						  
                       });
+
+            }
+            else
+            {
+
+              $http({
+                        method: 'POST',
+                        url: ApiEndpoint.url+ 'checkotp.php',
+                        data:{otp:user.otp, verify:n,session:$rootScope.session}
+                      }).then(function successCallback(response) {
+              if(response.data == "true")
+              {
+                $scope.showAlert("<center>Verified successfully!</center>","Success");
+                $location.url("/Side/dash");
+              }
+              else if(response.data == "false")
+              {
+                $scope.showAlert("<center>Invalid OTP</center>","ERROR");
+                user.otp = "";
+              }
+          
+                      }, function errorCallback(response) {
+                          console.log("ERROR");
+              $scope.showAlert("<center>No Internet Connection</center>","ERROR");
+              
+                      });
+
+            }
 			}
 
 

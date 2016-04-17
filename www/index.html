@@ -14,6 +14,7 @@
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/ionic/js/angular/angular-resource.min.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="lib/ngCordova/dist/ng-cordova.js"></script>
@@ -23,6 +24,7 @@
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
     <script src="js/services.js"></script>
+
   </head>
   <body ng-app="starter" ng-controller="Ctrl" class="platform-android platform-cordova platform-webview">
   
@@ -120,7 +122,7 @@
                             <div class="col col-offset-30 col-100">
                                   <div class="list list-inset">
                                   <label class="item item-input">
-                                  <input type="text" placeholder="Enter your OTP" ng-model="user.otp">
+                                  <input type="text" maxlength="4" placeholder="Enter your 4 Digit OTP" ng-model="user.otp">
                                   </label>
                                   </div>
                             </div>
@@ -133,7 +135,7 @@
                               </button>
                           </div>
                           <div class="col col-offset-5 col-50">
-                           <button class="button button-positive"style="background-color:#3e2202" href="verify(1,user)">
+                           <button class="button button-positive"style="background-color:#3e2202" ng-click="verify(1,user)">
                              Verify
                             </button>
                           </div>
