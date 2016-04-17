@@ -23,6 +23,7 @@ angular.module('starter.controllers', [])
                         data:{'phone':user.phonenumber},
                         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
                       }).then(function successCallback(response) {
+                        // alert(response.data.result[0].name);
                         $ionicLoading.hide(); 
                         if (response.data == '0')
                         {
@@ -30,7 +31,10 @@ angular.module('starter.controllers', [])
                         }
                         else 
                         {
-                          $rootScope.session = response.data
+                          // $rootScope.session = response.data;
+                          $rootScope.phonenumber = response.data.result[0].phonenumber;
+                          $rootScope.username = response.data.result[0].name;
+
                           $scope.showAlert("<center>Welcome to Youthpophia</center>","Welcome");
                           $location.url('/otp');
                         }
@@ -111,7 +115,7 @@ angular.module('starter.controllers', [])
 				$http({
                         method: 'POST',
                         url: ApiEndpoint.url+ 'checkotp.php',
-                        data:{verify:n, session:$rootScope.session},
+                        data:{verify:n, session:$rootScope.phonenumber},
                          headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
                       }).then(function successCallback(response) {
 						  if(response.data == "true")
@@ -131,7 +135,7 @@ angular.module('starter.controllers', [])
               $http({
                         method: 'POST',
                         url: ApiEndpoint.url+ 'checkotp.php',
-                        data:{otp:user.otp, verify:n,session:$rootScope.session}
+                        data:{otp:user.otp, verify:n,session:$rootScope.phonenumber}
                       }).then(function successCallback(response) {
               if(response.data == "true")
               {
