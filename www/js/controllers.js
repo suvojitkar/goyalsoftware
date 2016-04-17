@@ -87,19 +87,24 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
 			
 			$scope.logout = function()
 			{
-				$http({
-                        method: 'POST',
-                        url: ApiEndpoint.url+ 'loggedout/',
-                        data:{loggedout:1}
-                      }).then(function successCallback(response) {
-                         					window.localStorage.getItem("phonenumber") = null;
-                                  window.localStorage.getItem("Username") = null;
-                                  $ionicHistory.clearCache();
-                                  $ionicHistory.clearHistory();	
-                                  $location.url('/Page1');  
-                      }, function errorCallback(response) {
+              window.localStorage.clear();
+              $location.url('/Page1');  
+              $ionicHistory.clearCache();
+              $ionicHistory.clearHistory(); 
+				// $http({
+    //                     method: 'POST',
+    //                     url: ApiEndpoint.url+ 'loggedout/',
+    //                     data:{loggedout:1}
+    //                   }).then(function successCallback(response) {
+    //                      					window.localStorage.setItem("phonenumber", null);
+    //                               window.localStorage.setItem("username",null);
+    //                               alert(window.localStorage.getItem("phonenumber"));
+    //                               alert(window.localStorage.getItem("username"));
+                                 
+                                  
+    //                   }, function errorCallback(response) {
                          
-                      });
+    //                   });
 			}
 			
 			// $scope.signup = function(user)

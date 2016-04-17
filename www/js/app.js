@@ -26,7 +26,7 @@ angular.module('starter', ['ionic','starter.controllers','ngCordova','ngStorage'
         if(window.localStorage.getItem("phonenumber") != null)
         {
           alert('inside local storage');
-          $location.url('/Side/dash');
+          $state.go('Side.dash');
         }
     });
 })
@@ -37,7 +37,7 @@ angular.module('starter', ['ionic','starter.controllers','ngCordova','ngStorage'
     if (true) { // your check here
       $ionicPopup.confirm({
         title: 'System warning',
-        template: 'are you sure you want to exit?'
+        template: '<center>are you sure you want to exit?</center>'
       }).then(function(res) {
         if (res) {
           ionic.Platform.exitApp();
@@ -48,11 +48,17 @@ angular.module('starter', ['ionic','starter.controllers','ngCordova','ngStorage'
 })
 
 
-.run(function($cordovaSplashscreen) {
+.run(function($cordovaSplashscreen,$state) {
+
   setTimeout(function() {
     $cordovaSplashscreen.hide()
-  }, 1)
-  alert(window.localStorage.getItem("phonenumber"));
+  }, 3000)
+  // alert(window.localStorage.getItem("phonenumber"));
+    if(window.localStorage.getItem("phonenumber") != null)
+        {
+          // alert('inside local storage');
+          $state.go('Side.dash');
+        }
 })
 
 
