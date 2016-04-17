@@ -1,4 +1,4 @@
-angular.module('starter.controllers', ['starter.services'])
+angular.module('starter.controllers', ['starter.services','ngStorage'])
 
 .controller('Ctrl',function($scope,$rootScope,$http,$state,$location,$ionicLoading,$timeout,$ionicHistory,$ionicSideMenuDelegate,ApiEndpoint,$ionicPopup,LoginService){
             

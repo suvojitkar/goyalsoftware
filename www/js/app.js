@@ -1,4 +1,4 @@
-angular.module('starter', ['ionic','starter.controllers','ngCordova'])
+angular.module('starter', ['ionic','starter.controllers','ngCordova','ngStorage'])
 
 .constant('ApiEndpoint',{
         url: 'http://rajkar.esy.es/yuthopia/'
@@ -51,7 +51,8 @@ angular.module('starter', ['ionic','starter.controllers','ngCordova'])
 .run(function($cordovaSplashscreen) {
   setTimeout(function() {
     $cordovaSplashscreen.hide()
-  }, 3000)
+  }, 1)
+  alert(window.localStorage.getItem("phonenumber"));
 })
 
 
