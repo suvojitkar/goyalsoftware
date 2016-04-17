@@ -8,7 +8,7 @@ angular.module('starter.controllers', [])
 			$scope.noMoreItemsAvailable = false;
 			$scope.len=0, $rootScope.x=0;
             $scope.submit=function(user){
-            
+
                  if(user.phonenumber=='')
 				 {
 					 $scope.showAlert("Field Empty!","Error");
@@ -19,14 +19,24 @@ angular.module('starter.controllers', [])
 
                   $http({
                         method: 'POST',
-                        url: ApiEndpoint.url+ 'login.php/',
-                        data:{phonenumber:user.phonenumber}
+                        url: ApiEndpoint.url+ 'login.php',
+                        data:{'phone':user.phonenumber},
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
                       }).then(function successCallback(response) {
-                         alert(response.data);
-                               $ionicLoading.hide(); 
+                        $ionicLoading.hide(); 
+                        if (response.data == '0')
+                        {
+                         $scope.showAlert("Your Phone Number Does not Exist","Authentication Failed");
+                        }
+                        else 
+                        {
+                          $scope.showAlert("<center>Welcome to Youthpophia</center>","Welcome");
+                          $location.url('/otp');
+                        }
+                               
                               }, function errorCallback(response) {
                                 $ionicLoading.hide(); 
-                          alert("flag only is not set properly then?")
+                          $scope.showAlert("No Internet Connection","Network Error");
                         }  ) ;
                
 						 
@@ -118,6 +128,10 @@ angular.module('starter.controllers', [])
 						  
                       });
 			}
+
+
+
+
 			$scope.showAlert = function(msg,head) {
    var alertPopup = $ionicPopup.alert({
      title: head,
