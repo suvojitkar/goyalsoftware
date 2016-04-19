@@ -81,7 +81,8 @@
               <a href="#/Side/dash" ng-click="events()" class="item item-icon-left" menu-close> <i class="icon ion-ios-americanfootball"></i>Events</a>
               <a href="#/Side/heritage" class="item item-icon-left" menu-close>  <i class="icon ion-ios-flower"></i>Heritage School</a>
 
-              <a href="#/Side/talks" class="item item-icon-left" menu-close><i class="icon ion-ios-mic"></i>Talks</a>
+              <a href="#/Side/principal" class="item item-icon-left" menu-close><i class="icon ion-ios-mic"></i>principals desk</a>
+              <a href="#/Side/presedent" class="item item-icon-left" menu-close><i class="icon ion-ios-mic"></i>presedents desk</a>
               <a href="#/Side/guest" ng-click="guest()" class="item item-icon-left" menu-close><i class="icon ion-ios-people"></i>Guest Performers</a>
               <a href="#/Side/contactus" class="item item-icon-left" menu-close><i class="icon ion-ios-personadd"></i>Contact Us</a>
               <a href="#/Side/credit" class="item item-icon-left" menu-close><i class="icon ion-social-rss"></i>Credits</a>
@@ -165,7 +166,7 @@
     </p>
     <p>
       <a href="#" class="subdued" style="color:#C2DBFA">{{x.dateandtime}}</a>
-      <a href="#" class="subdued" style="color:#C2DBFA">subscribe</a>
+      <a href="#" class="subdued" style="color:#C2DBFA" id="{{x.id}}" onclick="alert(id)">subscribe</a>
     </p>
   </div>
 </div>
@@ -222,53 +223,74 @@
 
 
 
-<script id = "talks.html" type="text/ng-template">
+<script id = "principal.html" type="text/ng-template">
  <ion-view hide-nav-bar="true">
 
 <div style="background-color:#3e2202" class="bar bar-header bar-positive">
       <button class="button button-icon icon ion-navicon" style="text-align:left;padding-right:20px" menu-toggle = "left"></button> 
 
 
-     <h1 class="title">Talks</h1>
+     <h1 class="title">Principals Desk</h1>
     </div>
     <ion-content padding="true">
     <br><br>
-       
-       <div class="list card">
-  <div class="item item-avatar">
-    <img src="img/back.png">
-    <h2>suvojit kar</h2>
-    <p>principal</p>
+         <div class="list card">
+
+  <div class="item item-body">
+    <img class="full-image" src="img/heri_col.jpg">
+    <p>
+      <center>Dr. suvojit kar</center>
+      <br>
+      This is a "Facebook" styled Card. The header is created from a Thumbnail List item,
+      the content is from a card-body consisting of an image and paragraph text. The footer
+      consists of tabs, icons aligned left, within the card-footer.
+    </p>
   </div>
 
-  <div class="item">
-    <p>sample text.sample textsample textsample textsample textsample text
-    sample textsample textsample textsample textsample textsample textsample text
-    sample textsample textsample textsample textsample textsample textsample text</p>
-  </div>
 </div>
-
-
-
-<div class="list card">
-  <div class="item item-avatar">
-    <img src="img/heritage.png">
-    <h2>subham bissu</h2>
-    <p>president</p>
-  </div>
-
-  <div class="item">
-    <p>sample text.sample textsample textsample textsample textsample text
-    sample textsample textsample textsample textsample textsample textsample text
-    sample textsample textsample textsample textsample textsample textsample text</p>
-  </div>
-</div>
-
-
-
     </ion-content>
 </ion-view>
 </script>
+
+
+
+
+
+
+
+
+<script id = "presedent.html" type="text/ng-template">
+ <ion-view hide-nav-bar="true">
+
+<div style="background-color:#3e2202" class="bar bar-header bar-positive">
+      <button class="button button-icon icon ion-navicon" style="text-align:left;padding-right:20px" menu-toggle = "left"></button> 
+
+
+     <h1 class="title">Presedents Desk</h1>
+    </div>
+    <ion-content padding="true">
+    <br><br>
+         <div class="list card">
+
+  <div class="item item-body">
+    <img class="full-image" src="img/heri_col.jpg">
+    <p>
+      <center>Dr. subham bissu</center>
+      <br>
+      This is a "Facebook" styled Card. The header is created from a Thumbnail List item,
+      the content is from a card-body consisting of an image and paragraph text. The footer
+      consists of tabs, icons aligned left, within the card-footer.
+    </p>
+  </div>
+
+</div>
+    </ion-content>
+</ion-view>
+</script>
+
+
+
+
 
 
 

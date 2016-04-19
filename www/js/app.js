@@ -113,11 +113,21 @@ angular.module('starter', ['ionic','starter.controllers','ngCordova','ngStorage'
                     }               
                      })
 
-               .state('Side.talks',{
-                     url:'/talks',
+               .state('Side.principal',{
+                     url:'/principal',
                      views: {
                     'appContent' :{
-                      templateUrl: 'talks.html',
+                      templateUrl: 'principal.html',
+                      controller : 'Ctrl'
+                    }
+                    }               
+                     })
+
+               .state('Side.presedent',{
+                     url:'/presedent',
+                     views: {
+                    'appContent' :{
+                      templateUrl: 'presedent.html',
                       controller : 'Ctrl'
                     }
                     }               
