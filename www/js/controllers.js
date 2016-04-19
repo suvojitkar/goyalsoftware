@@ -99,6 +99,28 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
                       });
         }
 
+         $scope.email=function(user)
+        {
+          alert($rootScope.username);
+          alert($rootScope.phonenumber);
+          alert(user.query);
+          $http({
+                        method: 'POST',
+                        url: ApiEndpoint.url+ 'email.php',
+                        data:{name:$rootScope.username, phone:$rootScope.phonenumber, query:user.query},
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+                      }).then(function successCallback(response){
+                      
+                       $scope.showAlert("<center>Query submitted successfully</center>","Thank You");
+                      },function errorCallback(response) {
+                          console.log("ERROR");
+              $scope.showAlert("<center>No Internet Connection</center>","ERROR");
+              
+                      });
+        }
+
+
+
          $scope.guest=function()
         {
              $http({
