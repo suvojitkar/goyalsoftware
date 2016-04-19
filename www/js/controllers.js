@@ -145,20 +145,7 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
               $window.location.reload(true);
               $ionicHistory.clearCache();
               $ionicHistory.clearHistory(); 
-				// $http({
-    //                     method: 'POST',
-    //                     url: ApiEndpoint.url+ 'loggedout/',
-    //                     data:{loggedout:1}
-    //                   }).then(function successCallback(response) {
-    //                      					window.localStorage.setItem("phonenumber", null);
-    //                               window.localStorage.setItem("username",null);
-    //                               alert(window.localStorage.getItem("phonenumber"));
-    //                               alert(window.localStorage.getItem("username"));
-                                 
-                                  
-    //                   }, function errorCallback(response) {
-                         
-    //                   });
+				
 			}
 			
 		
