@@ -19,17 +19,17 @@ angular.module('starter', ['ionic','starter.controllers','ngCordova','ngStorage'
 })
 
 
-.run(function($ionicPlatform,$state,$location) {
-    $ionicPlatform.ready(function(){
-        // Do sweet stuff!
-        alert(window.localStorage.getItem("phonenumber"));
-        if(window.localStorage.getItem("phonenumber") != null)
-        {
-          alert('inside local storage');
-          $state.go('Side.dash');
-        }
-    });
-})
+// .run(function($ionicPlatform,$state,$location) {
+//     $ionicPlatform.ready(function(){
+//         // Do sweet stuff!
+//         alert(window.localStorage.getItem("phonenumber"));
+//         if(window.localStorage.getItem("phonenumber") != null)
+//         {
+//           alert('inside local storage');
+//           $state.go('Side.dash');
+//         }
+//     });
+// })
 
 .run(function($ionicPlatform, $ionicPopup) {
   // Disable BACK button on home
@@ -93,6 +93,17 @@ angular.module('starter', ['ionic','starter.controllers','ngCordova','ngStorage'
                     }
                     }               
                      })
+              .state('Side.yuthopia',{
+                     url:'/yuthopia',
+                     views: {
+                    'appContent' :{
+                      templateUrl: 'yuthopia.html',
+                      controller : 'Ctrl'
+                    }
+                    }               
+                     })
+
+                  
 					
 
               

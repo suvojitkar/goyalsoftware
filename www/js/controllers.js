@@ -83,7 +83,22 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
                          
 						 });*/
 				 
-             
+        $scope.events=function()
+        {
+             $http({
+                        method: 'POST',
+                        url: ApiEndpoint.url+ 'events.php',
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+                      }).then(function successCallback(response){
+                       $scope.myData = response.data.events;
+                       //$scope.showAlert($scope.myData);
+                      },function errorCallback(response) {
+                          console.log("ERROR");
+              $scope.showAlert("<center>No Internet Connection</center>","ERROR");
+              
+                      });
+        }
+
 			
 			$scope.logout = function()
 			{
@@ -177,7 +192,7 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
               if(response.data == "true")
               {
                 $scope.showAlert("<center>Verified successfully!</center>","Success");
-                $location.url("/Side/dash");
+                $location.url("/Side/yuthopia");
               }
               else if(response.data == "false")
               {

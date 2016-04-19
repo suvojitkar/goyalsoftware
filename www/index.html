@@ -77,21 +77,14 @@
           </ion-header-bar>
           <ion-content>
             <ul class="list">
-              <a href="#/Side/profile" class="item item-icon-left" menu-close> <i class="icon ion-person"></i>Home</a>
-              <a href="#/Side/dash" class="item item-icon-left" menu-close> <i class="icon ion-android-checkbox"></i>Events</a>
+              <a href="#/Side/yuthopia" class="item item-icon-left" menu-close> <i class="icon ion-home"></i>Youthopia</a>
+              <a href="#/Side/dash" ng-click="events()" class="item item-icon-left" menu-close> <i class="icon ion-ios-americanfootball"></i>Events</a>
+              <a href="#/Side/promotion" class="item item-icon-left" menu-close>  <i class="icon ion-ios-flower"></i>Heritage School</a>
 
-
-
-              <a href="#/Side/vieworders" class="item item-icon-left" menu-close>  <i class="icon ion-levels"></i>Youthopia 16</a>
-
-             
-
-              <a href="#/Side/promotion" class="item item-icon-left" menu-close>  <i class="icon ion-cash"></i>Heritage School</a>
-
-              <a href="#/Side/delivery" class="item item-icon-left" menu-close><i class="icon ion-model-s"></i>Talks</a>
-              <a href="#/Side/delivery" class="item item-icon-left" menu-close><i class="icon ion-model-s"></i>Guest Performers</a>
-              <a href="#/Side/delivery" class="item item-icon-left" menu-close><i class="icon ion-model-s"></i>Contact Us</a>
-              <a href="#/Side/delivery" class="item item-icon-left" menu-close><i class="icon ion-model-s"></i>Credits</a>
+              <a href="#/Side/delivery" class="item item-icon-left" menu-close><i class="icon ion-ios-mic"></i>Talks</a>
+              <a href="#/Side/delivery" class="item item-icon-left" menu-close><i class="icon ion-ios-people"></i>Guest Performers</a>
+              <a href="#/Side/delivery" class="item item-icon-left" menu-close><i class="icon ion-ios-personadd"></i>Contact Us</a>
+              <a href="#/Side/delivery" class="item item-icon-left" menu-close><i class="icon ion-social-rss"></i>Credits</a>
               <a href="#" ng-click="logout()" class="item item-icon-left" menu-close><i class="icon ion-log-out" ></i>Logout</a>
 			  
 
@@ -145,97 +138,80 @@
          </ion-view>   
 	</script>
 	
- 
-<script id="dash.html" type="text/ng-template">
+ <script id="dash.html" type="text/ng-template">
 <ion-view hide-nav-bar="true">
 
 <div style="background-color:#3e2202" class="bar bar-header bar-positive">
       <button class="button button-icon icon ion-navicon" style="text-align:left;padding-right:20px" menu-toggle = "left"></button> 
 
 
-	   <h1 class="title">Home</h1>
-	  </div>
-
+     <h1 class="title">Events</h1>
+    </div>
  <ion-content padding="true">
-  <br><br>
-  <div class="list">
+    
 
-  <div class="item item-input-inset">
-    <label class="item-input-wrapper">
-      <input type="text" placeholder="Search items" ng-model="query.names">
-    </label>
-    <button class="button button-small">
-      Search
-    </button>
+ <div ng-repeat="x in myData">
+   
+ <div class="list card">
+  <div class="item item-avatar">
+    <img src="{{x.image}}">
+    <h2>{{x.eventname}}</h2>
+    <p>&nbsp;&nbsp;{{x.domain}}</p>
   </div>
+  <div class="item item-body">
+    <img class="full-image" src="{{x.image}}">
+    <p>
+     {{x.description}}
+    </p>
+    <p>
+      <a href="#" class="subdued" style="color:#C2DBFA">{{x.dateandtime}}</a>
+      <a href="#" class="subdued" style="color:#C2DBFA">subscribe</a>
+    </p>
+  </div>
+</div>
+    </div>
+   
 
-</div>
- <!--
- <div   class="row card">
-  <div class="col col-10"><img width="100%" src="img/kissan_jam.png"> </div>
-  <div class="col col-40">Kissan Jam</div>
-  <div class="col col-20">Rs 100</div>
-  <div class="col col-20"></div>
-  <div class="col col-10"><a href="#"><i style="color:#3e2202;font-size:40px" class="icon ion-plus-circled"></i></a></div>
-</div>
 
-<div   class="row card">
-  <div class="col col-10"><img width="100%" src="img/kissan_jam.png"> </div>
-  <div class="col col-40">Kissan Jam</div>
-  <div class="col col-20">Rs 100</div>
-  <div class="col col-20"></div>
-  <div class="col col-10"><a href="#"><i style="color:#3e2202;font-size:40px" class="icon ion-plus-circled"></i></a></div>
-</div>
-<div   class="row card">
-  <div class="col col-10"><img width="100%" src="img/kissan_jam.png"> </div>
-  <div class="col col-40">Kissan Jam</div>
-  <div class="col col-20">Rs 100</div>
-  <div class="col col-20"></div>
-  <div class="col col-10"><a href="#"><i style="color:#3e2202;font-size:40px" class="icon ion-plus-circled"></i></a></div>
-</div>
-<div   class="row card">
-  <div class="col col-10"><img width="100%" src="img/kissan_jam.png"> </div>
-  <div class="col col-40">Kissan Jam</div>
-  <div class="col col-20">Rs 100</div>
-  <div class="col col-20"></div>
-  <div class="col col-10"><a href="#"><i style="color:#3e2202;font-size:40px" class="icon ion-plus-circled"></i></a></div>
-</div>
-<div   class="row card">
-  <div class="col col-10"><img width="100%" src="img/kissan_jam.png"> </div>
-  <div class="col col-40">Kissan Jam</div>
-  <div class="col col-20">Rs 100</div>
-  <div class="col col-20"></div>
-  <div class="col col-10"><a href="#"><i style="color:#3e2202;font-size:40px" class="icon ion-plus-circled"></i></a></div>
-</div>
-<div   class="row card">
-  <div class="col col-10"><img width="100%" src="img/kissan_jam.png"> </div>
-  <div class="col col-40">Kissan Jam</div>
-  <div class="col col-20">Rs 100</div>
-  <div class="col col-20"></div>
-  <div class="col col-10"><a href="#"><i style="color:#3e2202;font-size:40px" class="icon ion-plus-circled"></i></a></div>
-</div>
-<div   class="row card">
-  <div class="col col-10"><img width="100%" src="img/kissan_jam.png"> </div>
-  <div class="col col-40">Kissan Jam</div>
-  <div class="col col-20">Rs 100</div>
-  <div class="col col-20"></div>
-  <div class="col col-10"><a href="#"><i style="color:#3e2202;font-size:40px" class="icon ion-plus-circled"></i></a></div>
-</div> -->
 
-<div class="row card" ng-repeat = "x in filteredItems = (show |  filter: query)">
-  <div class="col col-10"><img width="100%" src="img/kissan_jam.png"> </div>
-  <div class="col col-40">{{x.name}}</div>
-  <div class="col col-20">{{x.price}}</div>
-  <div class="col col-20"></div>
-  <div class="col col-10"><a href="#"><i style="color:#3e2202;font-size:40px" class="icon ion-plus-circled"></i></a></div>
-</div>
-<p ng-hide = "filteredItems.length" style = "text-align:center;font-family: Times New Roman"> No search results!</p>
 <ion-infinite-scroll ng-if="!noMoreItemsAvailable" on-infinite="loadMore()" distance="10%" has-bouncing="true"></ion-infinite-scroll>
 
 </ion-content>
-
 </ion-view>
 </script>
+
+<script id = "yuthopia.html" type="text/ng-template">
+ <ion-view hide-nav-bar="true">
+
+<div style="background-color:#3e2202" class="bar bar-header bar-positive">
+      <button class="button button-icon icon ion-navicon" style="text-align:left;padding-right:20px" menu-toggle = "left"></button> 
+
+
+     <h1 class="title">Yuthopia 16</h1>
+    </div>
+    <ion-content padding="true">
+       <br><br>
+      <img src="img/heritage.png" style="width:100%">
+      <br><br>
+      <p>sample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample text</p>
+
+    </ion-content>
+</ion-view>
+</script>
+
+
+
+
+
+
+
+
+
+</ion-content>
+</ion-view>
+</script>
+
+
 
 
     <ion-nav-view></ion-nav-view>
