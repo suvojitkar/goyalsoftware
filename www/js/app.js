@@ -74,6 +74,7 @@ angular.module('starter', ['ionic','starter.controllers','ngCordova','ngStorage'
                      })
 
               .state('Side',{
+                     cache: false,
                      url: '/Side',
                      templateUrl:'Side.html',
                      abstract: true,

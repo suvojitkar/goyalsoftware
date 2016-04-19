@@ -27,7 +27,7 @@
     <script src="js/services.js"></script>
 
   </head>
-  <body ng-app="starter" ng-controller="Ctrl" class="platform-android platform-cordova platform-webview">
+  <body ng-app="starter" ng-controller="Ctrl" class="platform-android platform-cordova platform-webview" >
   
   <script id="Page1.html" type="text/ng-template">
   
@@ -88,12 +88,12 @@
             
                  <a ng-if="username == null" href="#/Side/Page1" class="item item-icon-left" menu-close> <i class="icon ion-home"></i>Login</a>
                     
-              <a href="#/Side/yuthopia" class="item item-icon-left" menu-close> <i class="icon ion-home"></i>Youthopia</a>
+              <a href="#/Side/yuthopia" class="item item-icon-left" menu-close> <i class="icon ion-home"></i>Youthopia&#39;16</a>
               <a href="#/Side/dash" ng-click="events()" class="item item-icon-left" menu-close> <i class="icon ion-ios-americanfootball"></i>Events</a>
               <a href="#/Side/heritage" class="item item-icon-left" menu-close>  <i class="icon ion-ios-flower"></i>Heritage School</a>
 
-              <a href="#/Side/principal" class="item item-icon-left" menu-close><i class="icon ion-ios-mic"></i>principals desk</a>
-              <a href="#/Side/presedent" class="item item-icon-left" menu-close><i class="icon ion-ios-mic"></i>presedents desk</a>
+              <a href="#/Side/principal" class="item item-icon-left" menu-close><i class="icon ion-ios-mic"></i>Principal&#39;s desk</a>
+              <a href="#/Side/presedent" class="item item-icon-left" menu-close><i class="icon ion-ios-mic"></i>President&#39;s desk</a>
               <a href="#/Side/guest" ng-click="guest()" class="item item-icon-left" menu-close><i class="icon ion-ios-people"></i>Guest Performers</a>
               <a href="#/Side/contactus" class="item item-icon-left" menu-close><i class="icon ion-ios-personadd"></i>Contact Us</a>
               <a href="#/Side/credit" class="item item-icon-left" menu-close><i class="icon ion-social-rss"></i>Credits</a>
@@ -160,9 +160,9 @@
      <h1 class="title">Events</h1>
     </div>
     
- <ion-content padding="true">
+ <ion-content padding="true" style="background: url(../img/background.png)  no-repeat center center fixed;">
  
-
+<br>
  <div ng-repeat="x in myData">
    
  <div class="list card">
@@ -194,20 +194,20 @@
 </ion-view>
 </script>
 
-<script id = "yuthopia.html" type="text/ng-template">
+<script id = "yuthopia.html" type="text/ng-template" >
  <ion-view hide-nav-bar="true">
 
 <div style="background-color:#3e2202" class="bar bar-header bar-positive">
       <button class="button button-icon icon ion-navicon" style="text-align:left;padding-right:20px" menu-toggle = "left"></button> 
 
 
-     <h1 class="title">Yuthopia 16</h1>
+     <h1 class="title">Youthopia&#39;16</h1>
     </div>
-    <ion-content padding="true">
+    <ion-content padding="true" style="background: url(../img/background.png) no-repeat center center fixed;">
        <br><br>
-      <img src="img/heritage.png" style="width:100%">
+      <img src="img/withoutline.png" style="width:100%">
       <br><br>
-      <p>sample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample text</p>
+      <p style="text-align:justify;color:white">Youthopia – a melange of the words: Youth and Utopia, a paradise dedicated to the Youth, our personalised elysium. Metaphorically, this is not far from the truth! In a span of five short yet eventful years, Youthopia, has become an omnipresent entity in the conversations among the crème-de la crème of Kolkata’s institutions. Youthopia is an event which truly exemplifies why Heritage is known as “the school with a difference”. The juxtaposition of the frenzied zest of the organizing committee with the meticulous execution of the shows on the 3 days is what has made the ‘fest’ one of the ‘best’ in Kolkata!</p>
 
     </ion-content>
 </ion-view>
@@ -224,11 +224,11 @@
 
      <h1 class="title">Heritage</h1>
     </div>
-    <ion-content padding="true">
+    <ion-content padding="true" style="background: url(../img/background.png)  no-repeat center center fixed;color:white">
        <br><br>
-      <img src="img/heri_col.jpg" style="width:100%">
+      <img src="img/heri.PNG" style="width:100%">
       <br><br>
-      <p>sample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample text</p>
+      <p style="text-align:justify">Fifteen years ago, a school came into being in the City of Joy which changed the opinion of people about the modern day learning. Flying through the firmament of educational institutions, The Heritage School, Kolkata has been recognized as the 10th Best Co-education School in India. This premier institution has molded the lives of innumerable students. The fact that our students are writing success stories within India and abroad, bears testimony to this statement – “A school with a difference”. The Heritage school is a home to every student and we feel proud and privileged to be bestowed with the tag of a ‘Heritan’. We aim to create conscientious citizens who are the perfect blend of education and culture.</p>
 
     </ion-content>
 </ion-view>
@@ -243,21 +243,26 @@
       <button class="button button-icon icon ion-navicon" style="text-align:left;padding-right:20px" menu-toggle = "left"></button> 
 
 
-     <h1 class="title">Principals Desk</h1>
+     <h1 class="title">Principal&#39;s Desk</h1>
     </div>
-    <ion-content padding="true">
+    <ion-content padding="true" style="background: url(../img/background.png)  no-repeat center center fixed;">
     <br><br>
          <div class="list card">
 
   <div class="item item-body">
     <img class="full-image" src="img/heri_col.jpg">
     <p>
-      <center>Dr. suvojit kar</center>
-      <br>
-      This is a "Facebook" styled Card. The header is created from a Thumbnail List item,
+      <center>Dr. suvojit kar</center> </p>
+     <p style="text-align:justify"> This is a styled Card. The header is created from a Thumbnail List item,
       the content is from a card-body consisting of an image and paragraph text. The footer
-      consists of tabs, icons aligned left, within the card-footer.
-    </p>
+      consists of tabs, icons aligned left, within the card-footer.</p>
+      <p style="text-align:justify">This is a styled Card. The header is created from a Thumbnail List item,
+      the content is from a card-body consisting of an image and paragraph text. The footer
+      consists of tabs, icons aligned left, within the card-footer.</p>
+      <p style="text-align:justify">This is a styled Card. The header is created from a Thumbnail List item,
+      the content is from a card-body consisting of an image and paragraph text. The footer
+      consists of tabs, icons aligned left, within the card-footer.</p>
+   
   </div>
 
 </div>
@@ -279,20 +284,26 @@
       <button class="button button-icon icon ion-navicon" style="text-align:left;padding-right:20px" menu-toggle = "left"></button> 
 
 
-     <h1 class="title">Presedents Desk</h1>
+     <h1 class="title">President&#39;s Desk</h1>
     </div>
-    <ion-content padding="true">
+    <ion-content padding="true" style="background: url(../img/background.png)  no-repeat center center fixed;">
     <br><br>
          <div class="list card">
 
   <div class="item item-body">
     <img class="full-image" src="img/heri_col.jpg">
     <p>
-      <center>Dr. subham bissu</center>
-      <br>
-      This is a "Facebook" styled Card. The header is created from a Thumbnail List item,
-      the content is from a card-body consisting of an image and paragraph text. The footer
-      consists of tabs, icons aligned left, within the card-footer.
+      <center>Vihaan Sachdev</center>
+    </p>
+    <p style="text-align:justify;">Youthopia. The name itself ignites pride in a Heritan&#39;s heart. The months of hard work, the inexpressible effort that goes into this fest- is more than worth it in the end. Ever since it was inaugurated in 2010, being a part of the Youthopia team has been my dream, and now this dream has been realized.   </p>
+    <p style="text-align:justify;">
+       Youthopia is more than just a fest for us. It&#39s an experience for those who revel with passion, live without regrets, and possess the courage to express themselves freely. It is the zeal that drives us towards success, and It is our spirit which propels us towards the zenith.   
+    </p>
+    <p style="text-align:justify;">
+   In the words of John Wesley, &#34;When you set yourself on fire, people love to come and see you burn.&#34;
+    </p>
+    <p style="text-align:justify">
+   Yourhopia&#39;16 presents you an opportunity to ignite your souls and discover the zeal you crave.    We have arrived. We espy. And we definitely will conquer.  
     </p>
   </div>
 
@@ -318,7 +329,7 @@
 
      <h1 class="title">Guest performance</h1>
     </div>
-    <ion-content padding="true">
+    <ion-content padding="true" style="background: url(../img/background.png)  no-repeat center center fixed;;">
        <br><br>
        <div ng-repeat="x in myData">
    

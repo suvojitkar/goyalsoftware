@@ -90,7 +90,7 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
                         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
                       }).then(function successCallback(response){
                        $scope.myData = response.data.events;
-                       $
+                       $location.url('/Side/dash');
                        //$scope.showAlert($scope.myData);
                       },function errorCallback(response) {
                           console.log("ERROR");
@@ -141,7 +141,8 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
 			$scope.logout = function()
 			{
               window.localStorage.clear();
-              $location.url('/side/yuthopia');  
+              $state.go('Side.yuthopia', {}, {reload: true}); 
+              $window.location.reload(true);
               $ionicHistory.clearCache();
               $ionicHistory.clearHistory(); 
 				// $http({
@@ -184,7 +185,7 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
             }
             else
             {
-
+              $ionicLoading.show();
               $http({
                         method: 'POST',
                         url: ApiEndpoint.url+ 'checkotp.php',
@@ -194,17 +195,19 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
               {
                 $scope.showAlert("<center>Verified successfully!</center>","Success");
                 $location.url("/Side/yuthopia");
+                $ionicLoading.hide();
               }
               else if(response.data == "false")
               {
                 $scope.showAlert("<center>Invalid OTP</center>","ERROR");
                 user.otp = "";
+                 $ionicLoading.hide();
               }
           
                       }, function errorCallback(response) {
                           console.log("ERROR");
               $scope.showAlert("<center>No Internet Connection</center>","ERROR");
-              
+              $ionicLoading.hide();
                       });
 
             }
