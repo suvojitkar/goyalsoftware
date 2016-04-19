@@ -31,8 +31,15 @@
   
   <script id="Page1.html" type="text/ng-template">
   
-  
-  <ion-content style="">
+  <ion-view hide-nav-bar="true">
+
+<div style="background-color:#3e2202" class="bar bar-header bar-positive">
+      <button class="button button-icon icon ion-navicon" style="text-align:left;padding-right:20px" menu-toggle = "left"></button> 
+
+
+     <h1 class="title">Login</h1>
+    </div>
+  <ion-content padding="true" >
   <br><br><br>
   <div style="text-align:center;"><br><img src="img/heritage.png" alt=""><br><br></div>
 
@@ -49,6 +56,7 @@
             </button>
       </div>
 </ion-content>
+ </ion-view>
 </script>
 
 
@@ -77,6 +85,9 @@
           </ion-header-bar>
           <ion-content>
             <ul class="list">
+            
+                 <a ng-if="username == null" href="#/Side/Page1" class="item item-icon-left" menu-close> <i class="icon ion-home"></i>Login</a>
+                    
               <a href="#/Side/yuthopia" class="item item-icon-left" menu-close> <i class="icon ion-home"></i>Youthopia</a>
               <a href="#/Side/dash" ng-click="events()" class="item item-icon-left" menu-close> <i class="icon ion-ios-americanfootball"></i>Events</a>
               <a href="#/Side/heritage" class="item item-icon-left" menu-close>  <i class="icon ion-ios-flower"></i>Heritage School</a>
@@ -86,7 +97,7 @@
               <a href="#/Side/guest" ng-click="guest()" class="item item-icon-left" menu-close><i class="icon ion-ios-people"></i>Guest Performers</a>
               <a href="#/Side/contactus" class="item item-icon-left" menu-close><i class="icon ion-ios-personadd"></i>Contact Us</a>
               <a href="#/Side/credit" class="item item-icon-left" menu-close><i class="icon ion-social-rss"></i>Credits</a>
-              <a href="#" ng-click="logout()" class="item item-icon-left" menu-close><i class="icon ion-log-out" ></i>Logout</a>
+              <a href="#" ng-if="username != null" ng-click="logout()" class="item item-icon-left" menu-close><i class="icon ion-log-out" ></i>Logout</a>
 			  
 
                 
@@ -148,8 +159,9 @@
 
      <h1 class="title">Events</h1>
     </div>
- <ion-content padding="true">
     
+ <ion-content padding="true">
+ 
 
  <div ng-repeat="x in myData">
    
@@ -166,7 +178,7 @@
     </p>
     <p>
       <a href="#" class="subdued" style="color:#C2DBFA">{{x.dateandtime}}</a>
-      <a href="#" class="subdued" style="color:#C2DBFA" id="{{x.id}}" onclick="alert(id)">subscribe</a>
+      <a href="#" class="subdued" style="color:#C2DBFA" id="{{x.id}}" ng-click="subscribe({{x.id}})">subscribe</a>
     </p>
   </div>
 </div>
@@ -178,6 +190,7 @@
 <ion-infinite-scroll ng-if="!noMoreItemsAvailable" on-infinite="loadMore()" distance="10%" has-bouncing="true"></ion-infinite-scroll>
 
 </ion-content>
+
 </ion-view>
 </script>
 
@@ -370,6 +383,21 @@
 <button ng-click="email(user)" class="button button-full button-calm">
   send mail
 </button>
+<br><br>
+<div class="row">
+  <div class="col col-25">
+ <a href="#/Side/Page1"style="border:0px"  class="item item-icon-right col-20"> <i style="text-align:center" class="icon ion-social-facebook"></i></a>
+ </div>
+ <div class="col col-25">
+ <a href="#/Side/Page1" style="border:0px" class="item item-icon-right col-20"> <i style="text-align:center" class="icon ion-ios-telephone"></i></a>
+ </div>
+ <div class="col col-25">
+ <a href="#/Side/Page1" style="border:0px"  class="item item-icon-right col-20"> <i style="text-align:center" class="icon ion-ios-location"></i></a>
+ </div>
+ <div class="col col-25">
+ <a href="#/Side/Page1" style="border:0px" class="item item-icon-right col-20"> <i style="text-align:center" class="icon ion-social-whatsapp"></i></a>
+ </div>
+ </div>
     </ion-content>
 </ion-view>
 </script>

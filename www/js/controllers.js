@@ -63,13 +63,12 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
                                           window.localStorage.setItem("username", response.data.result[0].name);
                                           $rootScope.phonenumber = window.localStorage.getItem("phonenumber");
                                           $rootScope.username = window.localStorage.getItem("username");
-                                          $scope.showAlert("<center>Welcome to Youthpophia</center>","Welcome");
                                           $location.url('/otp');
                                         }
                                                
                                               }, function errorCallback(response) {
                                                 $ionicLoading.hide(); 
-                                          $scope.showAlert("No Internet Connection","Network Error");
+                                          $scope.showAlert("<center>No Internet Connection</center>","Network Error");
                                         }  ) ;
                                
                 						 
@@ -91,6 +90,7 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
                         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
                       }).then(function successCallback(response){
                        $scope.myData = response.data.events;
+                       $
                        //$scope.showAlert($scope.myData);
                       },function errorCallback(response) {
                           console.log("ERROR");
@@ -141,7 +141,7 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
 			$scope.logout = function()
 			{
               window.localStorage.clear();
-              $location.url('/Page1');  
+              $location.url('/side/yuthopia');  
               $ionicHistory.clearCache();
               $ionicHistory.clearHistory(); 
 				// $http({
@@ -160,44 +160,7 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
     //                   });
 			}
 			
-			// $scope.signup = function(user)
-			// {
-			// 	if(user.email=='' || user.add == '' || user.pin=='' || user.phone == '' || user.pass == '')
-			// 		$scope.showAlert("Some field is empty!","Error");
-			// 	else{
-			// 		$ionicLoading.show();
-			// 	$http({
-   //                      method: 'POST',
-   //                      url: ApiEndpoint.url+ 'signup/',
-   //                      data:{email:user.email, address:user.add, pincode:user.pin, phone:user.phone,password:user.pass}
-   //                    }).then(function successCallback(response) {
-                          
-			// 			  if(response.data == "True")
-			// 			  {
-			// 			  $ionicLoading.hide();
-			// 			  $scope.showAlert("Signed up successfully!","Signed Up");
-			// 			  $location.url('/Page1');
-			// 			  }
-			// 			  else
-			// 			  {
-			// 				  $ionicLoading.hide();
-			// 				$scope.showAlert("User already exists!","Alert");  
-			// 			  }
-						  
-   //                    }, function errorCallback(response) {
-   //                        console.log("ERROR");
-			// 			  $ionicLoading.hide();
-			// 			  $scope.showAlert("Some field is empty!","Error");
-						  
-   //                    });
-
-			// 	}
-   //                    user.email=='';
-   //                    user.add == '';
-   //                    user.pin=='';
-   //                    user.phone == '';
-   //                    user.pass == '';
-			// }
+		
 			$scope.verify = function(n,user) {
 				if(n==0)
         {
@@ -210,7 +173,7 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
                       }).then(function successCallback(response) {
 						  if(response.data == "true")
 						  {
-							  $location.url("/Page1");
+							  $location.url("/yuthopia");
 						  }
                       }, function errorCallback(response) {
                           console.log("ERROR");
@@ -246,6 +209,47 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
 
             }
 			}
+
+
+       $scope.subscribe=function(id)
+        {
+
+          if ($rootScope.username == null)
+          {
+             $scope.showAlert("<center>Please Login</center>","INFO");
+          }
+          else 
+          {
+             $http({
+                        method: 'POST',
+                        url: ApiEndpoint.url+ 'subscribe.php',
+                        data:{eventid: id, username: $rootScope.username, phonenumber: $rootScope.phonenumber},
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+                      }).then(function successCallback(response){
+                      $scope.showAlert('<center>'+response.data+'</center>',"SUCCESS");
+                      },function errorCallback(response) {
+                          console.log("ERROR");
+                     $scope.showAlert("<center>No Internet Connection</center>","ERROR");
+              
+                      });
+
+
+          }
+             // $http({
+             //            method: 'POST',
+             //            url: ApiEndpoint.url+ 'events.php',
+             //            headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+             //          }).then(function successCallback(response){
+             //           $scope.myData = response.data.events;
+
+             //           //$scope.showAlert($scope.myData);
+             //          },function errorCallback(response) {
+             //              console.log("ERROR");
+             //  $scope.showAlert("<center>No Internet Connection</center>","ERROR");
+              
+             //          });
+        }
+
 
 
 

@@ -57,7 +57,7 @@ angular.module('starter', ['ionic','starter.controllers','ngCordova','ngStorage'
     if(window.localStorage.getItem("phonenumber") != null)
         {
           // alert('inside local storage');
-          $state.go('Side.dash');
+          $state.go('Side.yuthopia');
         }
 })
 
@@ -65,11 +65,7 @@ angular.module('starter', ['ionic','starter.controllers','ngCordova','ngStorage'
 .config(function($stateProvider, $urlRouterProvider) {
 
   $stateProvider
-            .state('Page1',{
-                     url: '/Page1',
-                     templateUrl:'Page1.html',
-                     controller:'Ctrl',
-                     })
+            
            
            .state('otp',{
                      url: '/otp',
@@ -93,6 +89,16 @@ angular.module('starter', ['ionic','starter.controllers','ngCordova','ngStorage'
                     }
                     }               
                      })
+              .state('Side.Page1',{
+                     url: '/Page1',
+                     views: {
+                    'appContent' :{
+                      templateUrl: 'Page1.html',
+                      controller : 'Ctrl'
+                    }
+                    }     
+                     })
+
               .state('Side.yuthopia',{
                      url:'/yuthopia',
                      views: {
@@ -199,5 +205,5 @@ angular.module('starter', ['ionic','starter.controllers','ngCordova','ngStorage'
               //         })
                             
 
- $urlRouterProvider.otherwise('/Page1');
+ $urlRouterProvider.otherwise('/Side/yuthopia');
     });
