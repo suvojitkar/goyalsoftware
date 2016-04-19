@@ -101,9 +101,6 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
 
          $scope.email=function(user)
         {
-          alert($rootScope.username);
-          alert($rootScope.phonenumber);
-          alert(user.query);
           $http({
                         method: 'POST',
                         url: ApiEndpoint.url+ 'email.php',
@@ -111,7 +108,7 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
                         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
                       }).then(function successCallback(response){
                       
-                       $scope.showAlert("<center>Query submitted successfully</center>","Thank You");
+                       $scope.showAlert("<center>Your query is submitted successfully","Thank You");
                       },function errorCallback(response) {
                           console.log("ERROR");
               $scope.showAlert("<center>No Internet Connection</center>","ERROR");
