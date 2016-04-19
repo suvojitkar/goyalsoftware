@@ -79,12 +79,12 @@
             <ul class="list">
               <a href="#/Side/yuthopia" class="item item-icon-left" menu-close> <i class="icon ion-home"></i>Youthopia</a>
               <a href="#/Side/dash" ng-click="events()" class="item item-icon-left" menu-close> <i class="icon ion-ios-americanfootball"></i>Events</a>
-              <a href="#/Side/promotion" class="item item-icon-left" menu-close>  <i class="icon ion-ios-flower"></i>Heritage School</a>
+              <a href="#/Side/heritage" class="item item-icon-left" menu-close>  <i class="icon ion-ios-flower"></i>Heritage School</a>
 
-              <a href="#/Side/delivery" class="item item-icon-left" menu-close><i class="icon ion-ios-mic"></i>Talks</a>
-              <a href="#/Side/delivery" class="item item-icon-left" menu-close><i class="icon ion-ios-people"></i>Guest Performers</a>
-              <a href="#/Side/delivery" class="item item-icon-left" menu-close><i class="icon ion-ios-personadd"></i>Contact Us</a>
-              <a href="#/Side/delivery" class="item item-icon-left" menu-close><i class="icon ion-social-rss"></i>Credits</a>
+              <a href="#/Side/talks" class="item item-icon-left" menu-close><i class="icon ion-ios-mic"></i>Talks</a>
+              <a href="#/Side/guest" ng-click="guest()" class="item item-icon-left" menu-close><i class="icon ion-ios-people"></i>Guest Performers</a>
+              <a href="#/Side/contactus" class="item item-icon-left" menu-close><i class="icon ion-ios-personadd"></i>Contact Us</a>
+              <a href="#/Side/credit" class="item item-icon-left" menu-close><i class="icon ion-social-rss"></i>Credits</a>
               <a href="#" ng-click="logout()" class="item item-icon-left" menu-close><i class="icon ion-log-out" ></i>Logout</a>
 			  
 
@@ -201,6 +201,162 @@
 
 
 
+<script id = "heritage.html" type="text/ng-template">
+ <ion-view hide-nav-bar="true">
+
+<div style="background-color:#3e2202" class="bar bar-header bar-positive">
+      <button class="button button-icon icon ion-navicon" style="text-align:left;padding-right:20px" menu-toggle = "left"></button> 
+
+
+     <h1 class="title">Heritage</h1>
+    </div>
+    <ion-content padding="true">
+       <br><br>
+      <img src="img/heri_col.jpg" style="width:100%">
+      <br><br>
+      <p>sample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample text</p>
+
+    </ion-content>
+</ion-view>
+</script>
+
+
+
+<script id = "talks.html" type="text/ng-template">
+ <ion-view hide-nav-bar="true">
+
+<div style="background-color:#3e2202" class="bar bar-header bar-positive">
+      <button class="button button-icon icon ion-navicon" style="text-align:left;padding-right:20px" menu-toggle = "left"></button> 
+
+
+     <h1 class="title">Talks</h1>
+    </div>
+    <ion-content padding="true">
+    <br><br>
+       
+       <div class="list card">
+  <div class="item item-avatar">
+    <img src="img/back.png">
+    <h2>suvojit kar</h2>
+    <p>principal</p>
+  </div>
+
+  <div class="item">
+    <p>sample text.sample textsample textsample textsample textsample text
+    sample textsample textsample textsample textsample textsample textsample text
+    sample textsample textsample textsample textsample textsample textsample text</p>
+  </div>
+</div>
+
+
+
+<div class="list card">
+  <div class="item item-avatar">
+    <img src="img/heritage.png">
+    <h2>subham bissu</h2>
+    <p>president</p>
+  </div>
+
+  <div class="item">
+    <p>sample text.sample textsample textsample textsample textsample text
+    sample textsample textsample textsample textsample textsample textsample text
+    sample textsample textsample textsample textsample textsample textsample text</p>
+  </div>
+</div>
+
+
+
+    </ion-content>
+</ion-view>
+</script>
+
+
+
+
+
+<script id = "guest.html" type="text/ng-template">
+ <ion-view hide-nav-bar="true">
+
+<div style="background-color:#3e2202" class="bar bar-header bar-positive">
+      <button class="button button-icon icon ion-navicon" style="text-align:left;padding-right:20px" menu-toggle = "left"></button> 
+
+
+     <h1 class="title">Guest performance</h1>
+    </div>
+    <ion-content padding="true">
+       <br><br>
+       <div ng-repeat="x in myData">
+   
+ <div class="list card">
+  <div class="item item-avatar">
+    <img src="{{x.image}}">
+    <h2>{{x.eventname}}</h2>
+    <p>&nbsp;&nbsp;{{x.domain}}</p>
+  </div>
+  <div class="item item-body">
+    <img class="full-image" src="{{x.image}}">
+    <p>
+     {{x.description}}
+    </p>
+    <p>
+      <a href="#" class="subdued" style="color:#C2DBFA">{{x.dateandtime}}</a>
+      <a href="#" class="subdued" style="color:#C2DBFA">subscribe</a>
+    </p>
+  </div>
+</div>
+    </div>
+
+    </ion-content>
+</ion-view>
+</script>
+
+
+
+
+
+
+
+<script id = "contactus.html" type="text/ng-template">
+ <ion-view hide-nav-bar="true">
+
+<div style="background-color:#3e2202" class="bar bar-header bar-positive">
+      <button class="button button-icon icon ion-navicon" style="text-align:left;padding-right:20px" menu-toggle = "left"></button> 
+
+
+     <h1 class="title">Contactus</h1>
+    </div>
+    <ion-content padding="true">
+       <br><br>
+  <div class="list">
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">First Name</span>
+    <input type="text" placeholder="{{username}}">
+  </label>
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">Phone number</span>
+    <input type="text" placeholder="{{phonenumber}}">
+  </label>
+ <label class="item item-input item-floating-label">
+    <span class="input-label">Enter your query</span>
+    <input type="text" placeholder="Enter your query">
+  </label>
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">Email</span>
+    <input type="text" placeholder="heritage@gmail.com">
+  </label>
+</div>
+<button class="button button-full button-calm">
+  send mail
+</button>
+    </ion-content>
+</ion-view>
+</script>
+
+
+
+
+
+
 
 
 
@@ -210,6 +366,36 @@
 </ion-content>
 </ion-view>
 </script>
+
+
+
+
+
+
+
+<script id = "credit.html" type="text/ng-template">
+ <ion-view hide-nav-bar="true">
+
+<div style="background-color:#3e2202" class="bar bar-header bar-positive">
+      <button class="button button-icon icon ion-navicon" style="text-align:left;padding-right:20px" menu-toggle = "left"></button> 
+
+
+     <h1 class="title">Credits</h1>
+    </div>
+    <ion-content padding="true">
+       <br><br>
+     <img src="img/goyal.png" width="100%">
+     <a href="http://www.goyalsoftwares.com/" class="button button-full button-positive">
+       <p>Our team consist of an amalgam of talented Designer and developers.
+       click here to view our website</p>
+    </a>
+    </ion-content>
+</ion-view>
+</script>
+
+
+
+
 
 
 

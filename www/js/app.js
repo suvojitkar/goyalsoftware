@@ -103,6 +103,59 @@ angular.module('starter', ['ionic','starter.controllers','ngCordova','ngStorage'
                     }               
                      })
 
+               .state('Side.heritage',{
+                     url:'/heritage',
+                     views: {
+                    'appContent' :{
+                      templateUrl: 'heritage.html',
+                      controller : 'Ctrl'
+                    }
+                    }               
+                     })
+
+               .state('Side.talks',{
+                     url:'/talks',
+                     views: {
+                    'appContent' :{
+                      templateUrl: 'talks.html',
+                      controller : 'Ctrl'
+                    }
+                    }               
+                     })
+
+
+               .state('Side.contactus',{
+                     url:'/contactus',
+                     views: {
+                    'appContent' :{
+                      templateUrl: 'contactus.html',
+                      controller : 'Ctrl'
+                    }
+                    }               
+                     })
+
+               .state('Side.credit',{
+                     url:'/credit',
+                     views: {
+                    'appContent' :{
+                      templateUrl: 'credit.html',
+                      controller : 'Ctrl'
+                    }
+                    }               
+                     })
+
+                .state('Side.guest',{
+                     url:'/guest',
+                     views: {
+                    'appContent' :{
+                      templateUrl: 'guest.html',
+                      controller : 'Ctrl'
+                    }
+                    }               
+                     })
+
+
+
                   
 					
 

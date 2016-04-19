@@ -99,6 +99,25 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
                       });
         }
 
+         $scope.guest=function()
+        {
+             $http({
+                        method: 'POST',
+                        url: ApiEndpoint.url+ 'events.php',
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+                      }).then(function successCallback(response){
+                       $scope.myData = response.data.events;
+                       //$scope.showAlert($scope.myData);
+                      },function errorCallback(response) {
+                          console.log("ERROR");
+              $scope.showAlert("<center>No Internet Connection</center>","ERROR");
+              
+                      });
+        }
+
+
+
+
 			
 			$scope.logout = function()
 			{
