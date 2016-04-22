@@ -7,65 +7,25 @@
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-
-    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
-    <link href="css/ionic.app.css" rel="stylesheet">
-    -->
-
-    <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
     <script src="lib/ionic/js/angular/angular-resource.min.js"></script>
     <script src="lib/ngstorage/ngStorage.min.js"></script>
-
-    <!-- cordova script (this will be a 404 during development) -->
     <script src="lib/ngCordova/dist/ng-cordova.js"></script>
     <script src="cordova.js"></script>
-
-    <!-- your app's js -->
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
     <script src="js/services.js"></script>
 
   </head>
+  
   <body ng-app="starter" ng-controller="Ctrl" class="platform-android platform-cordova platform-webview" >
   
-  <script id="Page1.html" type="text/ng-template">
   
-  <ion-view hide-nav-bar="true">
-
-<div style="background-color:#fd5353" class="bar bar-header bar-positive">
-      <button class="button button-icon icon ion-navicon" style="text-align:left;padding-right:20px" menu-toggle = "left"></button> 
-
-
-     <h1 class="title">Login</h1>
-    </div>
-  <ion-content padding="true" >
-  <br><br><br>
-  <div style="text-align:center;"><br><img src="img/withoutline.png" style="width:100%"alt=""><br><br></div>
-
-  <br><br><br>
-          <div class="list padding" >
-            <label class="item item-input">
-             <input  type="number" ng-model="user.phonenumber" placeholder="Enter 10 digit mobile number">
-            </label>
-          </div>
-            <br>
-          <div class="padding">
-            <button style="background-color:#fd5353;color:white" class="button button-block" ng-click="submit(user)">
-              Login
-            </button>
-      </div>
-</ion-content>
- </ion-view>
-</script>
-
-
-
 <script id="Side.html" type="text/ng-template">
  <ion-side-menus>
         
         <ion-side-menu-content>
-          <ion-nav-bar style="background-color:#fd5353" class="bar-positive">
+          <ion-nav-bar class="bar-positive">
             <ion-nav-back-button class="button-icon ion-arrow-left-c">
             </ion-nav-back-button>
           </ion-nav-bar>
@@ -76,28 +36,29 @@
           <ion-nav-view name="appContent"></ion-nav-view>
         </ion-side-menu-content> 
         
-        <ion-side-menu side="left"style="background-color:#fd5353">
-          <ion-header-bar class="bar-positive"style="background-color:#fd5353">
+        <ion-side-menu side="left" >
+          <ion-header-bar class="bar-positive"style="background-color:#FE534B">
        <!--    <div style="margin-left:5px" class="item-image">
               <img src="img/logo_small.png">
             </div> -->
-            <h1  style="text-align:center" class="title">{{username}}</h1>
+            <h1  style="text-align:center" ng-if="verified==1" class="title">{{username}}</h1>
           </ion-header-bar>
           <ion-content>
             <ul class="list">
             
-                 <a ng-if="username == null" href="#/Side/Page1" class="item item-icon-left" menu-close> <i class="icon ion-home"></i>Login</a>
+                 <a href="#/Side/Page1" ng-if="verified!=1" class="item item-icon-left" menu-close> <i class="icon ion-home"></i>Login</a>
                     
-              <a href="#/Side/yuthopia" class="item item-icon-left" menu-close> <i class="icon ion-home"></i>Youthopia&#39;16</a>
+              <a href="#/Side/yuthopia" class="item item-icon-left" menu-close> <i class="icon ion-social-hackernews"></i>Youthopia&#39;16</a>
               <a href="#/Side/dash" ng-click="events()" class="item item-icon-left" menu-close> <i class="icon ion-ios-americanfootball"></i>Events</a>
               <a href="#/Side/heritage" class="item item-icon-left" menu-close>  <i class="icon ion-ios-flower"></i>Heritage School</a>
 
               <a href="#/Side/principal" class="item item-icon-left" menu-close><i class="icon ion-ios-mic"></i>Principal&#39;s desk</a>
-              <a href="#/Side/presedent" class="item item-icon-left" menu-close><i class="icon ion-ios-mic"></i>President&#39;s desk</a>
+              <a href="#/Side/presedent" class="item item-icon-left" menu-close><i class="icon ion-ios-volume-high"></i>President&#39;s desk</a>
               <a href="#/Side/guest" ng-click="guest()" class="item item-icon-left" menu-close><i class="icon ion-ios-people"></i>Guest Performers</a>
+              <a href="#/Side/yourevent" ng-if="verified==1" ng-click="yourevent()" class="item item-icon-left" menu-close><i class="icon ion-ios-tennisball"></i>your event</a>
               <a href="#/Side/contactus" class="item item-icon-left" menu-close><i class="icon ion-ios-personadd"></i>Contact Us</a>
               <a href="#/Side/credit" class="item item-icon-left" menu-close><i class="icon ion-social-rss"></i>Credits</a>
-              <a href="#" ng-if="username != null" ng-click="logout()" class="item item-icon-left" menu-close><i class="icon ion-log-out" ></i>Logout</a>
+              <a href="#" ng-if="verified==1" ng-click="logout()" class="item item-icon-left" menu-close><i class="icon ion-log-out" ></i>Logout</a>
 			  
 
                 
@@ -107,40 +68,70 @@
       </ion-side-menus>
     </script>
 	
+
+
+
+<script id="Page1.html" type="text/ng-template">
+  
+   <ion-view hide-nav-bar="true">
+      <div class="bar bar-header bar-positive" style="background-color:#FE534B">
+      <button class="button button-icon icon ion-navicon" style="text-align:left;padding-right:20px" menu-toggle = "left"></button> 
+      <h1 class="title">Login</h1>
+    </div>
+  <ion-content padding="true" style="background: url(../img/background.png)  no-repeat center center fixed;">
+  <br><br><br>
+  <div style="text-align:center;"><br><img src="img/withoutline.png" width="100%" alt=""><br><br></div>
+          <div class="list padding" >
+            <label class="item item-input">
+             <input  type="number" ng-model="user.phonenumber" placeholder="Enter 10 digit mobile number">
+            </label>
+          </div>
+          <div class="padding">
+            <button style="background-color:#FE534B;color:white" class="button button-block" ng-click="submit(user)">
+              Login
+            </button>
+      </div>
+</ion-content>
+ </ion-view>
+</script>
+
+
+
+
 	<script id = "otp.html" type="text/ng-template">
         <ion-view hide-nav-bar="true">
 
-              <div style="background-color:#fd5353" class="bar bar-header bar-positive">
+              <div style="background-color:#FE534B" class="bar bar-header bar-positive">
                   <h1 class="title">OTP Verification</h1>
                 </div>
 
-               <ion-content padding="true"> 
+               <ion-content padding="true" style="background: url(../img/background.png)  no-repeat center center fixed;"> 
                <br><br>   <br><br>
 
                         <div class="row">
 
                             <div class="col col-100" style="text-align:center">
                              
-                             <b> Enter the OTP </b>
+                             <b style="color:white"> Enter the OTP </b>
                             </div>
                         </div>
                             <div class="col col-offset-30 col-100">
                                   <div class="list list-inset">
                                   <label class="item item-input">
-                                  <input type="tel" maxlength="4"  placeholder="Enter your 4 Digit OTP" ng-model="user.otp">
+                                  <input type="text" maxlength="4" placeholder="Enter your 4 Digit OTP" ng-model="user.otp">
                                   </label>
                                   </div>
                             </div>
                         </div>
                         <br><br>
                        <div class="row">
-                          <div class="col col-offset-10 col-50">
-                              <button class="button button-positive"style="background-color:#fd5353" ng-click="verify(0,user)">
+                          <div class="col">
+                              <button style="width:100%;background-color:#FE534B" class="button button-positive" ng-click="verify(0,user)">
                               Resend
                               </button>
                           </div>
-                          <div class="col col-offset-5 col-50">
-                           <button class="button button-positive"style="background-color:#fd5353" ng-click="verify(1,user)">
+                          <div class="col">
+                           <button style="width:100%;background-color:#FE534B" class="button button-positive" ng-click="verify(1,user)">
                              Verify
                             </button>
                           </div>
@@ -150,10 +141,14 @@
          </ion-view>   
 	</script>
 	
+
+
+
+
  <script id="dash.html" type="text/ng-template">
 <ion-view hide-nav-bar="true">
 
-<div style="background-color:#fd5353" class="bar bar-header bar-positive">
+<div style="background-color:#FE534B" class="bar bar-header bar-positive">
       <button class="button button-icon icon ion-navicon" style="text-align:left;padding-right:20px" menu-toggle = "left"></button> 
 
 
@@ -173,12 +168,12 @@
   </div>
   <div class="item item-body">
     <img class="full-image" src="{{x.image}}">
-    <p>
+    <p style="text-align:justify;">
      {{x.description}}
     </p>
     <p>
-      <a href="#" class="subdued" style="color:#C2DBFA">{{x.dateandtime}}</a>
-      <a href="#" class="subdued" style="color:#C2DBFA" id="{{x.id}}" ng-click="subscribe({{x.id}})">subscribe</a>
+      <a href="#" class="subdued" style="color:#17375E">{{x.dateandtime}}</a><br>
+      <a href="#" class="subdued" style="color:#17375E" id="{{x.id}}" ng-click="subscribe({{x.id}})">subscribe</a>
     </p>
   </div>
 </div>
@@ -194,10 +189,14 @@
 </ion-view>
 </script>
 
+
+
+
+
 <script id = "yuthopia.html" type="text/ng-template" >
  <ion-view hide-nav-bar="true">
 
-<div style="background-color:#fd5353" class="bar bar-header bar-positive">
+<div style="background-color:#FE534B" class="bar bar-header bar-positive">
       <button class="button button-icon icon ion-navicon" style="text-align:left;padding-right:20px" menu-toggle = "left"></button> 
 
 
@@ -215,10 +214,14 @@
 
 
 
+
+
+
+
 <script id = "heritage.html" type="text/ng-template">
  <ion-view hide-nav-bar="true">
 
-<div style="background-color:#fd5353" class="bar bar-header bar-positive">
+<div style="background-color:#FE534B" class="bar bar-header bar-positive">
       <button class="button button-icon icon ion-navicon" style="text-align:left;padding-right:20px" menu-toggle = "left"></button> 
 
 
@@ -236,10 +239,12 @@
 
 
 
+
+
 <script id = "principal.html" type="text/ng-template">
  <ion-view hide-nav-bar="true">
 
-<div style="background-color:#fd5353" class="bar bar-header bar-positive">
+<div style="background-color:#FE534B" class="bar bar-header bar-positive">
       <button class="button button-icon icon ion-navicon" style="text-align:left;padding-right:20px" menu-toggle = "left"></button> 
 
 
@@ -280,13 +285,13 @@
 <script id = "presedent.html" type="text/ng-template">
  <ion-view hide-nav-bar="true" class="pane">
 
-<div style="background-color:#fd5353" class="bar bar-header bar-positive">
+<div style="background-color:#FE534B" class="bar bar-header bar-positive">
       <button class="button button-icon icon ion-navicon" style="text-align:left;padding-right:20px" menu-toggle = "left"></button> 
 
 
      <h1 class="title">President&#39;s Desk</h1>
     </div>
-    <ion-content padding="true">
+    <ion-content padding="true" style="background: url(../img/background.png)  no-repeat center center fixed;">
     <br><br>
          <div class="list card">
 
@@ -323,13 +328,13 @@
 <script id = "guest.html" type="text/ng-template">
  <ion-view hide-nav-bar="true">
 
-<div style="background-color:#fd5353" class="bar bar-header bar-positive">
+<div style="background-color:#FE534B" class="bar bar-header bar-positive">
       <button class="button button-icon icon ion-navicon" style="text-align:left;padding-right:20px" menu-toggle = "left"></button> 
 
 
      <h1 class="title">Guest performance</h1>
     </div>
-    <ion-content padding="true" style="background: url(../img/background.png)  no-repeat center center fixed;;">
+    <ion-content padding="true" style="background: url(../img/background.png)  no-repeat center center fixed;">
        <br><br>
        <div ng-repeat="x in myData">
    
@@ -363,15 +368,15 @@
 
 
 <script id = "contactus.html" type="text/ng-template">
- <ion-view hide-nav-bar="true" style="background:white">
+ <ion-view hide-nav-bar="true" style="background:#fff">
 
-<div style="background-color:#fd5353" class="bar bar-header bar-positive">
+<div style="background-color:#FE534B" class="bar bar-header bar-positive">
       <button class="button button-icon icon ion-navicon" style="text-align:left;padding-right:20px" menu-toggle = "left"></button> 
 
 
-     <h1 class="title">Contact Us</h1>
+     <h1 class="title">Contactus</h1>
     </div>
-    <ion-content padding="true">
+    <ion-content padding="true" >
        <br><br>
   <div class="list">
   <label class="item item-input item-stacked-label">
@@ -383,7 +388,7 @@
     <input type="text" placeholder="{{phonenumber}}">
   </label>
  <label class="item item-input item-floating-label">
-    <span class="input-label">Query</span>
+    <span class="input-label">query</span>
     <input type="text" placeholder="Enter your query" ng-model="user.query">
   </label>
   <label class="item item-input item-stacked-label">
@@ -391,22 +396,22 @@
     <input type="text" placeholder="heritage@gmail.com">
   </label>
 </div>
-<button ng-click="email(user)" style="background:#fd5353" class="button button-full button-calm">
-  Send Mail
+<button ng-click="email(user)" class="button button-full button-calm">
+  send mail
 </button>
 <br><br>
 <div class="row">
   <div class="col col-25">
- <a href="#/Side/Page1"style="border:0px"  class="item item-icon-right col-20"> <i style="text-align:center" class="icon ion-social-facebook"></i></a>
+ <a href="https://www.facebook.com/search/top/?q=heritage%20school" style="border:0px"  class="item item-icon-right col-20"> <i style="text-align:center" class="icon ion-social-facebook"></i></a>
  </div>
  <div class="col col-25">
- <a href="#/Side/Page1" style="border:0px" class="item item-icon-right col-20"> <i style="text-align:center" class="icon ion-ios-telephone"></i></a>
+ <a href="tel:8056298003" style="border:0px" class="item item-icon-right col-20"> <i style="text-align:center" class="icon ion-ios-telephone"></i></a>
  </div>
  <div class="col col-25">
- <a href="#/Side/Page1" style="border:0px"  class="item item-icon-right col-20"> <i style="text-align:center" class="icon ion-ios-location"></i></a>
+ <a href="#/Side/Page1" style="border:0px" class="item item-icon-right col-20"> <i style="text-align:center" class="icon ion-ios-location"></i></a>
  </div>
  <div class="col col-25">
- <a href="#/Side/Page1" style="border:0px" class="item item-icon-right col-20"> <i style="text-align:center" class="icon ion-social-whatsapp"></i></a>
+ <a href="https://www.facebook.com/search/top/?q=heritage%20school" style="border:0px" class="item item-icon-right col-20"> <i style="text-align:center" class="icon ion-social-whatsapp"></i></a>
  </div>
  </div>
     </ion-content>
@@ -434,19 +439,53 @@
 
 
 
+<script id = "yourevent.html" type="text/ng-template">
+ <ion-view hide-nav-bar="true">
+
+<div style="background-color:#FE534B" class="bar bar-header bar-positive">
+      <button class="button button-icon icon ion-navicon" style="text-align:left;padding-right:20px" menu-toggle = "left"></button> 
+
+
+     <h1 class="title">Your events</h1>
+    </div>
+    <ion-content padding="true" style="background: url(../img/background.png)  no-repeat center center fixed;">
+       <br><br><br><br>
+        <div ng-repeat="x in myData" style="color:white">
+        <br>
+        <div class="list">
+
+    <a class="item item-avatar" href="#">
+      <img src="{{x.image}}">
+      <h2>{{x.eventname}}</h2>
+      <p id={{x.id}} ng-click="unsubscribe({{x.id}})">unsubscribe</p>
+    </a>
+
+</div>
+       </div>
+<ion-infinite-scroll ng-if="!noMoreItemsAvailable" on-infinite="loadMore()" distance="10%" has-bouncing="true"></ion-infinite-scroll>
+    </ion-content>
+</ion-view>
+</script>
+
+
+
+
+
+
+
 <script id = "credit.html" type="text/ng-template">
  <ion-view hide-nav-bar="true">
 
-<div style="background-color:#fd5353" class="bar bar-header bar-positive">
+<div style="background-color:#FE534B" class="bar bar-header bar-positive">
       <button class="button button-icon icon ion-navicon" style="text-align:left;padding-right:20px" menu-toggle = "left"></button> 
 
 
      <h1 class="title">Credits</h1>
     </div>
-    <ion-content padding="true">
+    <ion-content padding="true" style="background: url(../img/background.png)  no-repeat center center fixed;">
        <br><br>
      <img src="img/goyal.png" width="100%">
-     <a href="http://www.goyalsoftwares.com/" style="background:#fd5353" class="button button-full button-positive">
+     <a href="http://www.goyalsoftwares.com/" style="background-color:#FE534B"" class="button button-full button-positive">
        <p>Our team consist of an amalgam of talented Designer and developers.
        click here to view our website</p>
     </a>

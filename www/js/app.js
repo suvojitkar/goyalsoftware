@@ -48,6 +48,8 @@ angular.module('starter', ['ionic','starter.controllers','ngCordova','ngStorage'
 })
 
 
+
+
 .run(function($cordovaSplashscreen,$state) {
 
   setTimeout(function() {
@@ -170,11 +172,21 @@ angular.module('starter', ['ionic','starter.controllers','ngCordova','ngStorage'
                     }
                     }               
                      })
+                .state('Side.yourevent',{
+                     cache: false,
+                     url:'/yourevent',
+                     views: {
+                    'appContent' :{
+                      templateUrl: 'yourevent.html',
+                      controller : 'Ctrl'
+                    }
+                    }               
+                     })
 
 
 
                   
-					
+          
 
               
             

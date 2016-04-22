@@ -9,6 +9,7 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
 			$scope.len=0, $rootScope.x=0;
       $rootScope.phonenumber = window.localStorage.getItem("phonenumber");
       $rootScope.username = window.localStorage.getItem("username");
+      $rootScope.verified = window.localStorage.getItem("verified");
       // $scope.session = function() {
       //   if($rootScope.phonenumber != undefined)
       //   {
@@ -61,8 +62,10 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
                                           // $rootScope.session = response.data;
                                           window.localStorage.setItem("phonenumber", response.data.result[0].phonenumber);
                                           window.localStorage.setItem("username", response.data.result[0].name);
+                                         
                                           $rootScope.phonenumber = window.localStorage.getItem("phonenumber");
                                           $rootScope.username = window.localStorage.getItem("username");
+                                          
                                           $location.url('/otp');
                                         }
                                                
@@ -90,7 +93,7 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
                         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
                       }).then(function successCallback(response){
                        $scope.myData = response.data.events;
-                       $location.url('/Side/dash');
+                       $state.go('Side.dash');
                        //$scope.showAlert($scope.myData);
                       },function errorCallback(response) {
                           console.log("ERROR");
@@ -134,35 +137,89 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
                       });
         }
 
+          $scope.yourevent=function()
+        {
+             $http({
+                        method: 'POST',
+                        url: ApiEndpoint.url+ 'viewsubscribe.php',
+                        data:{phone:$rootScope.phonenumber},
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+                      }).then(function successCallback(response){
+                          if(response.data.yevents)
+                            $scope.myData = response.data.yevents;
+                          else
+                          {
+                            $scope.showAlert('<center>'+response.data+'</center>');
+                            $state.go('Side.yuthopia', {}, {reload: true}); 
+                          }
+                      },function errorCallback(response) {
+                          console.log("ERROR");
+              $scope.showAlert("<center>No Internet Connection</center>","ERROR");
+              
+                      });
+        }
+
+        $scope.unsubscribe=function(id)
+        {
+             $http({
+                        method: 'POST',
+                        url: ApiEndpoint.url+ 'unsubscribe.php',
+                        data:{phone:$rootScope.phonenumber,id:id},
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+                      }).then(function successCallback(response){
+                       $scope.myData = response.data;
+                       $scope.showAlert($scope.myData);
+                       $state.go('Side.yuthopia', {}, {reload: true}); 
+                        // $scope.events();
+                      },function errorCallback(response) {
+                          console.log("ERROR");
+              $scope.showAlert("<center>No Internet Connection</center>","ERROR");
+              
+                      });
+        }
+
 
 
 
 			
 			$scope.logout = function()
-			{
+			{ 
               window.localStorage.clear();
-              $state.go('Side.yuthopia', {}, {reload: true}); 
-              $window.location.reload(true);
               $ionicHistory.clearCache();
               $ionicHistory.clearHistory(); 
-				
+              window.localStorage.setItem("verified", 0);
+              $rootScope.verified= window.localStorage.getItem("verified");
+              //$scope.showAlert($rootScope.verified);
+              $state.go('Side.yuthopia', {}, {reload: true}); 
+              $window.location.reload(true);
+				// $http({
+    //                     method: 'POST',
+    //                     url: ApiEndpoint.url+ 'loggedout/',
+    //                     data:{loggedout:1}
+    //                   }).then(function successCallback(response) {
+    //                      					window.localStorage.setItem("phonenumber", null);
+    //                               window.localStorage.setItem("username",null);
+    //                               alert(window.localStorage.getItem("phonenumber"));
+    //                               alert(window.localStorage.getItem("username"));
+                                 
+                                  
+    //                   }, function errorCallback(response) {
+                         
+    //                   });
 			}
 			
 		
 			$scope.verify = function(n,user) {
 				if(n==0)
         {
-					$scope.showAlert("Another OTP will be sent shortly to your registered email id","Resend");
+					
 				$http({
                         method: 'POST',
-                        url: ApiEndpoint.url+ 'checkotp.php',
+                        url: ApiEndpoint.url+ 'resend.php',
                         data:{verify:n, session:$rootScope.phonenumber},
                          headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
                       }).then(function successCallback(response) {
-						  if(response.data == "true")
-						  {
-							  $location.url("/yuthopia");
-						  }
+						         $scope.showAlert("Another OTP will be sent shortly to your registered email id","Resend");
                       }, function errorCallback(response) {
                           console.log("ERROR");
 						  $scope.showAlert("<center>No Internet Connection</center>","ERROR");
@@ -180,6 +237,9 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
                       }).then(function successCallback(response) {
               if(response.data == "true")
               {
+               window.localStorage.setItem("verified",1);
+              $rootScope.verified=window.localStorage.getItem("verified");
+              //$scope.showAlert($rootScope.verified);
                 $scope.showAlert("<center>Verified successfully!</center>","Success");
                 $location.url("/Side/yuthopia");
                 $ionicLoading.hide();
@@ -204,7 +264,7 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
        $scope.subscribe=function(id)
         {
 
-          if ($rootScope.username == null)
+          if ($rootScope.verified == 0)
           {
              $scope.showAlert("<center>Please Login</center>","INFO");
           }
@@ -225,19 +285,7 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
 
 
           }
-             // $http({
-             //            method: 'POST',
-             //            url: ApiEndpoint.url+ 'events.php',
-             //            headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-             //          }).then(function successCallback(response){
-             //           $scope.myData = response.data.events;
-
-             //           //$scope.showAlert($scope.myData);
-             //          },function errorCallback(response) {
-             //              console.log("ERROR");
-             //  $scope.showAlert("<center>No Internet Connection</center>","ERROR");
-              
-             //          });
+             
         }
 
 
