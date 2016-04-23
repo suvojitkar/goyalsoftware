@@ -9,6 +9,7 @@
     </author>
   <content src="index.html"/>
   <access origin="*"/>
+  <acceess launch-external="yes" origin="whats:*"/>
   <access origin="tel:*" launch-external="yes"/>
   <allow-intent href="*"/>
   <allow-navigation href="*"/>

@@ -5,9 +5,9 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
 
-    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="lib/ionic/css/ionic.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/ionic/js/ionic.bundle.min.js"></script>
     <script src="lib/ionic/js/angular/angular-resource.min.js"></script>
     <script src="lib/ngstorage/ngStorage.min.js"></script>
     <script src="lib/ngCordova/dist/ng-cordova.js"></script>
@@ -55,7 +55,7 @@
               <a href="#/Side/principal" class="item item-icon-left" menu-close><i class="icon ion-ios-mic"></i>Principal&#39;s desk</a>
               <a href="#/Side/presedent" class="item item-icon-left" menu-close><i class="icon ion-ios-volume-high"></i>President&#39;s desk</a>
               <a href="#/Side/guest" ng-click="guest()" class="item item-icon-left" menu-close><i class="icon ion-ios-people"></i>Guest Performers</a>
-              <a href="#/Side/yourevent" ng-if="verified==1" ng-click="yourevent()" class="item item-icon-left" menu-close><i class="icon ion-ios-tennisball"></i>your event</a>
+              <a href="#/Side/yourevent" ng-if="verified==1" ng-click="yourevent()" class="item item-icon-left" menu-close><i class="icon ion-ios-tennisball"></i>Your events</a>
               <a href="#/Side/contactus" class="item item-icon-left" menu-close><i class="icon ion-ios-personadd"></i>Contact Us</a>
               <a href="#/Side/credit" class="item item-icon-left" menu-close><i class="icon ion-social-rss"></i>Credits</a>
               <a href="#" ng-if="verified==1" ng-click="logout()" class="item item-icon-left" menu-close><i class="icon ion-log-out" ></i>Logout</a>
@@ -194,15 +194,15 @@
 
 
 <script id = "yuthopia.html" type="text/ng-template" >
- <ion-view hide-nav-bar="true">
+ <ion-view hide-nav-bar="true" class="pane">
 
 <div style="background-color:#FE534B" class="bar bar-header bar-positive">
       <button class="button button-icon icon ion-navicon" style="text-align:left;padding-right:20px" menu-toggle = "left"></button> 
 
 
-     <h1 class="title">Youthopia&#39;16</h1>
+     <h1 class="title">Youthopia &#39;16</h1>
     </div>
-    <ion-content padding="true" style="background: url(../img/background.png) no-repeat center center fixed;">
+    <ion-content padding="true" class="pane">
        <br><br>
       <img src="img/withoutline.png" style="width:100%">
       <br><br>
@@ -408,10 +408,10 @@
  <a href="tel:8056298003" style="border:0px" class="item item-icon-right col-20"> <i style="text-align:center" class="icon ion-ios-telephone"></i></a>
  </div>
  <div class="col col-25">
- <a href="#/Side/Page1" style="border:0px" class="item item-icon-right col-20"> <i style="text-align:center" class="icon ion-ios-location"></i></a>
+ <a href="www.heritageschool.com/about/maps-directions" style="border:0px" class="item item-icon-right col-20"> <i style="text-align:center" class="icon ion-ios-location"></i></a>
  </div>
  <div class="col col-25">
- <a href="https://www.facebook.com/search/top/?q=heritage%20school" style="border:0px" class="item item-icon-right col-20"> <i style="text-align:center" class="icon ion-social-whatsapp"></i></a>
+ <a href="whatsapp://send?text=Your%20Query!" style="border:0px" class="item item-icon-right col-20"> <i style="text-align:center" class="icon ion-social-whatsapp"></i></a>
  </div>
  </div>
     </ion-content>
@@ -449,7 +449,7 @@
      <h1 class="title">Your events</h1>
     </div>
     <ion-content padding="true" style="background: url(../img/background.png)  no-repeat center center fixed;">
-       <br><br><br><br>
+       <br><br>
         <div ng-repeat="x in myData" style="color:white">
         <br>
         <div class="list">
