@@ -27,7 +27,7 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
             $scope.submit=function(user){
 
 
-                 if(user.phonenumber=='')
+                 if(user.phonenumber==null)
               				 {
               					 $scope.showAlert("Field Empty!","Error");
               					 user.phonenumber="";
@@ -79,14 +79,12 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
                                       }
                                     }
 
-                      /*, function errorCallback(response) {
-						  $scope.showAlert("Error during login!","Internal Error");
-						  user.password='';
-                         
-						 });*/
+                    
 				 
         $scope.events=function()
         {
+          $ionicLoading.show();
+          $location.url('/Side/dash');
              $http({
                         method: 'POST',
                         url: ApiEndpoint.url+ 'events.php',
@@ -94,8 +92,10 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
                       }).then(function successCallback(response){
                        $scope.myData = response.data.events;
                        $state.go('Side.dash');
+                       $ionicLoading.hide();
                        //$scope.showAlert($scope.myData);
                       },function errorCallback(response) {
+                        $ionicLoading.hide();
                           console.log("ERROR");
               $scope.showAlert("<center>No Internet Connection</center>","ERROR");
               
@@ -123,14 +123,17 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
 
          $scope.guest=function()
         {
+          $ionicLoading.show();
              $http({
                         method: 'POST',
                         url: ApiEndpoint.url+ 'events.php',
                         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
                       }).then(function successCallback(response){
                        $scope.myData = response.data.events;
+                       $ionicLoading.hide();
                        //$scope.showAlert($scope.myData);
                       },function errorCallback(response) {
+                        $ionicLoading.hide();
                           console.log("ERROR");
               $scope.showAlert("<center>No Internet Connection</center>","ERROR");
               
@@ -139,12 +142,14 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
 
           $scope.yourevent=function()
         {
+          $ionicLoading.show();
              $http({
                         method: 'POST',
                         url: ApiEndpoint.url+ 'viewsubscribe.php',
                         data:{phone:$rootScope.phonenumber},
                         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
                       }).then(function successCallback(response){
+                        $ionicLoading.hide();
                           if(response.data.yevents)
                             $scope.myData = response.data.yevents;
                           else
@@ -153,6 +158,7 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
                             $state.go('Side.yuthopia', {}, {reload: true}); 
                           }
                       },function errorCallback(response) {
+                        $ionicLoading.hide();
                           console.log("ERROR");
               $scope.showAlert("<center>No Internet Connection</center>","ERROR");
               
@@ -161,18 +167,21 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
 
         $scope.unsubscribe=function(id)
         {
+          $ionicLoading.show();
              $http({
                         method: 'POST',
                         url: ApiEndpoint.url+ 'unsubscribe.php',
                         data:{phone:$rootScope.phonenumber,id:id},
                         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
                       }).then(function successCallback(response){
+                        $ionicLoading.hide();
                        $scope.myData = response.data;
-                       $scope.showAlert($scope.myData);
+                       $scope.showAlert('<center>'+$scope.myData+'</center>');
                        $state.go('Side.yuthopia', {}, {reload: true}); 
                         // $scope.events();
                       },function errorCallback(response) {
                           console.log("ERROR");
+                          $ionicLoading.hide();
               $scope.showAlert("<center>No Internet Connection</center>","ERROR");
               
                       });
@@ -263,10 +272,12 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
 
        $scope.subscribe=function(id)
         {
-
+          $ionicLoading.show();
           if ($rootScope.verified == 0)
           {
+            $ionicLoading.hide();
              $scope.showAlert("<center>Please Login</center>","INFO");
+
           }
           else 
           {
@@ -276,9 +287,11 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
                         data:{eventid: id, username: $rootScope.username, phonenumber: $rootScope.phonenumber},
                         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
                       }).then(function successCallback(response){
+                         $ionicLoading.hide();
                       $scope.showAlert('<center>'+response.data+'</center>',"SUCCESS");
                       },function errorCallback(response) {
                           console.log("ERROR");
+                          $ionicLoading.hide();
                      $scope.showAlert("<center>No Internet Connection</center>","ERROR");
               
                       });
