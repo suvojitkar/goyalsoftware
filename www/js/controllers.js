@@ -86,32 +86,34 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
 
 
           $scope.register=function(user){
-
+             $ionicLoading.show();
 
                  if(user.phonenumber=='')
                        {
                         $scope.showAlert("Please Enter a Phone number","Error");
                          user.phonenumber="";
+                          $ionicLoading.hide();
                        }
                          else {
-                          $ionicLoading.show();
-
+                        
+                          window.localStorage.setItem("phonenumber", user.phonenumber);
+                          $rootScope.phonenumber = window.localStorage.getItem("phonenumber");
                                   $http({
                                         method: 'POST',
                                         url: ApiEndpoint.url+ 'register.php',
                                         data:{'phone':user.phonenumber},
                                         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
                                       }).then(function successCallback(response) {
-                                        // alert(response.data.result[0].name);
-                                        $ionicLoading.hide(); 
+                                         $ionicLoading.hide();
                                         if (response.data == '0')
                                         {
-                                         $scope.showAlert("Your Phone Number is succesfully registered","Success");
+                                         $scope.showAlert("<center>Your Phone Number is succesfully registered</center>","Success");
+                                         $location.url('/otp');
                                         }
                                         else 
                                         {
+                                          $scope.showAlert("<center>Your Phone Number is already registered</center>","Failure");
                                           
-                                          $location.url('/otp');
                                         }
                                                
                                               }, function errorCallback(response) {
@@ -122,11 +124,7 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
                              
                         
                                       }
-                                    }
-
-
-
-         $scope.re          
+                                    }       
 				 
         $scope.events=function()
         {
@@ -138,7 +136,6 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
                         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
                       }).then(function successCallback(response){
                        $scope.myData = response.data.events;
-                       $state.go('Side.dash');
                        $ionicLoading.hide();
                        //$scope.showAlert($scope.myData);
                       },function errorCallback(response) {
@@ -190,6 +187,7 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
           $scope.yourevent=function()
         {
           $ionicLoading.show();
+          $state.go('Side.yourevent');
              $http({
                         method: 'POST',
                         url: ApiEndpoint.url+ 'viewsubscribe.php',
@@ -198,7 +196,9 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
                       }).then(function successCallback(response){
                         $ionicLoading.hide();
                           if(response.data.yevents)
+                          {
                             $scope.myData = response.data.yevents;
+                          }
                           else
                           {
                             $scope.showAlert('<center>'+response.data+'</center>');
@@ -272,10 +272,10 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
 				$http({
                         method: 'POST',
                         url: ApiEndpoint.url+ 'resend.php',
-                        data:{verify:n, session:$rootScope.phonenumber},
+                        data:{session:$rootScope.phonenumber},
                          headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
                       }).then(function successCallback(response) {
-						         $scope.showAlert("Another OTP will be sent shortly to your registered email id","Resend");
+						         $scope.showAlert("<center>Another OTP will be sent shortly to your registered Phone Number</center>","Success");
                       }, function errorCallback(response) {
                           console.log("ERROR");
 						  $scope.showAlert("<center>No Internet Connection</center>","ERROR");
@@ -360,7 +360,7 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
 			});
 $timeout(function() {
      alertPopup.close(); 
-  }, 3000);
+  }, 5000);
  			}
 			$scope.hide = function(){
     $ionicLoading.hide();
