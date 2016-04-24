@@ -182,6 +182,15 @@ angular.module('starter', ['ionic','starter.controllers','ngCordova','ngStorage'
                     }
                     }               
                      })
+                .state('Side.register',{
+                     url:'/register',
+                     views: {
+                    'appContent' :{
+                      templateUrl: 'register.html',
+                      controller : 'Ctrl'
+                    }
+                    }               
+                     })
 
 
 

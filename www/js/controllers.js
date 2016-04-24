@@ -27,9 +27,9 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
             $scope.submit=function(user){
 
 
-                 if(user.phonenumber==null)
+                 if(user.phonenumber=='')
               				 {
-              					 $scope.showAlert("Field Empty!","Error");
+              					$scope.showAlert("Your Phone Number Does not Exist","Authentication Failed");
               					 user.phonenumber="";
               				 }
                 				 else {
@@ -79,7 +79,54 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
                                       }
                                     }
 
-                    
+         $scope.registerview = function()
+         {
+          $location.url('/Side/register');
+         } 
+
+
+          $scope.register=function(user){
+
+
+                 if(user.phonenumber=='')
+                       {
+                        $scope.showAlert("Please Enter a Phone number","Error");
+                         user.phonenumber="";
+                       }
+                         else {
+                          $ionicLoading.show();
+
+                                  $http({
+                                        method: 'POST',
+                                        url: ApiEndpoint.url+ 'register.php',
+                                        data:{'phone':user.phonenumber},
+                                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+                                      }).then(function successCallback(response) {
+                                        // alert(response.data.result[0].name);
+                                        $ionicLoading.hide(); 
+                                        if (response.data == '0')
+                                        {
+                                         $scope.showAlert("Your Phone Number is succesfully registered","Success");
+                                        }
+                                        else 
+                                        {
+                                          
+                                          $location.url('/otp');
+                                        }
+                                               
+                                              }, function errorCallback(response) {
+                                                $ionicLoading.hide(); 
+                                          $scope.showAlert("<center>No Internet Connection</center>","Network Error");
+                                        }  ) ;
+                               
+                             
+                        
+                                      }
+                                    }
+
+
+
+         $scope.re          
 				 
         $scope.events=function()
         {
