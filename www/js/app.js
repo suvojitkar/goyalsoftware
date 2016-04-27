@@ -36,8 +36,8 @@ angular.module('starter', ['ionic','starter.controllers','ngCordova','ngStorage'
   $ionicPlatform.registerBackButtonAction(function(event) {
     if (true) { // your check here
       $ionicPopup.confirm({
-        title: 'System warning',
-        template: '<center>are you sure you want to exit?</center>'
+        title: 'Warning',
+        template: '<center>Are you sure you want to exit?</center>'
       }).then(function(res) {
         if (res) {
           ionic.Platform.exitApp();
