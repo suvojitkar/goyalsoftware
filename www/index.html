@@ -104,7 +104,7 @@
    <ion-view hide-nav-bar="true">
       <div class="bar bar-header bar-positive" style="background-color:#FE534B">
       <button class="button button-icon icon ion-navicon" style="text-align:left;padding-right:20px" menu-toggle = "left"></button> 
-      <h1 class="title">Login</h1>
+      <h1 class="title">Register</h1>
     </div>
   <ion-content padding="true">
   <br><br><br>
@@ -199,6 +199,16 @@
     <p style="text-align:justify;">
      {{x.description}}
     </p>
+     <div class="padding">
+            <button style="color:white" class="button button-block button-positive" ng-click="rules()">
+              View More
+            </button>
+      </div>
+
+    
+
+     
+
     <p class="row">
       <a  href="#" class="subdued col" style="color:#17375E">{{x.date | date:'d/MM/yyyy'}}</a><br>
       <a  href="#" class="subdued col" style="color:#17375E">{{x.time}}</a><br>
@@ -212,6 +222,44 @@
 
 
 <ion-infinite-scroll ng-if="!noMoreItemsAvailable" on-infinite="loadMore()" distance="10%" has-bouncing="true"></ion-infinite-scroll>
+
+</ion-content>
+
+</ion-view>
+</script>
+
+<script id= "rules.html" type="text/ng-template">
+  <ion-view hide-nav-bar="true">
+
+<div style="background-color:#FE534B" class="bar bar-header bar-positive">
+      <button class="button button-icon icon ion-navicon" style="text-align:left;padding-right:20px" menu-toggle = "left"></button> 
+
+
+     <h1 class="title">Rules</h1>
+    </div>
+     <ion-content padding="true">
+     <br><br>
+
+     <ion-list>
+        <div ng-repeat="group in groups">
+          <ion-item class="item-stable"
+                    ng-click="toggleGroup(group)"
+                    ng-class="{active: isGroupShown(group)}">
+              <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+            &nbsp;
+           {{group.name}}
+          </ion-item>
+          <ion-item style="white-space:normal;text-align:justify"class="item-accordion"
+                    ng-repeat="item in group.items"
+                    ng-show="isGroupShown(group)">
+            {{item}}
+          </ion-item>
+        </div>
+      </ion-list>
+
+
+
+
 
 </ion-content>
 

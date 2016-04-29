@@ -153,6 +153,16 @@ angular.module('starter', ['ionic','starter.controllers','ngCordova','ngStorage'
                     }               
                      })
 
+                .state('Side.rules',{
+                     url:'/rules',
+                     views: {
+                    'appContent' :{
+                      templateUrl: 'rules.html',
+                      controller : 'Ctrl'
+                    }
+                    }               
+                     })
+
                .state('Side.credit',{
                      url:'/credit',
                      views: {
