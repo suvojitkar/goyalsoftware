@@ -137,11 +137,10 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
                       }).then(function successCallback(response){
                        $scope.myData = response.data.events;
                         $scope.groups = [];
-                                for (var i=0; i<=20; i++) {
-                                  // alert(response.data.events);
+                                for (var i=0; i<= $scope.myData.length; i++) {
+                                  
                                   $scope.groups[i] = {
-                                    name: response.data.events[i].id,
-                                    items: ['hello','hello','hello'],
+                                    name: i,
                                     show: false
                                   };
                                 }
@@ -359,99 +358,7 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
         }
 
 
-           // $scope.groups = [];
-           //    for (var i=0; i<=0; i++) {
-           //      $scope.groups[i] = {
-           //        name: i,
-           //        items: [],
-           //        show: false
-           //      }
-           //    }
-//               $scope.groups = [];
-//   for (var i=0; i<10; i++) {
-//     if(i==0)
-//     {
-//     $scope.groups[i] = {
-//       name: 'Football',
-//       items: ['Number of participants-7+6.','Duration- 30 minutes consisting of two equal halves.','Roll-in substitution allowed.','No offside rules','Separate event for boys and girls.','Dress Code- school football jersey with shorts and football boots, shin guards  and stockings are compulsory','If the match ends in a draw, then direct penalty shootouts will take place.','Referee’s decision is final.','If fewer teams are participating then league and knockout format will be followed else knockout format will be followed.'],
-//       show: false
-//     };
-//   }
-//   else if (i == 1)
-//   {
-//     $scope.groups[i] = {
-//       name: 'Basketball',
-//       items: ['Number of participants-5+3.','Duration- 20 minutes consisting of two equal halves.','Jerseys should have a clear numbering on the back as well as in the front.','Separate event for boys and girls.','The kit number should be from 4 to 15. Players without the mentioned jersey.','number will not be allowed.','The same jersey number should be maintained throughout the tournament.','Roll-in substitution allowed.'],
-//       show: false
-//     };
-//   }
-//    else if (i == 2)
-//   {
-//     $scope.groups[i] = {
-//       name: 'Cricket',
-//       items: ['Number of participants-6+1 (rolling substitute) +1 (in case of injury).','Each innings will be of 4 overs.','The event will be only for boys.','The whole team must be wearing the same uniform.','Other details will be given on the spot.'],
-//       show: false
-//     };
-//   }
-//    else if (i == 3)
-//   {
-//     $scope.groups[i] = {
-//       name: 'Tug of War',
-//       items: ['Number of participants: 10+2','Participants need to wear their school sports uniforms.','Other rules to be explained on the spot.'],
-//       show: false
-//     };
-//   }
-//    else if (i == 4)
-//   {
-//     $scope.groups[i] = {
-//       name: 'Table Tennis',
-//       items: ['Number of participants – 3 (2 singles, 1 doubles pair).','No individual matches. All matches are played in ‘teams’.','Matches will be of 11 points.','All rules and regulations of TTFI to be followed.','Separate events for boys and girls.','Only the finals will be of a best-of- five match (4 singles and 1 double).'],
-//       show: false
-//     };
-//   }
-//    else if (i == 5)
-//   {
-//     $scope.groups[i] = {
-//       name: 'Lawn Tennis',
-//       items: ['Number of participants- 2 + 1(reserved)','Participants are to bring their own kit.','Matches will be of one set each.','Sets will be played on the basis of 6 all tiebreakers.','2 single matches will be played','In case of a tie, a doubles match will be played as a decider','Separate events for boys and girls.'],
-//       show: false
-//     };
-//   }
-//    else if (i == 6)
-//   {
-//     $scope.groups[i] = {
-//       name: 'Volleyball',
-//       items: ['Number of participants-6+3.','Matches will be on knock out basis.','Boys: Set length 25 points.','Girls: Set length 15 points.','Winning team must have a lead of 2 points or else the match will continue (incase of tie).',
-
-// 'Dress code- School sports jersey.'],
-//       show: false
-//     };
-//   }
-//    else if (i == 7)
-//   {
-//     $scope.groups[i] = {
-//       name: 'Triathlon',
-//       items: ['Number of participants-1.','This event consists of the activities of cycling, swimming and running.','The event starts off with cycling, followed by running, and ends withswimming.','Cycling – 800m for boys &amp; girls','Running – 600m for boys &amp; 400m for girls','Swimming – 50m for boys &amp; 25m for girls','A total of 8 participants will qualify after the prelims are done.','The finals will be held on the third day of the fest.','Event to be held separately for boys and girls.'],
-//       show: false
-//     };
-//   }
-//    else if (i == 8)
-//   {
-//     $scope.groups[i] = {
-//       name: 'Chess',
-//       items: ['Number of participants- 1','15 minute each for a maximum of 5 rounds.','All other laws of FIDE will be applied.','There will only be one combined tournament for boys &amp; girls','Participants must be in their school uniform and must carry their school id card'],
-//       show: false
-//     };
-//   }
-//    else if (i == 9)
-//   {
-//     $scope.groups[i] = {
-//       name: 'Archery',
-//       items: ['Number of participants- 2.','Matches will be on knock out basis.','Separate event or boys and girls.','It will be a 10-meter distance competition.','It will be a 3 round competition.','In each round, everybody will shoot 3 arrows within 2 minutes.','One round will be considered for trials (boys and girls).','Referee’s decision shall be final.'],
-//       show: false
-//     };
-//   }
-//   }
+     
 
     
   /*
