@@ -206,7 +206,7 @@
                     ng-class="{active: isGroupShown(group)}">
               <i class="icon" ng-if="x.id == group.name" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
             &nbsp;
-           {{group.name}}
+         <span style="text-align:center"> More on {{x.eventname}} </span>
           </ion-item>
           <ion-item ng-if="group.name == 1" style="white-space:normal;text-align:justify"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
            Hellow suvojit
