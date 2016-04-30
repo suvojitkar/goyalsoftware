@@ -199,12 +199,24 @@
     <p style="text-align:justify;">
      {{x.description}}
     </p>
-     <div class="padding">
-            <button style="color:white" class="button button-block button-positive" ng-click="rules()">
-              View More
-            </button>
-      </div>
+       <ion-list>
+        <div ng-repeat="group in groups">
+          <ion-item ng-if="x.id == group.name" class="item-stable"
+                    ng-click="toggleGroup(group)"
+                    ng-class="{active: isGroupShown(group)}">
+              <i class="icon" ng-if="x.id == group.name" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+            &nbsp;
+           {{group.name}}
+          </ion-item>
+          <ion-item ng-if="group.name == 1" style="white-space:normal;text-align:justify"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
+           Hellow suvojit
+          </ion-item>
 
+          <ion-item ng-if="group.name == 2" style="white-space:normal;text-align:justify"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
+           Hellow bissu
+          </ion-item>
+        </div>
+      </ion-list>
     
 
      
@@ -228,43 +240,7 @@
 </ion-view>
 </script>
 
-<script id= "rules.html" type="text/ng-template">
-  <ion-view hide-nav-bar="true">
 
-<div style="background-color:#FE534B" class="bar bar-header bar-positive">
-      <button class="button button-icon icon ion-navicon" style="text-align:left;padding-right:20px" menu-toggle = "left"></button> 
-
-
-     <h1 class="title">Rules</h1>
-    </div>
-     <ion-content padding="true">
-     <br><br>
-
-     <ion-list>
-        <div ng-repeat="group in groups">
-          <ion-item class="item-stable"
-                    ng-click="toggleGroup(group)"
-                    ng-class="{active: isGroupShown(group)}">
-              <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
-            &nbsp;
-           {{group.name}}
-          </ion-item>
-          <ion-item style="white-space:normal;text-align:justify"class="item-accordion"
-                    ng-repeat="item in group.items"
-                    ng-show="isGroupShown(group)">
-            {{item}}
-          </ion-item>
-        </div>
-      </ion-list>
-
-
-
-
-
-</ion-content>
-
-</ion-view>
-</script>
 
 
 
