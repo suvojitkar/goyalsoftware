@@ -3,12 +3,12 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
 .controller('Ctrl',function($scope,$rootScope,$http,$state,$location,$ionicLoading,$timeout,$ionicHistory,$ionicSideMenuDelegate,ApiEndpoint,$ionicPopup,LoginService){
             
             $scope.len=0;
-      $rootScope.myData = [{"eventname":"Cricket","venue":"ROLLER SKATING COURT","domain":"sports","description":"Cricket is a bat-and-ball game played between two teams of 11 players each on a field at the centre of which is a rectangular 22-yard-long pitch. The game is played by 120 million players in many countries, making it the world's second most popular sport after association football.","date":"2016-04-06","time":"09:30:00","contact":"satish:987056452","image":"http://rajkar.esy.es/yuthopia/images/cric.jpg","show":"False","id":"1"}];
+     // $rootScope.myData = [{"eventname":"Cricket","venue":"ROLLER SKATING COURT","domain":"sports","description":"Cricket is a bat-and-ball game played between two teams of 11 players each on a field at the centre of which is a rectangular 22-yard-long pitch. The game is played by 120 million players in many countries, making it the world's second most popular sport after association football.","date":"2016-04-06","time":"09:30:00","contact":"satish:987056452","image":"http://rajkar.esy.es/yuthopia/images/cric.jpg","show":"False","id":"1"}];
         
         $rootScope.shows =[];
 			$scope.items = [];
-			$scope.noMoreItemsAvailable = false;
-			$scope.len=0, $rootScope.x=0;
+		//	$scope.noMoreItemsAvailable = false;
+			 $rootScope.x=0;
       $rootScope.phonenumber = window.localStorage.getItem("phonenumber");
       $rootScope.username = window.localStorage.getItem("username");
       $rootScope.verified = window.localStorage.getItem("verified");
@@ -218,6 +218,7 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
               
                       });
         }
+		
 
           $scope.yourevent=function()
         {
@@ -449,4 +450,57 @@ $timeout(function() {
   
   
   
-            });
+            })
+			.controller('Ctrl1',function($scope,$rootScope,$http,$state,$location,$ionicLoading,$timeout,$ionicHistory,$ionicSideMenuDelegate,ApiEndpoint,$ionicPopup,LoginService){
+				
+				      $rootScope.myData = [{"eventname":"Cricket","venue":"ROLLER SKATING COURT","domain":"sports","description":"Cricket is a bat-and-ball game played between two teams of 11 players each on a field at the centre of which is a rectangular 22-yard-long pitch. The game is played by 120 million players in many countries, making it the world's second most popular sport after association football.","date":"2016-04-06","time":"09:30:00","contact":"satish:987056452","image":"http://rajkar.esy.es/yuthopia/images/cric.jpg","show":"False","id":"1"}];
+				$scope.noMoreItemsAvailable = false;
+				 $scope.events=function()
+        {
+          alert($scope.len);
+          $ionicLoading.show();
+          $location.url('/Side/dash');
+             $http({
+                        method: 'POST',
+                        url: ApiEndpoint.url+ 'events.php',
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+                      }).then(function successCallback(response){
+                       $rootScope.myData = response.data.events;
+                        $scope.groups = [];
+                                for (var i=0; i<=$rootScope.myData.length; i++) {
+                                  
+                                  $scope.groups[i] = {
+                                    name: i,
+                                    show: false
+                                  };
+                                }      
+                       $ionicLoading.hide();
+                    
+                       //$scope.showAlert($scope.myData);
+                      },function errorCallback(response) {
+                        $ionicLoading.hide();
+                          console.log("ERROR");
+              $scope.showAlert("<center>No Internet Connection</center>","ERROR");
+              
+                      });
+        }
+		
+		  $scope.noMoreItemsAvailable = false;
+       $scope.loadMore = function() {
+        $scope.len = $scope.shows.length;
+       
+        
+    $scope.shows.push({time:$rootScope.myData[$scope.len].time,date:$rootScope.myData[$scope.len].date,id:$rootScope.myData[$scope.len].id,eventname:$rootScope.myData[$scope.len].eventname,domain:$rootScope.myData[$scope.len].domain,venue:$rootScope.myData[$scope.len].venue,image:$rootScope.myData[$scope.len].image});
+   
+    if ( $scope.shows.length == 38 ) {
+      $scope.noMoreItemsAvailable = true;
+
+    }
+    $scope.$broadcast('scroll.infiniteScrollComplete');
+  };
+		
+				
+			})
+			
+			
+			;

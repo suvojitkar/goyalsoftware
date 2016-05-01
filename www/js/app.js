@@ -89,7 +89,7 @@ angular.module('starter', ['ionic','starter.controllers','ngCordova','ngStorage'
                      views: {
                     'appContent' :{
                       templateUrl: 'dash.html',
-                      controller : 'Ctrl'
+                      controller : 'Ctrl1'
                     }
                     }               
                      })
