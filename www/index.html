@@ -15,6 +15,7 @@
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
     <script src="js/services.js"></script>
+    
 
   </head>
   
@@ -49,12 +50,12 @@
                  <a href="#/Side/Page1" ng-if="verified!=1" class="item item-icon-left" menu-close> <i class="icon ion-home"></i>Login</a>
                     
               <a href="#/Side/yuthopia" class="item item-icon-left" menu-close> <i class="icon ion-social-hackernews"></i>Youthopia&#39;16</a>
-              <a  ng-click="events()" class="item item-icon-left" menu-close> <i class="icon ion-ios-americanfootball"></i>Events</a>
+              <button  ng-click="events()" class="item item-icon-left" style="width: 100%; text-align: left;" menu-close> <i class="icon ion-ios-americanfootball"></i>Events</button>
               <a href="#/Side/heritage" class="item item-icon-left" menu-close>  <i class="icon ion-ios-flower"></i>Heritage School</a>
 
               <a href="#/Side/principal" class="item item-icon-left" menu-close><i class="icon ion-ios-mic"></i>Principal&#39;s desk</a>
               <a href="#/Side/presedent" class="item item-icon-left" menu-close><i class="icon ion-ios-mic-outline"></i>President&#39;s desk</a>
-              <a href="#/Side/guest" ng-click="guest()" class="item item-icon-left" menu-close><i class="icon ion-ios-people"></i>Guest Performers</a>
+              <button  ng-click="guest()" class="item item-icon-left" style="width: 100%; text-align: left;" menu-close><i class="icon ion-ios-people"></i>Guest Performers</button>
               <a ng-if="verified==1" ng-click="yourevent()" class="item item-icon-left" menu-close><i class="icon ion-ios-tennisball"></i>Your events</a>
               <a href="#/Side/contactus" class="item item-icon-left" menu-close><i class="icon ion-ios-personadd"></i>Contact Us</a>
               <a href="#/Side/credit" class="item item-icon-left" menu-close><i class="icon ion-android-star"></i>Credits</a>
@@ -182,13 +183,13 @@
 
      <h1 class="title">Events</h1>
     </div>
-    
- <ion-content padding="true">
+
+ <ion-content>
  
-<br>
- <div ng-repeat="x in myData">
-   
- <div class="list card">
+
+ <ion-list>
+   <br><br>
+ <ion-item style="background: transparent;border: none;" class="list card padding" ng-repeat="x in shows">
   <div class="item item-avatar">
     <img src="{{x.image}}">
     <h2>{{x.eventname}}</h2>
@@ -196,18 +197,18 @@
   </div>
   <div class="item item-body">
     <img class="full-image" src="{{x.image}}">
-    <p style="text-align:justify;">
-     {{x.description}}
-    </p>
+     <center><p>VENUE: {{x.venue}}</p></center>
        <ion-list>
         <div ng-repeat="group in groups">
-          <ion-item ng-if="x.id == group.name" class="item-stable"
+          <ion-item ng-if="x.id == group.name" class="item-stable button button-block button-positive"
                     ng-click="toggleGroup(group)"
                     ng-class="{active: isGroupShown(group)}">
-              <i class="icon" ng-if="x.id == group.name" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+              <i class="icon" ng-if="x.id == group.name" ng-class="isGroupShown(group) ? 'ion-chevron-up' : 'ion-chevron-down'"></i>
+
             &nbsp;
          <span style="text-align:center"> More on {{x.eventname}} </span>
           </ion-item>
+
           <ion-item ng-if="group.name == 1" style="white-space:normal;text-align:justify;"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
            <ol style="list-style:initial !important" class="padding">
                 <li>Number of participants-6+1 (rolling substitute) +1 (in case of injury).</li>
@@ -219,7 +220,7 @@
           </ion-item>
 
           <ion-item ng-if="group.name == 2" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important">
+           <ol style="list-style:initial !important" class="padding">
                 <li> Number of participants-7+6.</li>
                 <li>Duration- 30 minutes consisting of two equal halves.</li>
                 <li>Roll-in substitution allowed.</li>
@@ -236,7 +237,7 @@ followed else knockout format will be followed.</li>
 
 
            <ion-item ng-if="group.name == 3" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important">
+           <ol style="list-style:initial !important" class="padding">
                 <li>Number of participants-5+3.</li>
                 <li>Duration- 20 minutes consisting of two equal halves.</li>
                 <li>Jerseys should have a clear numbering on the back as well as in the front.</li>
@@ -249,7 +250,7 @@ followed else knockout format will be followed.</li>
 
 
            <ion-item ng-if="group.name == 4" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important">
+           <ol style="list-style:initial !important" class="padding">
                <li>Number of participants: 10+2.</li>
                <li>Participants need to wear their school sports uniforms.</li>
                <li>Other rules to be explained on the spot.</li>
@@ -259,7 +260,7 @@ followed else knockout format will be followed.</li>
 
          
            <ion-item ng-if="group.name == 5" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important">
+           <ol style="list-style:initial !important" class="padding">
              <li>Number of participants – 3 (2 singles, 1 doubles pair).</li>
              <li>No individual matches. All matches are played in ‘teams’.</li>
              <li>Matches will be of 11 points.</li>
@@ -270,7 +271,7 @@ followed else knockout format will be followed.</li>
           </ion-item>
 
  <ion-item ng-if="group.name == 6" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important">
+           <ol style="list-style:initial !important" class="padding">
              <li> Number of participants- 2 + 1(reserved)</li>
 <li>Participants are to bring their own kit.</li>
 <li>Matches will be of one set each.</li>
@@ -283,7 +284,7 @@ followed else knockout format will be followed.</li>
 
 
           <ion-item ng-if="group.name == 7" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important">
+           <ol style="list-style:initial !important" class="padding">
             <li>Number of participants-6+3.</li>
 
 <li>Matches will be on knock out basis.</li>
@@ -302,7 +303,7 @@ case of tie).</li>
 
 
           <ion-item ng-if="group.name == 8" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important">
+           <ol style="list-style:initial !important" class="padding">
            <li>Number of participants-1.</li>
 
 <li>This event consists of the activities of cycling, swimming and running.</li>
@@ -320,7 +321,7 @@ swimming.</li>
 
 
  <ion-item ng-if="group.name == 9" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important">
+           <ol style="list-style:initial !important" class="padding">
             <li>Number of participants- 1</li>
 
 <li>15 minute each for a maximum of 5 rounds.</li>
@@ -335,7 +336,7 @@ card</li>
 
 
           <ion-item ng-if="group.name == 10" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important">
+           <ol style="list-style:initial !important" class="padding">
                    <li>Number of participants- 2.</li>
                   <li>Matches will be on knock out basis.</li>
                   <li>Separate event or boys and girls.</li>
@@ -354,7 +355,7 @@ card</li>
 
 
             <ion-item ng-if="group.name == 11" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important">
+           <ol style="list-style:initial !important" class="padding">
                  
                   <li>Number of participants – 1.</li>
 
@@ -387,7 +388,7 @@ lead to immediate disqualification.</li>
 
 
                    <ion-item ng-if="group.name == 12" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important">
+           <ol style="list-style:initial !important" class="padding">
                  
                 <li> Number of participants- 1.</li>
 
@@ -417,7 +418,7 @@ lead to immediate disqualification.</li>
 
 
                      <ion-item ng-if="group.name == 13" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important">
+           <ol style="list-style:initial !important" class="padding">
                  
                <li>Number of participants – 5+2.</li>
 
@@ -450,7 +451,7 @@ acts as per their wish.</li>
 
 
                       <ion-item ng-if="group.name == 14" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important">
+           <ol style="list-style:initial !important" class="padding">
                  
                <li>Number of participants – 2.</li>
  <li> The quiz will be based on general knowledge and will not be subject specific.</li>
@@ -475,7 +476,7 @@ systems will be informed to the teams on the floor prior to the quizzing.</li>
 
 
                       <ion-item ng-if="group.name == 15" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important">
+           <ol style="list-style:initial !important" class="padding">
                  
              <li>Number of participants - 8+4.</li>
 
@@ -526,7 +527,7 @@ prior to the performance.</li>
 
 
                       <ion-item ng-if="group.name == 16" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important">
+           <ol style="list-style:initial !important" class="padding">
                  
            <li> Number of participants – 10+2 (for backstage help).</li>
 
@@ -575,7 +576,7 @@ prior to the performance.</li>
 
 
                    <ion-item ng-if="group.name == 17" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important">
+           <ol style="list-style:initial !important" class="padding">
                  
           <li> Number of participants - 4-7.</li>
 
@@ -610,7 +611,7 @@ immediate disqualification.</li>
                   </ion-item>
 
                    <ion-item ng-if="group.name == 18" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important">
+           <ol style="list-style:initial !important" class="padding">
                 <li> Number of participants – 1.</li>
 
 <li> Duration – 8+2 minutes.</li>
@@ -646,7 +647,7 @@ disqualification.</li>
 
 
                    <ion-item ng-if="group.name == 19" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important">
+           <ol style="list-style:initial !important" class="padding">
              <li> Number of participants- 1+1.</li>
 
 <li>Duration – 2+1 minutes.</li>
@@ -675,7 +676,7 @@ disqualified immediately.</li>
 
 
                     <ion-item ng-if="group.name == 21" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important">
+           <ol style="list-style:initial !important" class="padding">
              <li>Number of participants- 1.</li>
 
 <li>Duration</li>
@@ -693,7 +694,7 @@ disqualified immediately.</li>
 
 
                    <ion-item ng-if="group.name == 20" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important">
+           <ol style="list-style:initial !important" class="padding">
              <li>Duration – 5+5 minutes.</li>
 <li> 5-7 minutes for stage preparation.</li>
 
@@ -706,7 +707,7 @@ day before the event.</li>
 
 
                    <ion-item ng-if="group.name == 22" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important">
+           <ol style="list-style:initial !important" class="padding">
            <li>Number of participants- 2.</li>
 
  <li> Duration- 2+1 minutes for speech and 1 minute for rebuttal.</li>
@@ -724,7 +725,7 @@ other will be a member of the opposition.</li>
 
 
                   <ion-item ng-if="group.name == 23" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important">
+           <ol style="list-style:initial !important" class="padding">
                   <li>Number of participants- 2 +1 (to be present at the technical forum).</li>
 
 <li> Duration- 5+2 minutes.</li>
@@ -737,7 +738,7 @@ other will be a member of the opposition.</li>
 
 
                     <ion-item ng-if="group.name == 24" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important">
+           <ol style="list-style:initial !important" class="padding">
                  <li> Number of participants-1.</li>
 
  <li> Duration- 2 hours.</li>
@@ -767,7 +768,7 @@ other will be a member of the opposition.</li>
 
 
                    <ion-item ng-if="group.name == 25" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important">
+           <ol style="list-style:initial !important" class="padding">
                 <li>Number of participants-1+1+1 (Total: 3).</li>
 
  <li>Duration- 1 hour.</li>
@@ -785,7 +786,7 @@ other will be a member of the opposition.</li>
 
 
                    <ion-item ng-if="group.name == 26" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important">
+           <ol style="list-style:initial !important" class="padding">
                <li>Number of participants-7 (5for Counter Strike and 2 for FIFA™).</li>
 
  <li>Duration- On Spot.</li>
@@ -801,7 +802,7 @@ disqualification.</li>
 
 
                    <ion-item ng-if="group.name == 27" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important">
+           <ol style="list-style:initial !important" class="padding">
               <li> Number of participants-2.</li>
 
  <li> Duration- First two days of the fest.</li>
@@ -829,7 +830,7 @@ provided.</li>
 
 
                    <ion-item ng-if="group.name == 28" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important">
+           <ol style="list-style:initial !important" class="padding">
             <li>Number of participants-2.</li>
 
  <li> Duration- 2 hours.</li>
@@ -852,7 +853,7 @@ provided.</li>
 
 
  <ion-item ng-if="group.name == 29" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important">
+           <ol style="list-style:initial !important" class="padding">
                  <li>Number of participants- 2. </li>
 
 <li>Duration- 2 hours.</li>
@@ -900,7 +901,7 @@ working table.</li>
 
 
  <ion-item ng-if="group.name == 30" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important">
+           <ol style="list-style:initial !important" class="padding">
            <li>Number of participants- 2.</li>
 
  <li> Duration- Whole Day.</li>
@@ -931,7 +932,7 @@ these are the EXIFdetails.</li>
 
 
  <ion-item ng-if="group.name == 31" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important">
+           <ol style="list-style:initial !important" class="padding">
           <li>Number of participants - 2 (representative event).</li>
 
  <li> Use of mobile phones or any other e-devices will lead to immediate
@@ -943,7 +944,7 @@ disqualification.</li>
 
 
                    <ion-item ng-if="group.name == 32" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-              <ol style="list-style:initial !important">
+              <ol style="list-style:initial !important" class="padding">
            <li> Number of participants- 1.</li>
 
 <li> There will be 3 rounds.</li>
@@ -966,7 +967,7 @@ is 40minutes.</li>
 
 
  <ion-item ng-if="group.name == 33" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-      <ol style="list-style:initial !important">     
+      <ol style="list-style:initial !important" class="padding">     
 
 
                   <li>Number of participants- 5+3.</li>
@@ -993,7 +994,7 @@ is 40minutes.</li>
 
 
      <ion-item ng-if="group.name == 34" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important">
+           <ol style="list-style:initial !important" class="padding">
                     <li> Number of participants- 8+2.</li>
 
 <li> Other rules shall be explained on spot.</li>
@@ -1001,7 +1002,7 @@ is 40minutes.</li>
                   </ion-item>
 
                   <ion-item ng-if="group.name == 35" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important">
+           <ol style="list-style:initial !important" class="padding">
                    <li> Number of participants- 1.</li>
 <li> The school will be providing cue sticks and other equipment.</li>
 
@@ -1015,7 +1016,7 @@ is 40minutes.</li>
 
 
                   <ion-item ng-if="group.name == 36" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important">
+           <ol style="list-style:initial !important" class="padding">
                   <li>Number of participants- 1.</li>
 
 <li> This is a boys’ event.</li>
@@ -1026,7 +1027,7 @@ is 40minutes.</li>
 
 
                    <ion-item ng-if="group.name == 37" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important">
+           <ol style="list-style:initial !important" class="padding">
                   <li>Number of participants- 2.</li>
 
                   <li>Matches will be on knock out basis.</li>
@@ -1045,7 +1046,7 @@ is 40minutes.</li>
 
 
                    <ion-item ng-if="group.name == 38" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important">
+           <ol style="list-style:initial !important" class="padding">
                   <li>Number of participants- 4</li>
 
                   <li>15 minutes each for a maximum of 7 rounds.</li>
@@ -1060,24 +1061,17 @@ is 40minutes.</li>
 
         </div>
       </ion-list>
-    
-
-     
-
     <p class="row">
       <a  href="#" class="subdued col" style="color:#17375E">{{x.date | date:'d/MM/yyyy'}}</a><br>
       <a  href="#" class="subdued col" style="color:#17375E">{{x.time}}</a><br>
       <button href="#" class="subdued col button button-balanced" style="color:#fff" id="{{x.id}}" ng-click="subscribe({{x.id}})">Subscribe</button>
     </p>
   </div>
-</div>
-    </div>
-   
+    </ion-item>
 
 
-
-<ion-infinite-scroll ng-if="!noMoreItemsAvailable" on-infinite="loadMore()" distance="10%" has-bouncing="true"></ion-infinite-scroll>
-
+    </ion-list>
+ <ion-infinite-scroll ng-if="!noMoreItemsAvailable" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
 </ion-content>
 
 </ion-view>
@@ -1224,21 +1218,19 @@ is 40minutes.</li>
 
      <h1 class="title">Guest performance</h1>
     </div>
-    <ion-content padding="true">
+    <ion-content padding="true" >
        <br><br>
-       <div ng-repeat="x in myData">
+       <div ng-repeat="x in Data">
    
  <div class="list card">
   <div class="item item-avatar">
     <img src="{{x.image}}">
-    <h2>{{x.eventname}}</h2>
+    <h2>{{x.guestperformer}}</h2>
     <p>{{x.date}}</p>
   </div>
   <div class="item item-body">
-    <img class="full-image" src="{{x.image}}">
-    <p>
-     {{x.description}}
-    </p>
+    <img class="full-image"  src="{{x.image}}">
+    <p style="text-align:justify"> {{x.desc}} </p>
   </div>
 </div>
     </div>
@@ -1344,8 +1336,7 @@ is 40minutes.</li>
 
 </div>
        </div>
-<ion-infinite-scroll ng-if="!noMoreItemsAvailable" on-infinite="loadMore()" distance="10%" has-bouncing="true"></ion-infinite-scroll>
-    </ion-content>
+           </ion-content>
 </ion-view>
 </script>
 

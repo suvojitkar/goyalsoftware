@@ -84,6 +84,7 @@ angular.module('starter', ['ionic','starter.controllers','ngCordova','ngStorage'
                      })
 
               .state('Side.dash',{
+                      cache: true,
                      url:'/dash',
                      views: {
                     'appContent' :{
@@ -174,6 +175,7 @@ angular.module('starter', ['ionic','starter.controllers','ngCordova','ngStorage'
                      })
 
                 .state('Side.guest',{
+                  cache: false,
                      url:'/guest',
                      views: {
                     'appContent' :{

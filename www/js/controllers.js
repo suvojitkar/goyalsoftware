@@ -3,7 +3,9 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
 .controller('Ctrl',function($scope,$rootScope,$http,$state,$location,$ionicLoading,$timeout,$ionicHistory,$ionicSideMenuDelegate,ApiEndpoint,$ionicPopup,LoginService){
             
             $scope.len=0;
-			$rootScope.show = [];
+      $rootScope.myData = [{"eventname":"Cricket","venue":"ROLLER SKATING COURT","domain":"sports","description":"Cricket is a bat-and-ball game played between two teams of 11 players each on a field at the centre of which is a rectangular 22-yard-long pitch. The game is played by 120 million players in many countries, making it the world's second most popular sport after association football.","date":"2016-04-06","time":"09:30:00","contact":"satish:987056452","image":"http://rajkar.esy.es/yuthopia/images/cric.jpg","show":"False","id":"1"}];
+        
+        $rootScope.shows =[];
 			$scope.items = [];
 			$scope.noMoreItemsAvailable = false;
 			$scope.len=0, $rootScope.x=0;
@@ -128,6 +130,7 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
 				 
         $scope.events=function()
         {
+          alert($scope.len);
           $ionicLoading.show();
           $location.url('/Side/dash');
              $http({
@@ -135,17 +138,17 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
                         url: ApiEndpoint.url+ 'events.php',
                         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
                       }).then(function successCallback(response){
-                       $scope.myData = response.data.events;
+                       $rootScope.myData = response.data.events;
                         $scope.groups = [];
-                                for (var i=0; i<= $scope.myData.length; i++) {
+                                for (var i=0; i<=$rootScope.myData.length; i++) {
                                   
                                   $scope.groups[i] = {
                                     name: i,
                                     show: false
                                   };
-                                }
-                                
+                                }      
                        $ionicLoading.hide();
+                    
                        //$scope.showAlert($scope.myData);
                       },function errorCallback(response) {
                         $ionicLoading.hide();
@@ -154,6 +157,27 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
               
                       });
         }
+
+
+
+
+        
+   $scope.noMoreItemsAvailable = false;
+       $scope.loadMore = function() {
+        $scope.len = $scope.shows.length;
+       
+        
+    $scope.shows.push({time:$rootScope.myData[$scope.len].time,date:$rootScope.myData[$scope.len].date,id:$rootScope.myData[$scope.len].id,eventname:$rootScope.myData[$scope.len].eventname,domain:$rootScope.myData[$scope.len].domain,venue:$rootScope.myData[$scope.len].venue,image:$rootScope.myData[$scope.len].image});
+   
+    if ( $scope.shows.length == 38 ) {
+      $scope.noMoreItemsAvailable = true;
+
+    }
+    $scope.$broadcast('scroll.infiniteScrollComplete');
+  };
+
+
+
 
          $scope.email=function(user)
         {
@@ -179,11 +203,13 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
           $ionicLoading.show();
              $http({
                         method: 'POST',
-                        url: ApiEndpoint.url+ 'events.php',
+                        url: ApiEndpoint.url+ 'guest.php',
                         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
                       }).then(function successCallback(response){
-                       $scope.myData = response.data.events;
+                       $scope.Data = response.data.res;
+                        $state.go('Side.guest');
                        $ionicLoading.hide();
+
                        //$scope.showAlert($scope.myData);
                       },function errorCallback(response) {
                         $ionicLoading.hide();
@@ -195,6 +221,7 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
 
           $scope.yourevent=function()
         {
+
           $ionicLoading.show();
           $state.go('Side.yourevent');
              $http({
@@ -207,6 +234,7 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
                           if(response.data.yevents)
                           {
                             $scope.myData = response.data.yevents;
+                            $ionicLoading.hide();
                           }
                           else
                           {
@@ -416,19 +444,7 @@ $timeout(function() {
   $scope.signup_redirect = function(){
      $location.url('/signup');
   }
-  
-  $scope.loadMore = function() {
-	  
-	  for($scope.i = $rootScope.x;($scope.i<=($rootScope.x+5)) && ($rootScope.x<$scope.len);$scope.i++)
-	  
-    $rootScope.show.push({ id: $scope.i,p_id:$scope.items($scope.i).id,name:$scope.items($scope.i).name,price:$scope.items($scope.i).price,image:''});
-   
-    if ($scope.items.length == $scope.len) {
-      $scope.noMoreItemsAvailable = true;
-    }
-    $scope.$broadcast('scroll.infiniteScrollComplete');
-	  
-  };
+
   
   
   
