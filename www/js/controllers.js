@@ -130,8 +130,9 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
 				 
         $scope.events=function()
         {
-          alert($scope.len);
+          $ionicHistory.clearHistory()
           $ionicLoading.show();
+         
           $location.url('/Side/dash');
              $http({
                         method: 'POST',
@@ -165,7 +166,7 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
    $scope.noMoreItemsAvailable = false;
        $scope.loadMore = function() {
         $scope.len = $scope.shows.length;
-       
+
         
     $scope.shows.push({time:$rootScope.myData[$scope.len].time,date:$rootScope.myData[$scope.len].date,id:$rootScope.myData[$scope.len].id,eventname:$rootScope.myData[$scope.len].eventname,domain:$rootScope.myData[$scope.len].domain,venue:$rootScope.myData[$scope.len].venue,image:$rootScope.myData[$scope.len].image});
    
