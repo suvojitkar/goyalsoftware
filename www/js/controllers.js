@@ -3,7 +3,7 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
 .controller('Ctrl',function($scope,$rootScope,$http,$state,$location,$ionicLoading,$timeout,$ionicHistory,$ionicSideMenuDelegate,ApiEndpoint,$ionicPopup,LoginService){
             
             $scope.len=0;
-      $rootScope.myData = [{"eventname":"Cricket","venue":"ROLLER SKATING COURT","domain":"sports","description":"Cricket is a bat-and-ball game played between two teams of 11 players each on a field at the centre of which is a rectangular 22-yard-long pitch. The game is played by 120 million players in many countries, making it the world's second most popular sport after association football.","date":"2016-04-06","time":"09:30:00","contact":"satish:987056452","image":"http://rajkar.esy.es/yuthopia/images/cric.jpg","show":"False","id":"1"}];
+      $rootScope.myData = [{"eventname":"Cricket","venue":"ROLLER SKATING COURT","domain":"sports","date":"2016-05-07","time":"09:30:00","image":"http://rajkar.esy.es/yuthopia/images/cric.jpg","id":"1"},{"eventname":"Foootball","venue":"FIELD","domain":"sports","date":"2016-05-06","time":"10:30:00","image":"http://rajkar.esy.es/yuthopia/images/foot.jpg","id":"2"},{"eventname":"Basketball","venue":"BASKETBALL COURT","domain":"Sports","date":"2016-05-07","time":"11:00:00","image":"http://www.atownrebels.com/wp-content/uploads/2015/06/photo_basketball.jpg","id":"3"},{"eventname":"Tug of War","venue":"FIELD","domain":"Sports","date":"2016-05-06","time":"10:30:00","image":"http://tse4.mm.bing.net/th?id=OIP.M3d57b089e2dca2146d37284750b1c4dao0&w=223&h=148&c=7&rs=1&qlt=90&o=4&pid=1.1","id":"4"},{"eventname":"Table Tennis","venue":"TABLE TENNIS/GYM ROOM","domain":"Sports","date":"2016-05-06","time":"11:00:00","image":"http://tse3.mm.bing.net/th?id=OIP.M34dfac489ae670869f85c998d77f58acH0&w=201&h=135&c=7&rs=1&qlt=90&o=4&pid=1.1","id":"5"},{"eventname":"Lawn Tennis","venue":"LAWN TENNIS COURT","domain":"Sports","date":"2016-05-06","time":"11:00:00","image":"http://tse4.mm.bing.net/th?id=OIP.M7a09c8d4bdf08d05101969b140976a85H0&w=203&h=152&c=7&rs=1&qlt=90&o=4&pid=1.1","id":"6"},{"eventname":"Volleyball","venue":"COLLEGE FIELD","domain":"Sports","date":"2016-06-07","time":"09:30:00","image":"http://tse1.mm.bing.net/th?&id=OIP.M944193bc991222a565f5f3cdbaebec31H0&w=299&h=199&c=0&pid=1.9&rs=0&p=0&r=0","id":"7"},{"eventname":"Triathlon","venue":"GATE NO. 3","domain":"Sports","date":"2016-05-08","time":"09:30:00","image":"http://tse1.mm.bing.net/th?id=OIP.M0ac03117b9303270a403b2bd1fefdf1eH0&w=114&h=100&c=7&rs=1&qlt=90&pid=3.1&rm=2","id":"8"},{"eventname":"Chess","venue":"GYM ROOM","domain":"Sports","date":"2016-05-07","time":"09:30:00","image":"http://tse1.mm.bing.net/th?id=A4a0b7763b7b7c493c74caae809fe3a9f&w=182&h=183&c=7&rs=1&qlt=90&pid=3.1&rm=2","id":"9"},{"eventname":"Archery","venue":"FIELD","domain":"Sports","date":"2016-04-13","time":"11:00:00","image":"http://tse1.mm.bing.net/th?id=OIP.M67d885233519148cafe34cdda90f2eb6H0&w=128&h=96&c=7&rs=1&qlt=90&pid=3.1&rm=2","id":"10"},{"eventname":"Hammered","venue":"AUDITORIUM","domain":"On stage","date":"2016-05-08","time":"09:30:00","image":"http://rajkar.esy.es/yuthopia/images/Hammered.jpg","id":"11"},{"eventname":"Just a Minute","venue":"AUDITORIUM","domain":"On stage","date":"2016-05-06","time":"10:30:00","image":"http://rajkar.esy.es/yuthopia/images/just-a-minute.jpg","id":"12"},{"eventname":"Ad Spoof","venue":"AUDITORIUM","domain":"On stage","date":"2016-05-06","time":"11:30:00","image":"http://rajkar.esy.es/yuthopia/images/AdSpoof.jpg","id":"13"},{"eventname":"Quiz","venue":"AV ROOM","domain":"On stage","date":"2016-05-06","time":"12:30:00","image":"http://rajkar.esy.es/yuthopia/images/Quiz.jpg","id":"14"},{"eventname":"Dance","venue":"AUDITORIUM","domain":"On stage","date":"2016-05-07","time":"15:00:00","image":"http://rajkar.esy.es/yuthopia/images/Dance.jpg","id":"15"},{"eventname":"Fashion Show","venue":"AUDITORIUM","domain":"On stage","date":"2016-05-08","time":"11:00:00","image":"http://rajkar.esy.es/yuthopia/images/fashionshow.jpg","id":"16"},{"eventname":"Western Band","venue":"AUDITORIUM","domain":"On stage","date":"2016-05-07","time":"11:00:00","image":"http://rajkar.esy.es/yuthopia/images/Western-Band.jpg","id":"17"},{"eventname":"War of the DJs","venue":"AUDITORIUM","domain":"On stage","date":"2016-05-08","time":"14:00:00","image":"http://rajkar.esy.es/yuthopia/images/War-of-the-djs.jpg","id":"18"},{"eventname":"Stand Up Comedy","venue":"AV ROOM","domain":"On stage","date":"2016-05-07","time":"12:00:00","image":"http://rajkar.esy.es/yuthopia/images/stand-up-comedy.jpg","id":"19"},{"eventname":"NGO Event","venue":"AUDITORIUM","domain":"On stage","date":"2016-05-07","time":"09:15:00","image":"http://rajkar.esy.es/yuthopia/images/ngo.jpg","id":"20"},{"eventname":"Slam Poetry","venue":"PHYSICS LAB","domain":"On stage","date":"2016-05-06","time":"10:30:00","image":"http://rajkar.esy.es/yuthopia/images/Slam Poetry.jpg","id":"21"},{"eventname":"Debate","venue":"HIT-A SEMINAR HALL","domain":"On stage","date":"2016-05-07","time":"12:00:00","image":"http://rajkar.esy.es/yuthopia/images/Debate.jpg","id":"22"},{"eventname":"Pretentious Movie Reviews","venue":"AUDITORIUM","domain":"On stage","date":"2016-05-06","time":"14:15:00","image":"http://rajkar.esy.es/yuthopia/images/Pretentious-movie-reviews.jpg\t","id":"23"},{"eventname":"Comic Strip Designing","venue":"BIOLOGY LAB","domain":"Off stage","date":"2016-05-07","time":"11:00:00","image":"http://rajkar.esy.es/yuthopia/images/Comicstripdesigning.jpg","id":"24"},{"eventname":"Creative Writing","venue":"COMPUTER LAB","domain":"Off stage","date":"2016-05-06","time":"10:30:00","image":"http://tse2.mm.bing.net/th?id=OIP.M6af296c74057ff822379b7e4ea42be06H0&w=152&h=149&c=7&rs=1&qlt=90&o=4&pid=1.1","id":"25"},{"eventname":"Counter Strike Global Offensive and FIFA","venue":"COMPUTER LAB","domain":"Off stage","date":"2016-04-01","time":"11:00:00","image":"http://rajkar.esy.es/yuthopia/images/Counterstrikeandfifa.jpg","id":"26"},{"eventname":"Video Making","venue":"ACTIVITY BRIDGE","domain":"Off stage","date":"2016-05-06","time":"10:30:00","image":"http://rajkar.esy.es/yuthopia/images/videography.jpg","id":"27"},{"eventname":"Graffiti","venue":"ACTIVITY FOYER","domain":"Off stage","date":"2016-04-08","time":"10:30:00","image":"http://rajkar.esy.es/yuthopia/images/graffiti.jpg","id":"28"},{"eventname":"Fireless Cooking","venue":"HOME SCIENCE LAB","domain":"Off stage","date":"2016-05-07","time":"10:00:00","image":"http://rajkar.esy.es/yuthopia/images/Fireless-cooking.jpg","id":"29"},{"eventname":"Photography","venue":"ACTIVITY BRIDGE","domain":"Off stage","date":"2016-05-06","time":"10:30:00","image":"http://rajkar.esy.es/yuthopia/images/Photography.jpg","id":"30"},{"eventname":"Treasure Hunt","venue":"SENIOR SCHOOL LIBRARY","domain":"Off stage","date":"2016-04-07","time":"12:30:00","image":"http://rajkar.esy.es/yuthopia/images/Treasure-Hunt.jpg","id":"31"},{"eventname":"Rubik's Mania","venue":"COMPUTER LAB","domain":"Offstage","date":"2016-05-06","time":"11:30:00","image":"http://rajkar.esy.es/yuthopia/images/rubiks-cube.jpeg","id":"32"},{"eventname":"Water Polo","venue":"ANKUR SWIMMING POOL","domain":"Off stage","date":"2016-05-06","time":"11:00:00","image":"http://rajkar.esy.es/yuthopia/images/Water-polo.jpg","id":"33"},{"eventname":"Laser Tag","venue":"IB BUILDING","domain":"Off stage","date":"2016-04-01","time":"12:00:00","image":"http://rajkar.esy.es/yuthopia/images/Laser-tAG.jpg","id":"34"},{"eventname":"9-ball Pool","venue":"QUADRANGLE","domain":"Off stage","date":"2016-05-06","time":"11:00:00","image":"http://rajkar.esy.es/yuthopia/images/Pool.jpg","id":"35"},{"eventname":"Taekwondo","venue":"MARTIAL ARTS ROOM","domain":"Off stage","date":"2016-05-07","time":"09:30:00","image":"http://rajkar.esy.es/yuthopia/images/TAEKWONDO.jpg","id":"36"},{"eventname":"Archery","venue":"FIELD","domain":"Off stage","date":"2016-05-06","time":"11:00:00","image":"http://tse1.mm.bing.net/th?id=OIP.M67d885233519148cafe34cdda90f2eb6H0&w=128&h=96&c=7&rs=1&qlt=90&pid=3.1&rm=2","id":"37"},{"eventname":"Chess","venue":"GYM ROOM","domain":"Off stage","date":"2016-05-06","time":"09:30:00","image":"http://tse1.mm.bing.net/th?id=A4a0b7763b7b7c493c74caae809fe3a9f&w=182&h=183&c=7&rs=1&qlt=90&pid=3.1&rm=2","id":"38"}];
         
         $rootScope.shows =[];
 			$scope.items = [];
@@ -52,16 +52,7 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
                                         else 
                                         {
 
-                                          // LoginService.loginUser(response.data.result[0].phonenumber).success(function(data) {
-                                          //     $state.go('Side.dash');
-
-                                          // }).error(function(data) {
-                                          //     var alertPopup = $ionicPopup.alert({
-                                          //         title: 'Login failed!',
-                                          //         template: 'Please check your credentials!'
-                                          //     });
-                                          // });
-                                          // $rootScope.session = response.data;
+                                       
                                           window.localStorage.setItem("phonenumber", response.data.result[0].phonenumber);
                                           window.localStorage.setItem("username", response.data.result[0].name);
                                          
@@ -130,13 +121,14 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
 				 
         $scope.events=function()
         {
-          $ionicHistory.clearHistory()
           $ionicLoading.show();
-         
           $location.url('/Side/dash');
-             $http({
+          
+
+
+                        $http({
                         method: 'POST',
-                        url: ApiEndpoint.url+ 'events.php',
+                        url: ApiEndpoint.url+ 'eventname.php',
                         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
                       }).then(function successCallback(response){
                        $rootScope.myData = response.data.events;
@@ -148,8 +140,8 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
                                     show: false
                                   };
                                 }      
+
                        $ionicLoading.hide();
-                    
                        //$scope.showAlert($scope.myData);
                       },function errorCallback(response) {
                         $ionicLoading.hide();
@@ -157,9 +149,44 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
               $scope.showAlert("<center>No Internet Connection</center>","ERROR");
               
                       });
+           
         }
+       
+
+        $scope.eventdesc=function(id)
+        {
+          $ionicLoading.show();
+          $location.url('/Side/eventdesc');
+          
 
 
+                        $http({
+                        method: 'POST',
+                        url: ApiEndpoint.url+ 'eventdesc.php',
+                        data:{"eventid":id},
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+                      }).then(function successCallback(response){
+                       $rootScope.Data = response.data.events;
+                       $rootScope.eventdetails = response.data.details;
+                        $scope.groups = [];
+                                for (var i=0; i<=$rootScope.myData.length; i++) {
+                                  
+                                  $scope.groups[i] = {
+                                    name: i,
+                                    show: false
+                                  };
+                                }      
+
+                       $ionicLoading.hide();
+                       //$scope.showAlert($scope.myData);
+                      },function errorCallback(response) {
+                        $ionicLoading.hide();
+                          console.log("ERROR");
+              $scope.showAlert("<center>No Internet Connection</center>","ERROR");
+              
+                      });
+           
+        }
 
 
         
@@ -210,8 +237,6 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
                        $scope.Data = response.data.res;
                         $state.go('Side.guest');
                        $ionicLoading.hide();
-
-                       //$scope.showAlert($scope.myData);
                       },function errorCallback(response) {
                         $ionicLoading.hide();
                           console.log("ERROR");
@@ -234,7 +259,7 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
                         $ionicLoading.hide();
                           if(response.data.yevents)
                           {
-                            $scope.myData = response.data.yevents;
+                            $scope.myyoureventData = response.data.yevents;
                             $ionicLoading.hide();
                           }
                           else
@@ -286,20 +311,6 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
               //$scope.showAlert($rootScope.verified);
               $state.go('Side.yuthopia', {}, {reload: true}); 
               $window.location.reload(true);
-				// $http({
-    //                     method: 'POST',
-    //                     url: ApiEndpoint.url+ 'loggedout/',
-    //                     data:{loggedout:1}
-    //                   }).then(function successCallback(response) {
-    //                      					window.localStorage.setItem("phonenumber", null);
-    //                               window.localStorage.setItem("username",null);
-    //                               alert(window.localStorage.getItem("phonenumber"));
-    //                               alert(window.localStorage.getItem("username"));
-                                 
-                                  
-    //                   }, function errorCallback(response) {
-                         
-    //                   });
 			}
 			
 		

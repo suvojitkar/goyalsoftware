@@ -50,7 +50,7 @@
                  <a href="#/Side/Page1" ng-if="verified!=1" class="item item-icon-left" menu-close> <i class="icon ion-home"></i>Login</a>
                     
               <a href="#/Side/yuthopia" class="item item-icon-left" menu-close> <i class="icon ion-social-hackernews"></i>Youthopia&#39;16</a>
-              <button  ng-click="events()" class="item item-icon-left" style="width: 100%; text-align: left;" menu-close> <i class="icon ion-ios-americanfootball"></i>Events</button>
+              <a href="#/Side/dash" ng-click="events()" class="item item-icon-left" style="width: 100%; text-align: left;" menu-close> <i class="icon ion-ios-americanfootball"></i>Events</a>
               <a href="#/Side/heritage" class="item item-icon-left" menu-close>  <i class="icon ion-ios-flower"></i>Heritage School</a>
 
               <a href="#/Side/principal" class="item item-icon-left" menu-close><i class="icon ion-ios-mic"></i>Principal&#39;s desk</a>
@@ -172,9 +172,7 @@
 	
 
 
-
-
- <script id="dash.html" type="text/ng-template">
+<script id="dash.html" type="text/ng-template">
 <ion-view hide-nav-bar="true">
 
 <div style="background-color:#FE534B" class="bar bar-header bar-positive">
@@ -185,892 +183,81 @@
     </div>
 
  <ion-content>
+<br><br>
+ <div class="list card padding">
+    <a class="item item-avatar" href="#" ng-repeat="x in myData" id={{x.id}} ng-click="eventdesc({{x.id}})">
+      <img src={{x.image}}>
+      <h2>{{x.eventname}}</h2>
+      <p>{{x.domain}}</p>
+    </a>
+</div>
+
+ </ion-content>
+ </ion-view>
+ </script>
  
 
- <ion-list>
-   <br><br>
- <ion-item style="background: transparent;border: none;" class="list card padding" ng-repeat="x in shows">
+
+ <script id="eventdesc.html" type="text/ng-template">
+<ion-view hide-nav-bar="true">
+
+<div ng-repeat ="x in eventdetails"  style="background-color:#FE534B" class="bar bar-header bar-positive">
+      <button class="button button-icon icon ion-navicon" style="text-align:left;padding-right:20px" menu-toggle = "left"></button> 
+     <h1 class="title">{{x.eventname}}</h1>
+    </div>
+
+
+ <ion-content>
+
+ <ion-list ng-repeat ="x in eventdetails">
+ <ion-item style="background: transparent;border: none;" class="list card padding">
+
+<div class="list card">
   <div class="item item-avatar">
-    <img src="{{x.image}}">
+    <img src={{x.image}}>
     <h2>{{x.eventname}}</h2>
     <p>{{x.domain}}</p>
   </div>
-  <div class="item item-body">
-     <center><p>VENUE: {{x.venue}}</p></center>
-       <ion-list>
-        <div ng-repeat="group in groups">
-          <ion-item ng-if="x.id == group.name" class="item-stable button button-block button-positive"
-                    ng-click="toggleGroup(group)"
-                    ng-class="{active: isGroupShown(group)}">
-              <i class="icon" ng-if="x.id == group.name" ng-class="isGroupShown(group) ? 'ion-chevron-up' : 'ion-chevron-down'"></i>
 
+  <div class="item item-image padding">
+    <img src={{x.image}}>
+  </div>
+
+  <a class="item" href="#">
+     <center>VENUE : {{x.venue}}</center>
+  </a>
+    <ion-list>
+        <div >
+          <ion-item class="item-stable button button-block button-positive">
+              <i class="icon" ></i>
             &nbsp;
-         <span style="text-align:center"> More on {{x.eventname}} </span>
+         <span style="text-align:center"> Rules on {{x.eventname}} </span>
+          </ion-item>
+          <ion-item  style="white-space:normal;text-align:justify;"class="item-accordion" >
+            <ol style="list-style:initial !important" class="padding">
+              <li ng-repeat= "y in Data">{{y.rule}}</li>
+            </ol>
+             <p class="row">
+      <a  href="#" class="subdued col col-30" style="color:#17375E">{{x.date | date:'d/MM/yyyy'}}</a><br>
+      <a  href="#" class="subdued col col-25" style="color:#17375E">{{x.time}}</a><br>
+      <button href="#" class="subdued col col-40 button button-balanced" style="color:#fff" id="{{x.id}}"ng-click="subscribe({{x.id}})">Subscribe</button>
+    </p>
           </ion-item>
 
-          <ion-item ng-if="group.name == 1" style="white-space:normal;text-align:justify;"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important" class="padding">
-                <li>Number of participants-6+1 (rolling substitute) +1 (in case of injury).</li>
-                <li> Each innings will be of 4 overs</li>
-                <li>The event will be only for boys.</li>
-                <li>The whole team must be wearing the same uniform.</li>
-                <li>Other details will be given on the spot.</li>
-           </ol>
-          </ion-item>
-
-          <ion-item ng-if="group.name == 2" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important" class="padding">
-                <li> Number of participants-7+6.</li>
-                <li>Duration- 30 minutes consisting of two equal halves.</li>
-                <li>Roll-in substitution allowed.</li>
-                <li>No offside rules</li>
-                <li>Separate event for boys and girls.</li>
-                <li>Dress Code- school football jersey with shorts and football boots, shin guards and stockings are compulsory</li>
-                <li>If the match ends in a draw, then direct penalty shootouts will take place.</li>
-                <li>Referee’s decision is final.</li>
-                <li>If fewer teams are participating then league and knockout format will be
-
-followed else knockout format will be followed.</li>
-           </ol>
-          </ion-item>
-
-
-           <ion-item ng-if="group.name == 3" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important" class="padding">
-                <li>Number of participants-5+3.</li>
-                <li>Duration- 20 minutes consisting of two equal halves.</li>
-                <li>Jerseys should have a clear numbering on the back as well as in the front.</li>
-                <li>Separate event for boys and girls.</li>
-                <li>The kit number should be from 4 to 15. Players without the mentioned jersey number will not be allowed.</li>
-                <li>The same jersey number should</li>
-                <li>Roll-in substitution allowed.</li>
-           </ol>
-          </ion-item>
-
-
-           <ion-item ng-if="group.name == 4" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important" class="padding">
-               <li>Number of participants: 10+2.</li>
-               <li>Participants need to wear their school sports uniforms.</li>
-               <li>Other rules to be explained on the spot.</li>
-           </ol>
-          </ion-item>
-
-
-         
-           <ion-item ng-if="group.name == 5" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important" class="padding">
-             <li>Number of participants – 3 (2 singles, 1 doubles pair).</li>
-             <li>No individual matches. All matches are played in ‘teams’.</li>
-             <li>Matches will be of 11 points.</li>
-             <li>All rules and regulations of TTFI to be followed.</li>
-             <li>Separate events for boys and girls.</li>
-             <li>Only the finals will be of a best-of- five match (4 singles and 1 double).</li>
-           </ol>
-          </ion-item>
-
- <ion-item ng-if="group.name == 6" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important" class="padding">
-             <li> Number of participants- 2 + 1(reserved)</li>
-<li>Participants are to bring their own kit.</li>
-<li>Matches will be of one set each.</li>
-</li>Sets will be played on the basis of 6 all tiebreakers.</li>
-</li>2 single matches will be played</li>
-<li>In case of a tie, a doubles match will be played as a decider</li>
-</li>Separate events for boys and girls.</li>
-           </ol>
-          </ion-item>
-
-
-          <ion-item ng-if="group.name == 7" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important" class="padding">
-            <li>Number of participants-6+3.</li>
-
-<li>Matches will be on knock out basis.</li>
-
-<li>Boys: Set length 25 points.</li>
-
-<li>Girls: Set length 15 points.</li>
-
-<li>Winning team must have a lead of 2 points or else the match will continue (in
-
-case of tie).</li>
-
-<li>Dress code- School sports jersey.</li>
-           </ol>
-          </ion-item>
-
-
-          <ion-item ng-if="group.name == 8" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important" class="padding">
-           <li>Number of participants-1.</li>
-
-<li>This event consists of the activities of cycling, swimming and running.</li>
-<li>The event starts off with cycling, followed by running, and ends with
-swimming.</li>
-<li>Cycling – 800m for boys &amp; girls</li>
-<li>Running – 600m for boys &amp; 400m for girls</li>
-<li>Swimming – 50m for boys &amp; 25m for girls</li>
-<li>A total of 8 participants will qualify after the prelims are done.</li>
-<li>The finals will be held on the third day of the fest.</li>
-<li>Event to be held separately for boys and girls.</li>
-
-           </ol>
-          </ion-item>
-
-
- <ion-item ng-if="group.name == 9" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important" class="padding">
-            <li>Number of participants- 1</li>
-
-<li>15 minute each for a maximum of 5 rounds.</li>
-<li>All other laws of FIDE will be applied.</li>
-<li>There will only be one combined tournament for boys &amp; girls</li>
-<li>Participants must be in their school uniform and must carry their school id
-card</li>
-
-           </ol>
-          </ion-item>
-
-
-
-          <ion-item ng-if="group.name == 10" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important" class="padding">
-                   <li>Number of participants- 2.</li>
-                  <li>Matches will be on knock out basis.</li>
-                  <li>Separate event or boys and girls.</li>
-
-                 <li>It will be a 10-meter distance competition.</li>
-
-                <li>It will be a 3 round competition.</li>
-
-                  <li>In each round, everybody will shoot 3 arrows within 2 minutes.</li>
-
-                  <li>One round will be considered for trials (boys and girls).</li>
-
-                   <li>Referee’s decision shall be final.</li>
-                    </ol>
-                  </ion-item>
-
-
-            <ion-item ng-if="group.name == 11" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important" class="padding">
-                 
-                  <li>Number of participants – 1.</li>
-
-<li>Duration- 30 seconds, per topic.</li>
-
-<li>The moderators shall provide the participants with their stances.</li>
-
-<li>A change in topic will occur once 30 seconds of the respective topic have been
-
-exhausted.</li>
-
-<li> Total number of topics will be twice the number of the participating schools.</li>
-
-<li>Each school will get two topics on which it shall start the round.</li>
-
-<li>Any use of obscene or inappropriate language shall not be entertained and shall
-
-lead to immediate disqualification.</li>
-
-<li>Judging Criteria:</li>
-
-<li>Creativity.</li>
-
-<li>Content.</li>
-
-<li>Delivery.</li>
-                    </ol>
-                  </ion-item>
-
-
-
-                   <ion-item ng-if="group.name == 12" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important" class="padding">
-                 
-                <li> Number of participants- 1.</li>
-
-                <li>Duration- 1 minute.</li>
-
-<li>Participants must display originality.</li>
-
-<li>The skill that is displayed must not be dangerous.</li>
-
-<li>Participant should not exceed the time limit of a minute.</li>
-
-<li>Judging criteria:</li>
- <li> Composition.</li>
-
-<li>Development of ideas.</li>
-
-<li>Skill, technique and process.</li>
-
-<li>Depth and breadth of composition.</li>
-
-<li>Presentation of work.</li>
-
-                    </ol>
-                  </ion-item>
-
-
-
-
-                     <ion-item ng-if="group.name == 13" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important" class="padding">
-                 
-               <li>Number of participants – 5+2.</li>
-
-<li>Duration - 3+1 minutes.</li>
-
-<li>No additional time shall be provided.</li>
-
-<li>Any kind of inappropriate language or obscene content shall lead to expulsion
-
-from the stage.</li>
-
-<li>The schools must get their own props for the acts.</li>
-
-<li> No particular theme or topic shall be provided. The participants are free to make
-
-acts as per their wish.</li>
-
-<li> Judging Criteria:</li>
-
-<li> Creativity.</li>
-
-<li> Content.</li>
-
-<li>Delivery.</li>
-
-                    </ol>
-                  </ion-item>
-
-
-
-
-                      <ion-item ng-if="group.name == 14" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important" class="padding">
-                 
-               <li>Number of participants – 2.</li>
- <li> The quiz will be based on general knowledge and will not be subject specific.</li>
-
- <li> There will be a preliminary written quiz, which will be timed as well.</li>
-
- <li> On the basis of the written quiz, the teams entering the final quiz will be
-
-selected.</li>
-
- <li> Only 8 teams will be selected for the final quiz.</li>
-
- <li> The rules of the various rounds of the final quiz and their respective pointing
-
-systems will be informed to the teams on the floor prior to the quizzing.</li>
-
- <li> As always, the quiz masters decision shall be final.</li>
-
-                    </ol>
-                  </ion-item>
-
-
-
-                      <ion-item ng-if="group.name == 15" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important" class="padding">
-                 
-             <li>Number of participants - 8+4.</li>
-
-<li>Duration- 6+2 minutes.</li>
-
-<li>Points shall be deducted for exceeding the time limit.</li>
-
-<li>Vulgarity of any kind will not be entertained and will lead to disqualification.</li>
-
-<li>School representatives must have a back-up CD or external storage device.</li>
-
-<li>Original CD or external storage device must be submitted at the registration
-
-desk, a day before the event.</li>
-
-<li>One representative from each school should be present at the technical forum
-
-prior to the performance.</li>
-
-<li>Each school must carry their own props.</li>
-
-<li>Bollywood songs are not allowed.</li>
-
-<li>No offensive language should be there in the songs.</li>
-
-<li>The performance should be limited to the stage.</li>
-
-<li>Chewing gum on stage is strictly prohibited.</li>
-
-<li>Judging Criteria:</li>
-
-<li>Theme.</li>
-
-<li>Choreography.</li>
-
-<li>Coordination.</li>
-
-<li>Costume (Appropriateness to the theme and the school environment).</li>
-
-<li>Executed within time.</li>
-
-                    </ol>
-                  </ion-item>
-
-
-
-
-
-
-                      <ion-item ng-if="group.name == 16" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important" class="padding">
-                 
-           <li> Number of participants – 10+2 (for backstage help).</li>
-
-<li> Duration- 5+2 minutes.</li>
-
-<li> All attire must follow norms of decency.</li>
-
-<li> Any apparel that the judges consider obscene shall lead to immediate
-
-disqualification.</li>
-
-<li>  Points shall be deducted for exceeding the time limit.</li>
-
-<li>  Vulgarity of any kind will not be entertained and will lead to disqualification.</li>
-
-<li>  School representatives must have a back-up CD or external storage device.</li>
-
-<li>  Original CD or external storage device must be submitted at the registration
-
-desk, a day before the event.</li>
-
-<li> One representative from each school should be present at the technical forum
-
-prior to the performance.</li>
-
-<li> Bollywood songs are not allowed.</li>
-
-<li> No offensive language should be there in the songs.</li>
-
-<li>  Judging criteria:</li>
-
-<li>  Depiction of theme.</li>
-
-<li>  Music.</li>
-
-<li>  Wardrobe coordination.</li>
-
-<li>  Ramp walk.</li>
-
-<li> Choreography.</li>
-
-                    </ol>
-                  </ion-item>
-
-
-
-
-                   <ion-item ng-if="group.name == 17" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important" class="padding">
-                 
-          <li> Number of participants - 4-7.</li>
-
-<li> Duration 7+2 minutes.</li>
-
-<li> The time allotted includes time for sound check.</li>
-
-<li>Use of any kind of inappropriate language or vernacular language will lead to
-
-immediate disqualification.</li>
-
-<li> Participants are to perform in their school uniforms.</li>
-
-<li> Pre-Recorded music of any kind will not be allowed.</li>
-
-<li> The drum kit shall be provided by the school.</li>
-
-<li> Judging criteria:</li>
-
-<li> Vocals.</li>
-
-<li> Instruments.</li>
-
-<li>Synchronization.</li>
-
-<li>Audience Appeal/Expression.</li>
-
-<li>Delivery.</li>
-<li> Audience Encore.</li>
-
-                    </ol>
-                  </ion-item>
-
-                   <ion-item ng-if="group.name == 18" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important" class="padding">
-                <li> Number of participants – 1.</li>
-
-<li> Duration – 8+2 minutes.</li>
-<li> No Bollywood tracks will be allowed.</li>
-
-<li> There is a compulsion of a minimum of two genres.</li>
-
-<li> Participants are not allowed to go in front of the console.</li>
-
-<li> Music containing foul language or objectionable words will lead to
-
-disqualification.</li>
-
-<li>  Increasing the master volume unnecessarily is not allowed.</li>
-
-<li>  Playing pre-recorded sets and mashups will lead to disqualification.</li>
-
-<li>  Judging Criteria:</li>
-
-<li>  Body Language.</li>
-
-<li>  Selection of Tracks.</li>
-
-<li>  Mixing and equalizing.</li>
-
-<li>  Interaction with the crowd.</li>
-
-<li>  Usage of effects.</li>
-
-                    </ol>
-                  </ion-item>
-
-
-
-                   <ion-item ng-if="group.name == 19" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important" class="padding">
-             <li> Number of participants- 1+1.</li>
-
-<li>Duration – 2+1 minutes.</li>
-
-<li>If the judges feel that the performance is vulgar, the participant will be
-
-disqualified immediately.</li>
-
-<li>No foul language is to be used during the performance.</li>
-
-<li> Communal or racist jokes, and innuendos are to be strictly avoided.</li>
-
-<li> Judging Criteria:</li>
-
-<li> Content.</li>
-
-<li> Diction.</li>
-
-<li> Expression.</li>
-
-<li>Delivery.</li>
-
-<li>Audience Encore.</li>
-                    </ol>
-                  </ion-item>
-
-
-                    <ion-item ng-if="group.name == 21" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important" class="padding">
-             <li>Number of participants- 1.</li>
-
-<li>Duration</li>
-
-<li> Recitation- 2+1 minutes.</li>
-
-<li> Preparation- 1 hour.</li>
-
-<li> Communal or racist pieces will lead to disqualification or negative marking.</li>
-
-<li> Topics to be given on spot.</li>
-                    </ol>
-                  </ion-item>
-
-
-
-                   <ion-item ng-if="group.name == 20" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important" class="padding">
-             <li>Duration – 5+5 minutes.</li>
-<li> 5-7 minutes for stage preparation.</li>
-
-<li>CDs or external storage devices to be submitted at the registration desk on the
-
-day before the event.</li>
-                    </ol>
-                  </ion-item>
-
-
-
-                   <ion-item ng-if="group.name == 22" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important" class="padding">
-           <li>Number of participants- 2.</li>
-
- <li> Duration- 2+1 minutes for speech and 1 minute for rebuttal.</li>
-
- <li> One participant of each school will be a member of the proposition, and the
-
-other will be a member of the opposition.</li>
-
- <li> Schools will be divided into groups on the basis of a lucky draw.</li>
-
- <li> Topics will be given at the end of the first day of the fest.</li>
-                    </ol>
-                  </ion-item>
-
-
-
-                  <ion-item ng-if="group.name == 23" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important" class="padding">
-                  <li>Number of participants- 2 +1 (to be present at the technical forum).</li>
-
-<li> Duration- 5+2 minutes.</li>
-
-<li> Topic will be given at the second representative’s meeting.</li>
-                    </ol>
-                  </ion-item>
-
-
-
-
-                    <ion-item ng-if="group.name == 24" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important" class="padding">
-                 <li> Number of participants-1.</li>
-
- <li> Duration- 2 hours.</li>
-
- <li>Topics will be disclosed on the spot.</li>
-
- <li> Participants are required to make at least 8 frames.</li>
-
- <li> Paper will be provided on spot.</li>
-
-<li>Participants are to bring their own stationary.</li>
-
- <li> Judging criteria:</li>
-
- <li> Composition.</li>
-
- <li> Development of ideas.</li>
-
- <li> Skill, technique and process.</li>
-
- <li> Depth and breadth of composition.</li>
-
- <li> Presentation of work.</li>
-                    </ol>
-                  </ion-item>
-
-
-
-                   <ion-item ng-if="group.name == 25" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important" class="padding">
-                <li>Number of participants-1+1+1 (Total: 3).</li>
-
- <li>Duration- 1 hour.</li>
-
- <li> Languages- English, Hindi and Bengali.</li>
-
- <li> Topics will be disclosed on the spot.</li>
-
- <li>Paper will be provided on spot. Participants are to bring their own stationary.</li>
-
- <li>No electronic devices allowed.</li>
-                    </ol>
-                  </ion-item>
-
-
-
-                   <ion-item ng-if="group.name == 26" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important" class="padding">
-               <li>Number of participants-7 (5for Counter Strike and 2 for FIFA™).</li>
-
- <li>Duration- On Spot.</li>
-
- <li> Electronic devices, apart from headphones, are not allowed.</li>
-
- <li>Use of colloquial language and signs is not permitted and will lead to
-
-disqualification.</li>
-                    </ol>
-                  </ion-item>
-
-
-
-                   <ion-item ng-if="group.name == 27" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important" class="padding">
-              <li> Number of participants-2.</li>
-
- <li> Duration- First two days of the fest.</li>
-
- <li> Participants are to bring their own equipment and no additional help will be
-
-provided.</li>
-
- <li> The memory card of the camera should be empty.</li>
-
- <li> Shooting only inside the school campus.</li>
-
- <li> Judging criteria:</li>
-
- <li> Concept.</li>
-
- <li> Skill.</li>
-
- <li> Editing.</li>
-
- <li> Presentation.</li>
-                    </ol>
-                  </ion-item>
-
-
-
-                   <ion-item ng-if="group.name == 28" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important" class="padding">
-            <li>Number of participants-2.</li>
-
- <li> Duration- 2 hours.</li>
-
- <li> Paint and material to be brought by the participants.</li>
-
- <li> Judging criteria:</li>
-
- <li> Composition.</li>
-
- <li> Development of ideas.</li>
-
- <li> Skill, technique and process.</li>
-
- <li> Depth and breadth of composition.</li>
-
- <li> Presentation of work.</li>
-                    </ol>
-                  </ion-item>
-
-
- <ion-item ng-if="group.name == 29" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important" class="padding">
-                 <li>Number of participants- 2. </li>
-
-<li>Duration- 2 hours.</li>
-
-<li> Participants are required to make 1 drink, 1snack/starter and 1 dessert.</li>
-
-<li> Participants can place a requisition to the Heritan Representatives for the
-
-materials, ingredients and cutlerY and serving plates and glasses, at the end of
-
-the first day of the fest.</li>
-
-<li> All meals must be prepared without any use of fire and no equipment such as
-
-induction cook-topcan be used.</li>
-
-<li> Food should be vegetarian.</li>
-
-<li> No type of alcohol should be used.</li>
-
-<li> Refrigerator will be provided.</li>
-
-<li> Boiled vegetables, prepared sauce and plain cakes/biscuits can be brought for
-
-the event.</li>
-
-<li> Extra points will be awarded for good presentation and cleanliness on the
-
-working table.</li>
-
-<li> Judging Criteria:</li>
-
-<li> Taste, Flavour and Colour.</li>
-
-<li> Table layout and presentation.</li>
-
-<li> Originality.</li>
-
-<li> Cleanliness.</li>
-
-<li> Preparation time taken.</li>
-                    </ol>
-                  </ion-item>
-
-
-
- <ion-item ng-if="group.name == 30" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important" class="padding">
-           <li>Number of participants- 2.</li>
-
- <li> Duration- Whole Day.</li>
-
- <li> Participants have to bring their own camera.</li>
-
- <li> The memory card of the camera should be empty.</li>
-
- <li> Theme will be given on the spot.</li>
-
- <li> Camera Model, Lens used, Shutter speed, Aperture, ISO, Metering, Mode, All
-
-these are the EXIFdetails.</li>
-
- <li>Judging Criteria:</li>
-
- <li> Originality.</li>
-
- <li> Technical Excellence.</li>
-
- <li> Composition.</li>
-
- <li> Artistic Merit.</li>
-
- <li> Overall impact.</li>
-                    </ol>
-                  </ion-item>
-
-
- <ion-item ng-if="group.name == 31" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important" class="padding">
-          <li>Number of participants - 2 (representative event).</li>
-
- <li> Use of mobile phones or any other e-devices will lead to immediate
-
-disqualification.</li>
-                    </ol>
-                  </ion-item>
-
-
-
-                   <ion-item ng-if="group.name == 32" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-              <ol style="list-style:initial !important" class="padding">
-           <li> Number of participants- 1.</li>
-
-<li> There will be 3 rounds.</li>
-
-<li> 1st round- Participants will solve the Rubiks Cube (3*3). Time limit is 2 minutes</li>
-
-in which, a maximum of 7 participants will qualify for the next round.</li>
-
-<li> 2nd round- The qualified participants will solve Rubiks Revenge (4*4). Time
-
-limit is 15minutes in which,5 participants will qualify for the next round.</li>
-
-<li> 3rd round- Participants will solve the Professors Cube (5*5) time limit for which
-
-is 40minutes.</li>
-                    </ol>
-                  </ion-item>
-
-
-
-
- <ion-item ng-if="group.name == 33" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-      <ol style="list-style:initial !important" class="padding">     
-
-
-                  <li>Number of participants- 5+3.</li>
-
-<li> The matches will be played as</li>
-
-<li> 7min-2min- 7min for boys.</li>
-
-<li>5min-2min- 5min for girls.</li>
-
-<li> Going underwater with the ball will not be allowed.</li>
-
-<li> 5 seconds hold.</li>
-
-<li>The scoring can only be done from or behind the 1.5 meter mark.</li>
-
-<li> No body contact is allowed.</li>
-
-<li> Players are allowed to run and swim.</li>
-
-<li> Referee’s decision will be final.</li>
- </ol>
-                  </ion-item>
-
-
-     <ion-item ng-if="group.name == 34" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important" class="padding">
-                    <li> Number of participants- 8+2.</li>
-
-<li> Other rules shall be explained on spot.</li>
-                    </ol>
-                  </ion-item>
-
-                  <ion-item ng-if="group.name == 35" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important" class="padding">
-                   <li> Number of participants- 1.</li>
-<li> The school will be providing cue sticks and other equipment.</li>
-
-<li> All rules will be explained on spot.</li>
-
-<li> All rules of the WPA shall be followed.</li>
-                    </ol>
-                  </ion-item>
-
-
-
-
-                  <ion-item ng-if="group.name == 36" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important" class="padding">
-                  <li>Number of participants- 1.</li>
-
-<li> This is a boys’ event.</li>
-
-<li> The rules have been attached with the email.</li>
-                    </ol>
-                  </ion-item>
-
-
-                   <ion-item ng-if="group.name == 37" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important" class="padding">
-                  <li>Number of participants- 2.</li>
-
-                  <li>Matches will be on knock out basis.</li>
-
-                  <li>Separate event or boys and girls.</li>
-
-                  <li>It will be a 10 meter distance competition.</li>
-
-                  <li>In each round, everybody will shoot 3 arrows within 2 minutes.</li>
-
-                  <li>One round will be considered for trials (boys and girls).</li>
-
-                  <li>Referee’s decision shall be final.</li>
-                    </ol>
-                  </ion-item>
-
-
-                   <ion-item ng-if="group.name == 38" style="white-space:normal;text-align:justify;list-style:initial"class="item-accordion" ng-show="isGroupShown(group,{{group.name}},{{x.id}})">
-           <ol style="list-style:initial !important" class="padding">
-                  <li>Number of participants- 4</li>
-
-                  <li>15 minutes each for a maximum of 7 rounds.</li>
-
-                  <li>All other laws of FIDE will be applied.</li>
-                    </ol>
-                  </ion-item>
-
-
+        
                                 
 
 
         </div>
       </ion-list>
-    <p class="row">
-      <a  href="#" class="subdued col col-30" style="color:#17375E">{{x.date | date:'d/MM/yyyy'}}</a><br>
-      <a  href="#" class="subdued col col-25" style="color:#17375E">{{x.time}}</a><br>
-      <button href="#" class="subdued col col-40 button button-balanced" style="color:#fff" id="{{x.id}}" ng-click="subscribe({{x.id}})">Subscribe</button>
-    </p>
-  </div>
-    </ion-item>
+</div>
+
+  
+ 
 
 
     </ion-list>
- <ion-infinite-scroll ng-if="!noMoreItemsAvailable" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
+
 </ion-content>
 
 </ion-view>
@@ -1179,7 +366,7 @@ is 40minutes.</li>
          <div class="list card">
 
   <div class="item item-body">
-    <img class="full-image" src="data:image/jpeg;base64,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">
+    <img class="full-image" src="data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAAAyAAD/4QMraHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjMtYzAxMSA2Ni4xNDU2NjEsIDIwMTIvMDIvMDYtMTQ6NTY6MjcgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzYgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjVCRUVFOEEwMTE0OTExRTY4Q0FCOTU4NUVDNzgzNjNCIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjVCRUVFOEExMTE0OTExRTY4Q0FCOTU4NUVDNzgzNjNCIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6NUJFRUU4OUUxMTQ5MTFFNjhDQUI5NTg1RUM3ODM2M0IiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NUJFRUU4OUYxMTQ5MTFFNjhDQUI5NTg1RUM3ODM2M0IiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7/7gAOQWRvYmUAZMAAAAAB/9sAhAAIBgYGBgYIBgYIDAgHCAwOCggI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">
     <p>
       <center><b>Vihaan Sachdev</b></center>
     </p>
@@ -1323,7 +510,7 @@ is 40minutes.</li>
     </div>
     <ion-content padding="true">
        <br><br>
-        <div ng-repeat="x in myData" style="color:white">
+        <div ng-repeat="x in myyoureventData" style="color:white">
         <br>
         <div class="list">
 

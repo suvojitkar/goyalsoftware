@@ -93,6 +93,17 @@ angular.module('starter', ['ionic','starter.controllers','ngCordova','ngStorage'
                     }
                     }               
                      })
+
+               .state('Side.eventdesc',{
+                      cache: true,
+                     url:'/eventdesc',
+                     views: {
+                    'appContent' :{
+                      templateUrl: 'eventdesc.html',
+                      controller : 'Ctrl'
+                    }
+                    }               
+                     })
               .state('Side.Page1',{
                      url: '/Page1',
                      views: {
@@ -154,15 +165,7 @@ angular.module('starter', ['ionic','starter.controllers','ngCordova','ngStorage'
                     }               
                      })
 
-                .state('Side.rules',{
-                     url:'/rules',
-                     views: {
-                    'appContent' :{
-                      templateUrl: 'rules.html',
-                      controller : 'Ctrl'
-                    }
-                    }               
-                     })
+              
 
                .state('Side.credit',{
                      url:'/credit',
