@@ -1,7 +1,7 @@
 angular.module('starter', ['ionic','starter.controllers','ngCordova','ngStorage'])
 
 .constant('ApiEndpoint',{
-        url: 'http://rajkar.esy.es/yuthopia/'
+        url: 'http://salert.co.in/youthopia/'
      })
 
 .run(function($ionicPlatform) {

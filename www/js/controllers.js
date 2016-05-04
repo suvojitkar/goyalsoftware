@@ -12,26 +12,13 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
       $rootScope.phonenumber = window.localStorage.getItem("phonenumber");
       $rootScope.username = window.localStorage.getItem("username");
       $rootScope.verified = window.localStorage.getItem("verified");
-      // $scope.session = function() {
-      //   if($rootScope.phonenumber != undefined)
-      //   {
-      //     alert($rootScope.phonenumber);
-      //     $state.go('/Side/dash');
-      //     return 'true';        }
-
-      //     else {
-      //       return 'false';
-      //     }
-
-      // }
-
-      // $scope.session();
+     
             $scope.submit=function(user){
 
 
                  if(user.phonenumber=='')
               				 {
-              					$scope.showAlert("Your Phone Number Does not Exist","Authentication Failed");
+              					$scope.showAlert("Please Enter a Valid Number","Authentication Failed");
               					 user.phonenumber="";
               				 }
                 				 else {
@@ -47,7 +34,7 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
                                         $ionicLoading.hide(); 
                                         if (response.data == '0')
                                         {
-                                         $scope.showAlert("Your Phone Number Does not Exist","Authentication Failed");
+                                         $scope.showAlert("Your Phone Number Is Not Registered","Authentication Failed");
                                         }
                                         else 
                                         {
@@ -157,7 +144,7 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
         {
           $ionicLoading.show();
           $location.url('/Side/eventdesc');
-          
+   
 
 
                         $http({
@@ -168,14 +155,6 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
                       }).then(function successCallback(response){
                        $rootScope.Data = response.data.events;
                        $rootScope.eventdetails = response.data.details;
-                        $scope.groups = [];
-                                for (var i=0; i<=$rootScope.myData.length; i++) {
-                                  
-                                  $scope.groups[i] = {
-                                    name: i,
-                                    show: false
-                                  };
-                                }      
 
                        $ionicLoading.hide();
                        //$scope.showAlert($scope.myData);
@@ -209,10 +188,17 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
 
          $scope.email=function(user)
         {
+
+          if(user.phone == '' || user.phone== null)
+          {
+                $scope.showAlert("<center>Enter your mobile number","Info");
+          }
+          else
+          {
           $http({
                         method: 'POST',
                         url: ApiEndpoint.url+ 'email.php',
-                        data:{name:$rootScope.username, phone:$rootScope.phonenumber, query:user.query},
+                        data:{name:$rootScope.username, phonenumber:user.phone, query:user.query},
                         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
                       }).then(function successCallback(response){
                       
@@ -223,6 +209,7 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
               
                       });
         }
+      }
 
 
 
@@ -234,7 +221,7 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
                         url: ApiEndpoint.url+ 'guest.php',
                         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
                       }).then(function successCallback(response){
-                       $scope.Data = response.data.res;
+                       $scope.guestData = response.data.res;
                         $state.go('Side.guest');
                        $ionicLoading.hide();
                       },function errorCallback(response) {
@@ -300,17 +287,14 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
 
 
 
-			
-			$scope.logout = function()
-			{ 
+      $scope.logout = function()
+      { 
               window.localStorage.clear();
               $ionicHistory.clearCache();
               $ionicHistory.clearHistory(); 
               window.localStorage.setItem("verified", 0);
               $rootScope.verified= window.localStorage.getItem("verified");
-              //$scope.showAlert($rootScope.verified);
               $state.go('Side.yuthopia', {}, {reload: true}); 
-              $window.location.reload(true);
 			}
 			
 		
@@ -369,7 +353,7 @@ angular.module('starter.controllers', ['starter.services','ngStorage'])
        $scope.subscribe=function(id)
         {
           $ionicLoading.show();
-          if ($rootScope.verified == 0)
+          if ($rootScope.verified == 0 || $rootScope.verified == null)
           {
             $ionicLoading.hide();
              $scope.showAlert("<center>Please Login</center>","INFO");
